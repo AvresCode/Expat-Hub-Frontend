@@ -15,7 +15,7 @@ export const Navigation = () => {
   return (
     <Nav>
       <Logo href="/">
-        Codaisseur<span>templates</span>
+        Expat<span>Hub</span>
       </Logo>
       <Hamburger onClick={() => setOpen(!open)}>
         <span />
@@ -40,7 +40,7 @@ const MenuLink = styled(Link)`
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  color: #ececec;
+  color: #34495e;
   transition: all 0.3s ease-in;
   font-size: 0.9rem;
   &:hover {
@@ -54,7 +54,7 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #b22727;
+  background: #fbeee6;
   /* position: absolute; */
   top: 0;
   left: 0;
@@ -63,7 +63,7 @@ const Nav = styled.div`
 
 const Logo = styled.a`
   padding: 1rem 0;
-  color: #ececec;
+  color: #34495e;
   text-decoration: none;
   font-weight: 800;
   font-size: 1.7rem;

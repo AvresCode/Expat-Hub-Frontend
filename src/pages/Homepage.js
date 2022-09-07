@@ -1,18 +1,16 @@
-import { Title } from "../styled";
-import { Link } from "react-router-dom";
-import { LinkWord } from "../styled";
-import styled from "styled-components";
-import { EventCard } from "../components/EventCard";
+import { AllEventsComponent } from "../components/AllEventsComponent";
+import { HomeContainer } from "../styled/Container";
+import { HomeSidebar } from "../components/HomeSidebar";
 
 export const Homepage = () => {
   return (
-    <Container>
-      <h3>Hello there 👋</h3>
-      <EventCard />
-    </Container>
+    <HomeContainer>
+      <HomeSidebar />
+      <AllEventsComponent />
+    </HomeContainer>
   );
 };
 
-const Container = styled.div`
-  margin: 20px;
-`;
+// const Container = styled.div`
+//   margin: 20px;
+// `;
