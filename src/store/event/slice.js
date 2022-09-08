@@ -16,6 +16,11 @@ export const eventSlice = createSlice({
     setEventDetail: (state, action) => {
       state.eventDetail = action.payload;
     },
+
+    // editStatus: (state, action) => {
+    //  const {evenId, status }= action.payload;
+
+    //   const updatedEvent = state.allEvents.map((event) => event.id === eventId ? {...event, going.map((i) => {i.id = userId ? i.attendees.status = status })})
   },
 });
 

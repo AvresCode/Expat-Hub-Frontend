@@ -3,6 +3,9 @@ import { EventContainer } from "../styled/Container";
 import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { selectToken, selectUser } from "../store/user/selectors";
+import { editStatusThunk, fetchAllEvents } from "../store/event/thunks";
+import { useDispatch, useSelector } from "react-redux";
 
 export const EventCard = ({
   id,
@@ -15,7 +18,33 @@ export const EventCard = ({
   going,
   showDetails,
   showLink,
+  attendees,
 }) => {
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const profile = useSelector(selectUser);
+  const updateStatusIfLoggedIn = (status) => {
+    if (token) {
+      dispatch(editStatusThunk(id, status));
+    } else {
+      console.log("Please sign in");
+    }
+  };
+  const userResponse = () => {
+    if (!profile) {
+      return null;
+    }
+    const response = attendees.find(
+      (attendee) => attendee.userId === profile.id
+    );
+    if (!response) {
+      return null;
+    } else {
+      return response.status;
+    }
+  };
+
+  console.log("USERREPOSNE", userResponse());
   return (
     <EventContainer>
       <div key={id}>
@@ -43,11 +72,23 @@ export const EventCard = ({
             <div> {spots - going.length} spots left!</div>
           </div>
         </div>
-        <div style={{ display: "flex" }}>
-          {" "}
-          <Button> Accept</Button>
-          <Button> Decline</Button>
-        </div>
+        {userResponse() === null ? (
+          <div style={{ display: "flex" }}>
+            {" "}
+            <Button onClick={() => updateStatusIfLoggedIn(true)}>
+              {" "}
+              Accept
+            </Button>
+            <Button onClick={() => updateStatusIfLoggedIn(false)}>
+              {" "}
+              Decline
+            </Button>
+          </div>
+        ) : userResponse() ? (
+          <p>going!</p>
+        ) : (
+          <p>not going!</p>
+        )}
         <div>
           {" "}
           {showLink && (

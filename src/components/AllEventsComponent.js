@@ -21,7 +21,12 @@ export const AllEventsComponent = () => {
         <p> Loading ...</p>
       </div>
     );
-
+  const eventToAttendeesList = (event) => {
+    return event.going.map((user) => ({
+      userId: user.id,
+      status: user.attendees.status,
+    }));
+  };
   return (
     <MainContainer>
       {" "}
@@ -41,6 +46,7 @@ export const AllEventsComponent = () => {
               going={going}
               showDetails={false}
               showLink={true}
+              attendees={eventToAttendeesList(event)}
             />
           </div>
         );
