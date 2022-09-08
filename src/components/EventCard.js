@@ -4,7 +4,7 @@ import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { selectToken, selectUser } from "../store/user/selectors";
-import { editStatusThunk, fetchAllEvents } from "../store/event/thunks";
+import { editStatusThunk } from "../store/event/thunks";
 import { useDispatch, useSelector } from "react-redux";
 
 export const EventCard = ({
@@ -28,6 +28,7 @@ export const EventCard = ({
       dispatch(editStatusThunk(id, status));
     } else {
       console.log("Please sign in");
+      return <p> Please sign in </p>;
     }
   };
   const userResponse = () => {
@@ -64,7 +65,6 @@ export const EventCard = ({
             {" "}
             On {moment(date).format("dddd D MMM YYYY")} in {city}
           </p>
-          {/* <p>At: {date.}</p> */}
           <div>{showDetails && <p>{description}</p>}</div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             {" "}
