@@ -1,8 +1,16 @@
 import "./styles.css";
 import { EventContainer } from "../styled/Container";
 import { Button } from "../styled/Button";
+import { Link } from "react-router-dom";
 
-export const EventCard = ({ id, imageUrl, title, description }) => {
+export const EventCard = ({
+  id,
+  imageUrl,
+  title,
+  description,
+  spots,
+  going,
+}) => {
   return (
     <EventContainer>
       <div key={id}>
@@ -18,6 +26,11 @@ export const EventCard = ({ id, imageUrl, title, description }) => {
         <div>
           {" "}
           <h3>{title}</h3> <p>{description}</p>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            {" "}
+            <div> {going && going.length} attendees! </div>{" "}
+            <div> {spots - going.length} spots left!</div>
+          </div>
         </div>
         <div style={{ display: "flex" }}>
           {" "}
@@ -26,7 +39,9 @@ export const EventCard = ({ id, imageUrl, title, description }) => {
         </div>
         <div>
           {" "}
-          <Button> View details</Button>
+          <Link to={`/events/${id}`}>
+            <Button> View details</Button>
+          </Link>
         </div>
       </div>
     </EventContainer>

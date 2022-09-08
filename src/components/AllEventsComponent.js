@@ -24,7 +24,7 @@ export const AllEventsComponent = () => {
     <MainContainer>
       {" "}
       {allEvents.map((event) => {
-        const { id, imageUrl, title, description } = event;
+        const { id, imageUrl, title, description, spots, going } = event;
         return (
           <div className="col-md-6 col-lg-4">
             <EventCard
@@ -33,6 +33,8 @@ export const AllEventsComponent = () => {
               imageUrl={imageUrl}
               title={title}
               description={description}
+              spots={spots}
+              going={going}
             />
           </div>
         );
