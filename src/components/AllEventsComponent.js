@@ -7,7 +7,9 @@ import { MainContainer } from "../styled/Container";
 
 export const AllEventsComponent = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(fetchAllEvents), []);
+  useEffect(() => {
+    dispatch(fetchAllEvents);
+  }, [dispatch]);
 
   const allEvents = useSelector(selectAllEvents);
   console.log("allEvents", allEvents);
@@ -24,17 +26,21 @@ export const AllEventsComponent = () => {
     <MainContainer>
       {" "}
       {allEvents.map((event) => {
-        const { id, imageUrl, title, description, spots, going } = event;
+        const { id, imageUrl, title, city, date, description, spots, going } =
+          event;
         return (
-          <div className="col-md-6 col-lg-4">
+          <div key={id} className="col-md-6 col-lg-4">
             <EventCard
-              key={id}
               id={id}
               imageUrl={imageUrl}
               title={title}
+              city={city}
+              date={date}
               description={description}
               spots={spots}
               going={going}
+              showDetails={false}
+              showLink={true}
             />
           </div>
         );

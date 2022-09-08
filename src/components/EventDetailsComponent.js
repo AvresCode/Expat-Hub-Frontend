@@ -8,7 +8,9 @@ import { EventCard } from "./EventCard";
 export const EventDetailsComponent = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  useEffect(() => dispatch(fetchOneEvent(id)), [dispatch, id]);
+  useEffect(() => {
+    dispatch(fetchOneEvent(id));
+  }, [dispatch, id]);
 
   const oneEvent = useSelector(selectEventDetails);
 
@@ -20,9 +22,13 @@ export const EventDetailsComponent = () => {
         <EventCard
           imageUrl={oneEvent.imageUrl}
           title={oneEvent.title}
+          city={oneEvent.city}
+          date={oneEvent.date}
           description={oneEvent.description}
           spots={oneEvent.spots}
           going={oneEvent.going}
+          showDetails={true}
+          showLink={false}
         />
       )}{" "}
     </div>

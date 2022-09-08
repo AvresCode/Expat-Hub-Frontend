@@ -2,14 +2,19 @@ import "./styles.css";
 import { EventContainer } from "../styled/Container";
 import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export const EventCard = ({
   id,
   imageUrl,
   title,
+  date,
+  city,
   description,
   spots,
   going,
+  showDetails,
+  showLink,
 }) => {
   return (
     <EventContainer>
@@ -25,7 +30,13 @@ export const EventCard = ({
         />{" "}
         <div>
           {" "}
-          <h3>{title}</h3> <p>{description}</p>
+          <h3>{title}</h3>
+          <p>
+            {" "}
+            On {moment(date).format("dddd D MMM YYYY")} in {city}
+          </p>
+          {/* <p>At: {date.}</p> */}
+          <div>{showDetails && <p>{description}</p>}</div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             {" "}
             <div> {going && going.length} attendees! </div>{" "}
@@ -39,9 +50,11 @@ export const EventCard = ({
         </div>
         <div>
           {" "}
-          <Link to={`/events/${id}`}>
-            <Button> View details</Button>
-          </Link>
+          {showLink && (
+            <Link to={`/events/${id}`}>
+              <Button> View details</Button>
+            </Link>
+          )}
         </div>
       </div>
     </EventContainer>
