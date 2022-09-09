@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Button, Input, Title } from "../styled";
 import { useState } from "react";
 import { Select } from "../styled/Select";
-//import { useDispatch } from "react-redux";
+import { newEventThunk } from "../store/event/thunks";
+import { useDispatch } from "react-redux";
 
 export const AddEventPage = () => {
   const [title, setTitle] = useState("");
@@ -13,12 +14,24 @@ export const AddEventPage = () => {
   const [spots, setSpots] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log("submit event:", title, date, spots, categoryId);
+    dispatch(
+      newEventThunk(
+        title,
+        description,
+        date,
+        city,
+        address,
+        spots,
+        imageUrl,
+        categoryId
+      )
+    );
 
     setTitle("");
     setDescription("");
@@ -36,7 +49,7 @@ export const AddEventPage = () => {
         <form onSubmit={handleSubmit}>
           <div>
             {" "}
-            <label for="cars">Category:</label>
+            <label>Category:</label>
           </div>
           <div>
             {" "}

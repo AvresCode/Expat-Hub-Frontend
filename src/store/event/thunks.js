@@ -1,6 +1,8 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
-import { setAllEvents, setEventDetail } from "./slice";
+import { setAllEvents, setEventDetail, setAddEvent } from "./slice";
+import { selectToken } from "../user/selectors";
+import { showMessageWithTimeout } from "../appState/thunks";
 
 // get all events
 export const fetchAllEvents = async (dispatch, getState) => {
@@ -24,3 +26,35 @@ export const fetchOneEvent = (id) => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+//Add a new event
+export const newEventThunk =
+  (title, description, date, city, address, spots, imageUrl, categoryId) =>
+  async (dispatch, getState) => {
+    try {
+      console.log("addEvent");
+      const token = selectToken(getState());
+
+      const response = await axios.post(
+        `${apiUrl}/events/addEvent`,
+        {
+          title,
+          description,
+          date,
+          city,
+          address,
+          spots,
+          imageUrl,
+          categoryId,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log("addEvent thunk response", response);
+      dispatch(setAddEvent(response.data.newEvent));
+      dispatch(showMessageWithTimeout("success", false, "Event added!", 4000));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
