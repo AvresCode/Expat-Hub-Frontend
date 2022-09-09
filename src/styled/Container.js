@@ -4,7 +4,7 @@ export const EventContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 70vw;
+  max-width: 50vw;
   margin: 2vh 2vw;
 `;
 
@@ -17,6 +17,7 @@ export const MainContainer = styled.div`
 
 export const HomeContainer = styled.div`
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   border: 0.1vw black solid;
