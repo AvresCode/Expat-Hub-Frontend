@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 import { Link } from "react-router-dom";
-
+import { Button } from "../styled";
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
 
@@ -23,10 +23,9 @@ export const Navigation = () => {
         <span />
       </Hamburger>
       <Menu open={open}>
-        <MenuLink to="/empty1">Empty 1</MenuLink>
         <MenuLink to="/empty2">Empty 2</MenuLink>
         {token ? (
-          <button onClick={() => dispatch(logOut())}>Logout</button>
+          <Button onClick={() => dispatch(logOut())}>Logout</Button>
         ) : (
           <MenuLink to="/login">Login</MenuLink>
         )}
@@ -54,7 +53,7 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #fbeee6;
+  background: #faf5ee;
   /* position: absolute; */
   top: 0;
   left: 0;
@@ -80,7 +79,7 @@ const Hamburger = styled.div`
   span {
     height: 2px;
     width: 25px;
-    background-color: #ececec;
+    background-color: #34495e;
     margin-bottom: 4px;
     border-radius: 5px;
   }
