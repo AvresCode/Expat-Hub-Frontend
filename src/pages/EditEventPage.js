@@ -5,6 +5,7 @@ import { fetchOneEvent } from "../store/event/thunks";
 import { selectEventDetails } from "../store/event/selectors";
 import styled from "styled-components";
 import { Button, Input, Title, Select } from "../styled";
+import { editEventThunk } from "../store/event/thunks";
 
 export const EditEventPage = () => {
   const { id } = useParams();
@@ -36,6 +37,20 @@ export const EditEventPage = () => {
       spots,
       address,
       imageUrl
+    );
+    //  const eventParameters = { title,  description, date, city, address, spots, imageUrl,categoryId, };
+    dispatch(
+      editEventThunk(
+        id,
+        title,
+        description,
+        date,
+        city,
+        address,
+        spots,
+        imageUrl,
+        categoryId
+      )
     );
   };
 

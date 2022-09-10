@@ -27,7 +27,8 @@ export const fetchOneEvent = (id) => async (dispatch, getState) => {
   }
 };
 
-//Add a new event
+//Add a new event by user who is logged in and isAmbassador: true.
+
 export const newEventThunk =
   (title, description, date, city, address, spots, imageUrl, categoryId) =>
   async (dispatch, getState) => {
@@ -54,6 +55,51 @@ export const newEventThunk =
       console.log("addEvent thunk response", response);
       dispatch(setAddEvent(response.data.newEvent));
       dispatch(showMessageWithTimeout("success", false, "Event added!", 4000));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+//Edit event by user who created the event
+
+export const editEventThunk =
+  (
+    eventId,
+    title,
+    description,
+    date,
+    city,
+    address,
+    spots,
+    imageUrl,
+    categoryId
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      console.log("EditEvent");
+      const token = selectToken(getState());
+
+      const editResponse = await axios.patch(
+        `${apiUrl}/events/${eventId}/edit`,
+        {
+          title,
+          description,
+          date,
+          city,
+          address,
+          spots,
+          imageUrl,
+          categoryId,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("edit event thunk", editResponse);
+
+      const response = await axios.get(`${apiUrl}/events/${eventId}`);
+      dispatch(setEventDetail(response.data));
+      dispatch(
+        showMessageWithTimeout("success", false, "Edited successfully!", 4000)
+      );
     } catch (e) {
       console.log(e.message);
     }

@@ -37,7 +37,7 @@ export const EventDetailsComponent = () => {
           showLink={false}
         />
       )}
-      {token && user.isAmbassador && oneEvent.userId === user.id && (
+      {token && user?.isAmbassador && oneEvent.userId === user.id && (
         <div>
           {" "}
           <Link to={`/events/editEvent/${id}`}>
