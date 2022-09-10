@@ -16,8 +16,13 @@ export const eventSlice = createSlice({
     setEventDetail: (state, action) => {
       state.eventDetail = action.payload;
     },
+
+    setAddEvent: (state, action) => {
+      console.log("add event action", action.payload);
+      state.allEvents.push({ ...action.payload });
+    },
   },
 });
 
-export const { setAllEvents, setEventDetail } = eventSlice.actions;
+export const { setAllEvents, setEventDetail, setAddEvent } = eventSlice.actions;
 export default eventSlice.reducer;

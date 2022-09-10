@@ -1,6 +1,5 @@
 import "./styles.css";
-import { EventContainer } from "../styled/Container";
-import { Button } from "../styled/Button";
+import { EventCardContainer, Button } from "../styled";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
@@ -17,46 +16,43 @@ export const EventCard = ({
   showLink,
 }) => {
   return (
-    <EventContainer>
-      <div key={id}>
+    <EventCardContainer key={id}>
+      {" "}
+      <img
+        src={imageUrl}
+        alt=""
+        style={{
+          maxWidth: "100%",
+          borderRadius: "1vw",
+        }}
+      />
+      <div>
         {" "}
-        <img
-          src={imageUrl}
-          alt=""
-          style={{
-            maxWidth: "100%",
-            borderRadius: "1vw",
-          }}
-        />{" "}
-        <div>
+        <h3>{title}</h3>
+        <p>
           {" "}
-          <h3>{title}</h3>
-          <p>
-            {" "}
-            On {moment(date).format("dddd D MMM YYYY")} in {city}
-          </p>
-          {/* <p>At: {date.}</p> */}
-          <div>{showDetails && <p>{description}</p>}</div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {" "}
-            <div> {going && going.length} attendees! </div>{" "}
-            <div> {spots - going.length} spots left!</div>
-          </div>
-        </div>
-        <div style={{ display: "flex" }}>
+          On {moment(date).format("dddd D MMM YYYY")} in {city}
+        </p>
+        <div>{showDetails && <p>{description}</p>}</div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
-          <Button> Accept</Button>
-          <Button> Decline</Button>
-        </div>
-        <div>
-          {" "}
-          {showLink && (
-            <Link to={`/events/${id}`}>
-              <Button> View details</Button>
-            </Link>
-          )}
+          <div> {going && going.length} attendees! </div>{" "}
+          <div> {spots - going.length} spots left!</div>
         </div>
       </div>
-    </EventContainer>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {" "}
+        <Button> Accept</Button>
+        <Button> Decline</Button>
+      </div>
+      <div>
+        {" "}
+        {showLink && (
+          <Link to={`/events/${id}`}>
+            <Button> View details</Button>
+          </Link>
+        )}
+      </div>
+    </EventCardContainer>
   );
 };

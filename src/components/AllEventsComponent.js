@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { selectAllEvents } from "../store/event/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { EventCard } from "./EventCard";
-import { MainContainer } from "../styled/Container";
+import { AllEventsContainer } from "../styled";
 
 export const AllEventsComponent = () => {
   const dispatch = useDispatch();
@@ -23,13 +23,13 @@ export const AllEventsComponent = () => {
     );
 
   return (
-    <MainContainer>
+    <AllEventsContainer>
       {" "}
       {allEvents.map((event) => {
         const { id, imageUrl, title, city, date, description, spots, going } =
           event;
         return (
-          <div key={id} className="col-md-6 col-lg-4">
+          <div key={id}>
             <EventCard
               id={id}
               imageUrl={imageUrl}
@@ -45,6 +45,6 @@ export const AllEventsComponent = () => {
           </div>
         );
       })}
-    </MainContainer>
+    </AllEventsContainer>
   );
 };
