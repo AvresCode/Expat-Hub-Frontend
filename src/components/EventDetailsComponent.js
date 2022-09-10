@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchOneEvent } from "../store/event/thunks";
+import { fetchOneEvent, deleteOneEvent } from "../store/event/thunks";
 import { useParams } from "react-router-dom";
 import { selectEventDetails } from "../store/event/selectors";
 import { EventCard } from "./EventCard";
@@ -40,10 +40,20 @@ export const EventDetailsComponent = () => {
       {token && user?.isAmbassador && oneEvent.userId === user.id && (
         <div>
           {" "}
-          <Link to={`/events/editEvent/${id}`}>
+          <div>
             {" "}
-            <Button> Edit event</Button>{" "}
-          </Link>
+            <Link to={`/events/editEvent/${id}`}>
+              {" "}
+              <Button> Edit event</Button>{" "}
+            </Link>
+          </div>
+          <div>
+            {" "}
+            <Button onClick={() => dispatch(deleteOneEvent(id))}>
+              {" "}
+              Delete event
+            </Button>
+          </div>
         </div>
       )}{" "}
     </div>

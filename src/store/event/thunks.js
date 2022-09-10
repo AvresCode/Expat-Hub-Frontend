@@ -60,6 +60,25 @@ export const newEventThunk =
     }
   };
 
+// delete the event by user who created the event
+export const deleteOneEvent = (id) => async (dispatch, getState) => {
+  try {
+    const token = selectToken(getState());
+    const deleteResponse = await axios.delete(`${apiUrl}/events/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log("delete response", deleteResponse);
+
+    const response = await axios.get(`${apiUrl}/events`);
+    dispatch(setAllEvents(response.data));
+    dispatch(
+      showMessageWithTimeout("success", false, "Deleted successfully!", 4000)
+    );
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 //Edit event by user who created the event
 
 export const editEventThunk =
