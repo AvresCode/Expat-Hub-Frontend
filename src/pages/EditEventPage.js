@@ -1,50 +1,48 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchOneEvent } from "../store/event/thunks";
+import { selectEventDetails } from "../store/event/selectors";
 import styled from "styled-components";
 import { Button, Input, Title, Select } from "../styled";
-import { useState } from "react";
-import { newEventThunk } from "../store/event/thunks";
-import { useDispatch } from "react-redux";
 
-export const AddEventPage = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [spots, setSpots] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+export const EditEventPage = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchOneEvent(id));
+  }, [dispatch, id]);
 
+  const oneEvent = useSelector(selectEventDetails);
+
+  const [title, setTitle] = useState(oneEvent?.title);
+  const [description, setDescription] = useState(oneEvent?.description);
+  const [date, setDate] = useState(oneEvent?.date);
+  const [city, setCity] = useState(oneEvent?.city);
+  const [address, setAddress] = useState(oneEvent?.address);
+  const [spots, setSpots] = useState(oneEvent?.spots);
+  const [categoryId, setCategoryId] = useState(oneEvent?.categoryId);
+  const [imageUrl, setImageUrl] = useState(oneEvent?.imageUrl);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("submit event:", title, date, spots, categoryId);
-    dispatch(
-      newEventThunk(
-        title,
-        description,
-        date,
-        city,
-        address,
-        spots,
-        imageUrl,
-        categoryId
-      )
+    console.log(
+      "submit event:",
+      categoryId,
+      title,
+      description,
+      date,
+      city,
+      spots,
+      address,
+      imageUrl
     );
-
-    setTitle("");
-    setDescription("");
-    setDate("");
-    setCity("");
-    setAddress("");
-    setSpots("");
-    setCategoryId("");
-    setImageUrl("");
   };
+
   return (
     <div style={{ textAlign: "center" }}>
       <Container>
-        <Title>Add Your Event: </Title>
+        <Title>Edit Your Event: </Title>
         <form onSubmit={handleSubmit}>
           <div>
             {" "}
@@ -53,9 +51,8 @@ export const AddEventPage = () => {
           <div>
             {" "}
             <Select
-              value={categoryId}
+              defaultValue={oneEvent?.categoryId}
               onChange={(e) => setCategoryId(parseInt(e.target.value))}
-              required
             >
               {" "}
               <option value="">Please choose an option</option>
@@ -72,18 +69,16 @@ export const AddEventPage = () => {
           <div>
             <Input
               type="text"
-              value={title}
+              defaultValue={oneEvent?.title}
               onChange={(e) => setTitle(e.target.value)}
-              required
             />
           </div>
           <label>Description: </label>
           <div>
             {" "}
             <Input
-              value={description}
+              defaultValue={oneEvent?.description}
               onChange={(e) => setDescription(e.target.value)}
-              required
             />
           </div>
           <div>
@@ -94,9 +89,8 @@ export const AddEventPage = () => {
             {" "}
             <Input
               type="datetime-local"
-              value={date}
+              defaultValue={oneEvent?.date}
               onChange={(e) => setDate(e.target.value)}
-              required
             />{" "}
           </div>
           <div>
@@ -106,9 +100,8 @@ export const AddEventPage = () => {
           <div>
             {" "}
             <Input
-              value={city}
+              defaultValue={oneEvent?.city}
               onChange={(e) => setCity(e.target.value)}
-              required
             />
           </div>
           <div>
@@ -118,10 +111,9 @@ export const AddEventPage = () => {
           <div>
             {" "}
             <Input
-              value={spots}
+              defaultValue={oneEvent?.spots}
               type="number"
               onChange={(e) => setSpots(parseInt(e.target.value))}
-              required
             />
           </div>{" "}
           <div>
@@ -131,9 +123,8 @@ export const AddEventPage = () => {
           <div>
             {" "}
             <Input
-              value={address}
+              defaultValue={oneEvent?.address}
               onChange={(e) => setAddress(e.target.value)}
-              required
             />
           </div>
           <div>
@@ -144,9 +135,8 @@ export const AddEventPage = () => {
             {" "}
             <Input
               type="text"
-              value={imageUrl}
+              defaultValue={oneEvent?.imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              required
             />
           </div>
           <Button type="submit">Post</Button>
@@ -155,7 +145,6 @@ export const AddEventPage = () => {
     </div>
   );
 };
-
 const Container = styled.div`
   display: "flex";
   flex-direction: "column";

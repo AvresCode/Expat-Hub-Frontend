@@ -10,6 +10,7 @@ import {
   SignUp,
   EventDetailsPage,
   AddEventPage,
+  EditEventPage,
 } from "./pages";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/events/:id" element={<EventDetailsPage />} />
         <Route path="/events/addEvent" element={<AddEventPage />} />
+        <Route path="/events/editEvent/:id" element={<EditEventPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
