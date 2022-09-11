@@ -8,7 +8,12 @@ import { selectToken } from "../store/user/selectors";
 import { selectUser } from "../store/user/selectors";
 import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
-import { EventDetailsContainer } from "../styled/MainContainer";
+import {
+  EventDetailsContainer,
+  EventDetailsLeftContainer,
+  EventDetailsRightContainer,
+  CommentSectionContainer,
+} from "../styled/MainContainer";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
@@ -25,7 +30,7 @@ export const EventDetailsComponent = () => {
 
   return (
     <EventDetailsContainer>
-      <div style={{ maxWidth: "50vw" }}>
+      <EventDetailsLeftContainer>
         {oneEvent && (
           <EventCard
             imageUrl={oneEvent.imageUrl}
@@ -65,7 +70,27 @@ export const EventDetailsComponent = () => {
             </div>
           </div>
         )}{" "}
-      </div>
+      </EventDetailsLeftContainer>
+      <EventDetailsRightContainer>
+        {" "}
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum."
+      </EventDetailsRightContainer>
+      <CommentSectionContainer>
+        {" "}
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum."{" "}
+      </CommentSectionContainer>
     </EventDetailsContainer>
   );
 };
