@@ -8,11 +8,16 @@ import { selectToken } from "../store/user/selectors";
 import { selectUser } from "../store/user/selectors";
 import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
+import { CommentCard } from "./CommentCard";
 import {
   EventDetailsContainer,
   EventDetailsLeftContainer,
   EventDetailsRightContainer,
-} from "../styled/MainContainer";
+  CommentSectionContainer,
+  AttendeesContainer,
+  AttendeesMainContainer,
+  CommentContainer,
+} from "../styled";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
@@ -39,6 +44,7 @@ export const EventDetailsComponent = () => {
             description={oneEvent.description}
             spots={oneEvent.spots}
             going={oneEvent.going}
+            comments={oneEvent.comments}
             showDetails={true}
             showLink={false}
           />
@@ -72,14 +78,52 @@ export const EventDetailsComponent = () => {
       </EventDetailsLeftContainer>
       <EventDetailsRightContainer>
         {" "}
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum."
+        <h3> Attendees:</h3>
+        <AttendeesMainContainer>
+          {" "}
+          {oneEvent &&
+            oneEvent.going.map((person) => {
+              return (
+                <AttendeesContainer key={person.id}>
+                  <div>
+                    <img
+                      src={person.imageUrl}
+                      alt=""
+                      style={{
+                        maxWidth: "100%",
+                        borderRadius: "1vw",
+                      }}
+                    />
+                  </div>{" "}
+                  {person.firstName} {person.lastName}
+                  <div></div>
+                </AttendeesContainer>
+              );
+            })}
+        </AttendeesMainContainer>
       </EventDetailsRightContainer>
+
+      <CommentSectionContainer>
+        <div>
+          <h3> Comments</h3>
+        </div>
+        {oneEvent &&
+          oneEvent.comments.map((comment) => {
+            return (
+              <CommentCard
+                key={comment.id}
+                text={comment.text}
+                user={comment.user}
+              />
+            );
+          })}{" "}
+        {token && (
+          <div>
+            {" "}
+            <Button> Post a comment</Button>
+          </div>
+        )}{" "}
+      </CommentSectionContainer>
     </EventDetailsContainer>
   );
 };

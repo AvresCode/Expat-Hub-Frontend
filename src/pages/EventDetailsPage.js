@@ -1,10 +1,9 @@
-import { EventDetailsComponent, CommentsComponent } from "../components";
+import { EventDetailsComponent } from "../components";
 
 export const EventDetailsPage = () => {
   return (
     <div>
       <EventDetailsComponent /> <br />
-      <CommentsComponent />
     </div>
   );
 };

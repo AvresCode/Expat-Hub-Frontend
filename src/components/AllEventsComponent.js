@@ -1,5 +1,5 @@
 import { fetchAllEvents } from "../store/event/thunks";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { selectAllEvents } from "../store/event/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { EventCard } from "./EventCard";

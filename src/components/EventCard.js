@@ -14,6 +14,7 @@ export const EventCard = ({
   going,
   showDetails,
   showLink,
+  comments,
 }) => {
   return (
     <EventCardContainer key={id}>
@@ -33,7 +34,6 @@ export const EventCard = ({
           {" "}
           On {moment(date).format("dddd D MMM YYYY")} in {city}
         </p>
-        <div>{showDetails && <p>{description}</p>}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
           <div> {going && going.length} attendees! </div>{" "}
@@ -51,6 +51,14 @@ export const EventCard = ({
           <Link to={`/events/${id}`}>
             <Button> View details</Button>
           </Link>
+        )}
+      </div>
+      <div>
+        {showDetails && (
+          <div>
+            {" "}
+            <p>{description} </p>{" "}
+          </div>
         )}
       </div>
     </EventCardContainer>
