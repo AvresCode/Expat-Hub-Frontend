@@ -19,13 +19,12 @@ import {
   AttendeesContainer,
   AttendeesMainContainer,
 } from "../styled";
-import { useState } from "react";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const { id } = useParams();
-  const [comment, setComment] = useState("");
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOneEvent(id));

@@ -89,7 +89,6 @@ export const CommentContainer = styled.div`
   border-radius: 1vw;
   padding: 1vh 1vw;
   margin: 2vh 2vw;
-  border: 0.1vw white solid;
 `;
 export const PhotoNameContainer = styled.div`
   display: flex;
@@ -98,7 +97,7 @@ export const PhotoNameContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
   color: white;
 `;
 export const CommentTextContainer = styled.div`

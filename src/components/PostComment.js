@@ -1,13 +1,18 @@
 import { useState } from "react";
-import {
-  CommentContainer,
-  PhotoNameContainer,
-  CommentTextContainer,
-  Button,
-} from "../styled";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { newCommentThunk } from "../store/event/thunks";
+import { CommentContainer, PhotoNameContainer, Button } from "../styled";
 
 export const PostComment = ({ imageUrl, firstName }) => {
+  const { id } = useParams();
   const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
+  const submitForm = (e) => {
+    e.preventDefault();
+    dispatch(newCommentThunk(id, comment));
+    setComment("");
+  };
   return (
     <div>
       {" "}
@@ -27,14 +32,14 @@ export const PostComment = ({ imageUrl, firstName }) => {
           </div>{" "}
           <div> {firstName}</div>
         </PhotoNameContainer>
-        <form style={{ display: "flex" }}>
+        <form style={{ display: "flex" }} onSubmit={submitForm}>
           <input
             placeholder="Write your comment..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             style={{ width: "30vw", height: "6vh", borderRadius: "1VW" }}
           />
-          <Button> Post</Button>
+          <Button type="submit"> Post</Button>
         </form>{" "}
       </CommentContainer>
     </div>

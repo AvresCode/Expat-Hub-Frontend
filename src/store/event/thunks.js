@@ -123,3 +123,29 @@ export const editEventThunk =
       console.log(e.message);
     }
   };
+
+//Add comment by logged in user
+
+export const newCommentThunk =
+  (eventId, text) => async (dispatch, getState) => {
+    try {
+      console.log("addComment");
+      const token = selectToken(getState());
+
+      const commentResponse = await axios.post(
+        `${apiUrl}/events/${eventId}/comment`,
+        { text },
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log("addComment thunk response", commentResponse);
+      const response = await axios.get(`${apiUrl}/events/${eventId}`);
+      dispatch(setEventDetail(response.data));
+      dispatch(
+        showMessageWithTimeout("success", false, "Comment added!", 4000)
+      );
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
