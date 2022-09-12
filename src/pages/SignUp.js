@@ -51,7 +51,19 @@ export const SignUp = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log("submit works");
+    console.log(
+      "submit works",
+      firstName,
+      lastName,
+      email,
+      password,
+      city,
+      birthDate,
+      gender,
+      nationality,
+      education,
+      imageUrl
+    );
     dispatch(
       signUp(
         firstName,
@@ -66,6 +78,16 @@ export const SignUp = () => {
         imageUrl
       )
     );
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setCity("");
+    setBirthDate("");
+    setGender("");
+    setNationality("");
+    setEducation("");
+    setImageUrl("");
   };
 
   return (
@@ -146,7 +168,7 @@ export const SignUp = () => {
             <div>
               {" "}
               <Input
-                value={city}
+                value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
               />
             </div>
@@ -168,14 +190,7 @@ export const SignUp = () => {
               <Input type="file" onChange={uploadImage} />
             </div>
             <div>
-              <img
-                alt=""
-                src={
-                  imageUrl
-                    ? imageUrl
-                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-                }
-              />
+              <img alt="" width={200} src={imageUrl ? imageUrl : ""} />
               {imageUrl ? (
                 <Title style={{ fontSize: 15 }}>Succesfully uploaded!</Title>
               ) : (
