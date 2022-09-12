@@ -6,23 +6,26 @@ import { selectEventDetails } from "../store/event/selectors";
 import { EventCard } from "./EventCard";
 import { selectToken } from "../store/user/selectors";
 import { selectUser } from "../store/user/selectors";
-import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
 import { CommentCard } from "./CommentCard";
+import { PostComment } from "./PostComment";
 import {
+  Button,
+  Input,
   EventDetailsContainer,
   EventDetailsLeftContainer,
   EventDetailsRightContainer,
   CommentSectionContainer,
   AttendeesContainer,
   AttendeesMainContainer,
-  CommentContainer,
 } from "../styled";
+import { useState } from "react";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const { id } = useParams();
+  const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOneEvent(id));
@@ -106,6 +109,14 @@ export const EventDetailsComponent = () => {
       <CommentSectionContainer>
         <div>
           <h3> Comments</h3>
+          {token && (
+            <div>
+              <PostComment
+                imageUrl={user.imageUrl}
+                firstName={user.firstName}
+              />
+            </div>
+          )}
         </div>
         {oneEvent &&
           oneEvent.comments.map((comment) => {
@@ -117,12 +128,6 @@ export const EventDetailsComponent = () => {
               />
             );
           })}{" "}
-        {token && (
-          <div>
-            {" "}
-            <Button> Post a comment</Button>
-          </div>
-        )}{" "}
       </CommentSectionContainer>
     </EventDetailsContainer>
   );

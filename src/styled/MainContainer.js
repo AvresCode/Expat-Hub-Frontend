@@ -64,7 +64,7 @@ export const EventDetailsLeftContainer = styled.div`
 export const CommentSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 70vw;
   // flex: 60%;
   justify-content: center;
   align-items: center;
@@ -74,7 +74,8 @@ export const CommentSectionContainer = styled.div`
   padding: 1vh 1vw;
   margin: 2vh 2vw;
   @media (max-width: 750px) {
-    flex: 70%;
+    // flex: 70%;
+    width: 80vw;
   }
 `;
 
@@ -82,13 +83,13 @@ export const CommentContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 50vw;
+  width: 60vw;
   height: 8vh;
-
   color: #34495e;
   border-radius: 1vw;
   padding: 1vh 1vw;
   margin: 2vh 2vw;
+  border: 0.1vw white solid;
 `;
 export const PhotoNameContainer = styled.div`
   display: flex;
