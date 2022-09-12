@@ -140,3 +140,35 @@ export const AttendeesContainer = styled.div`
   width: 10vw;
   margin: 3vh 1vw;
 `;
+export const ImageSectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 0.1vw #34495e solid;
+  border-radius: 3vw;
+  background-color: #fcf9f5;
+  padding: 2vh 1vw;
+`;
+
+export const ImageNameContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 12vw;
+  height: 20vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1.5vw;
+  color: #34495e;
+  border: 0.1vw #34495e solid;
+  border-radius: 3vw;
+  margin: 2vh 1vw;
+  padding: 1vh 1vw;
+`;
+
+export const AllPhotosContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;

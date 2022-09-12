@@ -149,3 +149,27 @@ export const newCommentThunk =
       console.log(e.message);
     }
   };
+
+//Add Image by logged in user
+
+export const newImageThunk =
+  (eventId, imageUrl) => async (dispatch, getState) => {
+    try {
+      console.log("addImage");
+      const token = selectToken(getState());
+
+      const imageResponse = await axios.post(
+        `${apiUrl}/events/${eventId}/images`,
+        { imageUrl },
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log("addImage thunk response", imageResponse);
+      const response = await axios.get(`${apiUrl}/events/${eventId}`);
+
+      dispatch(setEventDetail(response.data));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };

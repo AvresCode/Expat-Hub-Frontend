@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchOneEvent, deleteOneEvent } from "../store/event/thunks";
 import { useParams } from "react-router-dom";
 import { selectEventDetails } from "../store/event/selectors";
@@ -9,6 +9,8 @@ import { selectUser } from "../store/user/selectors";
 import { Link } from "react-router-dom";
 import { CommentCard } from "./CommentCard";
 import { PostComment } from "./PostComment";
+import { ImageCard } from "./ImageCard";
+import { PostImage } from "./PostImage";
 import {
   Button,
   Input,
@@ -18,12 +20,15 @@ import {
   CommentSectionContainer,
   AttendeesContainer,
   AttendeesMainContainer,
+  ImageSectionContainer,
+  AllPhotosContainer,
 } from "../styled";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const { id } = useParams();
+  const [showForm, setShowForm] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -104,15 +109,41 @@ export const EventDetailsComponent = () => {
             })}
         </AttendeesMainContainer>
       </EventDetailsRightContainer>
-
+      <ImageSectionContainer>
+        <div>
+          {" "}
+          <h3> Photos</h3>
+          <AllPhotosContainer>
+            {" "}
+            {oneEvent &&
+              oneEvent.images.map((image) => {
+                return (
+                  <ImageCard
+                    key={image.id}
+                    id={image.id}
+                    imageUrl={image.imageUrl}
+                    user={image.user}
+                  />
+                );
+              })}{" "}
+          </AllPhotosContainer>
+        </div>
+        {token && (
+          <div>
+            {" "}
+            <Button onClick={() => setShowForm(true)}>Post photo </Button>
+            {showForm && <PostImage />}
+          </div>
+        )}
+      </ImageSectionContainer>
       <CommentSectionContainer>
         <div>
           <h3> Comments</h3>
           {token && (
             <div>
               <PostComment
-                imageUrl={user.imageUrl}
-                firstName={user.firstName}
+                imageUrl={user?.imageUrl}
+                firstName={user?.firstName}
               />
             </div>
           )}
