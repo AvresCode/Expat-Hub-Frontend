@@ -12,7 +12,7 @@ export const AllEventsComponent = () => {
   }, [dispatch]);
 
   const allEvents = useSelector(selectAllEvents);
-  console.log("allEvents", allEvents);
+  // console.log("allEvents", allEvents);
 
   if (!allEvents)
     return (
@@ -21,11 +21,19 @@ export const AllEventsComponent = () => {
         <p> Loading ...</p>
       </div>
     );
+  const filteredPastEvents = [...allEvents].filter(
+    (event) => new Date(event.date) > new Date()
+  );
+  // console.log("filtered event", filteredPastEvents);
+
+  const sortedEventDate = filteredPastEvents.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
 
   return (
     <AllEventsContainer>
       {" "}
-      {allEvents.map((event) => {
+      {sortedEventDate.map((event) => {
         const { id, imageUrl, title, city, date, description, spots, going } =
           event;
         return (
