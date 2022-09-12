@@ -29,6 +29,26 @@ export const SignUp = () => {
     }
   }, [token, navigate]);
 
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+
+    data.append("upload_preset", "lbazsi6x");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/df03t7txo/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    console.log("file", file);
+    setImageUrl(file.url);
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
     console.log("submit works");
@@ -139,6 +159,28 @@ export const SignUp = () => {
                 value={education}
                 onChange={(e) => setEducation(e.target.value)}
               />
+            </div>
+            <div>
+              <label>Upload photo:</label>
+            </div>
+            <div>
+              {" "}
+              <Input type="file" onChange={uploadImage} />
+            </div>
+            <div>
+              <img
+                alt=""
+                src={
+                  imageUrl
+                    ? imageUrl
+                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                }
+              />
+              {imageUrl ? (
+                <Title style={{ fontSize: 15 }}>Succesfully uploaded!</Title>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <br />
