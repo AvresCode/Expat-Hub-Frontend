@@ -17,6 +17,10 @@ export const PostImage = () => {
 
     data.append("upload_preset", "lbazsi6x");
 
+    //photo crop with cloudinary
+    //https://res.cloudinary.com/demo/image/upload/c_fill,g_north,h_250,w_250/sample.jpg
+    //https://res.cloudinary.com/df03t7txo/image/upload/v1662999381/obfw8j6wh9ckiycokwf1.jpg
+
     const res = await fetch(
       "https://api.cloudinary.com/v1_1/df03t7txo/image/upload",
       {
