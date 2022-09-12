@@ -1,19 +1,35 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchOneEvent, deleteOneEvent } from "../store/event/thunks";
 import { useParams } from "react-router-dom";
 import { selectEventDetails } from "../store/event/selectors";
 import { EventCard } from "./EventCard";
 import { selectToken } from "../store/user/selectors";
 import { selectUser } from "../store/user/selectors";
-import { Button } from "../styled/Button";
 import { Link } from "react-router-dom";
-import { EventDetailsContainer } from "../styled/MainContainer";
+import { CommentCard } from "./CommentCard";
+import { PostComment } from "./PostComment";
+import { ImageCard } from "./ImageCard";
+import { PostImage } from "./PostImage";
+import {
+  Button,
+  Input,
+  EventDetailsContainer,
+  EventDetailsLeftContainer,
+  EventDetailsRightContainer,
+  CommentSectionContainer,
+  AttendeesContainer,
+  AttendeesMainContainer,
+  ImageSectionContainer,
+  AllPhotosContainer,
+} from "../styled";
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const { id } = useParams();
+  const [showForm, setShowForm] = useState(false);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOneEvent(id));
@@ -25,7 +41,7 @@ export const EventDetailsComponent = () => {
 
   return (
     <EventDetailsContainer>
-      <div style={{ maxWidth: "50vw" }}>
+      <EventDetailsLeftContainer>
         {oneEvent && (
           <EventCard
             imageUrl={oneEvent.imageUrl}
@@ -35,6 +51,7 @@ export const EventDetailsComponent = () => {
             description={oneEvent.description}
             spots={oneEvent.spots}
             going={oneEvent.going}
+            comments={oneEvent.comments}
             showDetails={true}
             showLink={false}
           />
@@ -65,7 +82,83 @@ export const EventDetailsComponent = () => {
             </div>
           </div>
         )}{" "}
-      </div>
+      </EventDetailsLeftContainer>
+      <EventDetailsRightContainer>
+        {" "}
+        <h3> Attendees:</h3>
+        <AttendeesMainContainer>
+          {" "}
+          {oneEvent &&
+            oneEvent.going.map((person) => {
+              return (
+                <AttendeesContainer key={person.id}>
+                  <div>
+                    <img
+                      src={person.imageUrl}
+                      alt=""
+                      style={{
+                        maxWidth: "100%",
+                        borderRadius: "1vw",
+                      }}
+                    />
+                  </div>{" "}
+                  {person.firstName} {person.lastName}
+                  <div></div>
+                </AttendeesContainer>
+              );
+            })}
+        </AttendeesMainContainer>
+      </EventDetailsRightContainer>
+      <ImageSectionContainer>
+        <div>
+          {" "}
+          <h3> Photos</h3>
+          <AllPhotosContainer>
+            {" "}
+            {oneEvent &&
+              oneEvent.images.map((image) => {
+                return (
+                  <ImageCard
+                    key={image.id}
+                    id={image.id}
+                    imageUrl={image.imageUrl}
+                    user={image.user}
+                  />
+                );
+              })}{" "}
+          </AllPhotosContainer>
+        </div>
+        {token && (
+          <div>
+            {" "}
+            <Button onClick={() => setShowForm(true)}>Post photo </Button>
+            {showForm && <PostImage />}
+          </div>
+        )}
+      </ImageSectionContainer>
+      <CommentSectionContainer>
+        <div>
+          <h3> Comments</h3>
+          {token && (
+            <div>
+              <PostComment
+                imageUrl={user?.imageUrl}
+                firstName={user?.firstName}
+              />
+            </div>
+          )}
+        </div>
+        {oneEvent &&
+          oneEvent.comments.map((comment) => {
+            return (
+              <CommentCard
+                key={comment.id}
+                text={comment.text}
+                user={comment.user}
+              />
+            );
+          })}{" "}
+      </CommentSectionContainer>
     </EventDetailsContainer>
   );
 };
