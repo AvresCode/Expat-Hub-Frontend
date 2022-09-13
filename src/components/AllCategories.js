@@ -1,48 +1,19 @@
-import {
-  AllCategoriesContainer,
-  OneCategoryContainer,
-  Button,
-} from "../styled";
-
-import { ImageCatContainer } from "../styled/Image";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllCategories } from "../store/category/thunks";
 
 export const AllCategories = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCategories);
+  }, [dispatch]);
+
   return (
-    <AllCategoriesContainer>
-      <OneCategoryContainer>
-        {" "}
-        <div>
-          {" "}
-          <ImageCatContainer src="/food.jpg" alt="" />
-        </div>
-        <div>
-          <Button>Join events for Foodies!</Button>
-        </div>
-      </OneCategoryContainer>{" "}
-      <OneCategoryContainer>
-        {" "}
-        <div>
-          {" "}
-          <ImageCatContainer src="/play.jpg" alt="" />
-        </div>
-        <div>Play games and socialize!</div>
-      </OneCategoryContainer>
-      <OneCategoryContainer>
-        {" "}
-        <div>
-          {" "}
-          <ImageCatContainer src="/tour.jpg" alt="" />
-        </div>
-        <div>Discover new places!</div>
-      </OneCategoryContainer>
-      <OneCategoryContainer>
-        {" "}
-        <div>
-          {" "}
-          <ImageCatContainer src="/entertainment.jpg" alt="" />
-        </div>
-        <div>Have fun and make friends!</div>
-      </OneCategoryContainer>
-    </AllCategoriesContainer>
+    <div style={{ width: "300px", backgroundColor: "yellow" }}>
+      {" "}
+      All cetegories
+    </div>
   );
 };
