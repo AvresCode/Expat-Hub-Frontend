@@ -1,5 +1,33 @@
 import styled from "styled-components";
 
+export const AllCategoriesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  justify-content: center;
+  border: 0.1vw #5f7285 solid;
+  border-radius: 2vw;
+  margin: 2vh 1vw;
+  padding: 2vh 1vw;
+  background-color: #fcf9f5;
+`;
+export const OneCategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 15%;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh 1vw;
+  padding: 1vh 1vw;
+  border-radius: 2vw;
+  background-color: #5f7285;
+  color: white;
+  cursor: pointer;
+  @media (max-width: 750px) {
+    flex: 60%;
+  }
+`;
+
 export const EventCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

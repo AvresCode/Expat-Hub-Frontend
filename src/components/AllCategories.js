@@ -1,42 +1,45 @@
+import { AllCategoriesContainer, OneCategoryContainer } from "../styled";
+
+import { ImageCatContainer } from "../styled/Image";
+
 export const AllCategories = () => {
   return (
-    <div>
-      <h1> all categories</h1>
-      <div style={{ width: "20vw" }}>
+    <AllCategoriesContainer>
+      <OneCategoryContainer>
         {" "}
         <div>
           {" "}
-          <img src="/food.jpg" alt="" style={{ width: "20vw" }} />
+          <ImageCatContainer src="/food.jpg" alt="" />
         </div>
         <div>Join events for Foodies!</div>
-      </div>
+      </OneCategoryContainer>
 
-      <div style={{ width: "20vw" }}>
+      <OneCategoryContainer>
         {" "}
         <div>
           {" "}
-          <img src="/play.jpg" alt="" style={{ width: "20vw" }} />
+          <ImageCatContainer src="/play.jpg" alt="" />
         </div>
         <div>Play games and socialize!</div>
-      </div>
+      </OneCategoryContainer>
 
-      <div style={{ width: "20vw" }}>
+      <OneCategoryContainer>
         {" "}
         <div>
           {" "}
-          <img src="/tour.jpg" alt="" style={{ width: "20vw" }} />
+          <ImageCatContainer src="/tour.jpg" alt="" />
         </div>
         <div>Discover new places!</div>
-      </div>
+      </OneCategoryContainer>
 
-      <div style={{ width: "20vw" }}>
+      <OneCategoryContainer>
         {" "}
         <div>
           {" "}
-          <img src="/entertainment.jpg" alt="" style={{ width: "20vw" }} />
+          <ImageCatContainer src="/entertainment.jpg" alt="" />
         </div>
         <div>Have fun and make friends!</div>
-      </div>
-    </div>
+      </OneCategoryContainer>
+    </AllCategoriesContainer>
   );
 };

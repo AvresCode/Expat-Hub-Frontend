@@ -5,3 +5,8 @@ export const Image = styled.img`
   margin: 15px;
   border-radius: 2em;
 `;
+
+export const ImageCatContainer = styled.img`
+  width: 100%;
+  border-radius: 1vw;
+`;
