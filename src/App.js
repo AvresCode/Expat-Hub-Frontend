@@ -12,6 +12,7 @@ import {
   AddEventPage,
   EditEventPage,
   CategoryDetailsPage,
+  AllCategoriesPage,
 } from "./pages";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/events/addEvent" element={<AddEventPage />} />
         <Route path="/events/editEvent/:id" element={<EditEventPage />} />
         <Route path="/categories/:id" element={<CategoryDetailsPage />} />
+        <Route path="/categories" element={<AllCategoriesPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
