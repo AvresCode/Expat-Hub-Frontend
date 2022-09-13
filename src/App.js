@@ -12,6 +12,7 @@ import {
   AddEventPage,
   EditEventPage,
 } from "./pages";
+import Chat from "./pages/Chat";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/events/editEvent/:id" element={<EditEventPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </div>
   );

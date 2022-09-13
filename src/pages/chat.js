@@ -17,6 +17,7 @@ const firebaseApp = firebase.initializeApp({
   appId: "1:39809052468:web:9386f6f4e717b607967f61",
 });
 
+//for displaying chat and input field
 const db = firebaseApp.firestore();
 
 const Chat = () => {
