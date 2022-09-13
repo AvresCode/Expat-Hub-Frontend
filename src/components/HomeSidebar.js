@@ -1,6 +1,6 @@
 import { Button } from "../styled/Button";
-import { selectToken } from "../store/user/selectors";
-import { selectUser } from "../store/user/selectors";
+import { selectToken } from "../store/auth/selectors";
+import { selectUser } from "../store/auth/selectors";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SidebarContainer } from "../styled";

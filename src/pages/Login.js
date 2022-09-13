@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../store/user/thunks";
-import { selectToken } from "../store/user/selectors";
+import { login } from "../store/auth/thunks";
+import { selectToken } from "../store/auth/selectors";
 
 export const Login = () => {
   const [email, setEmail] = useState("");

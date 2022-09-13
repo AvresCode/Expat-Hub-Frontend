@@ -3,8 +3,8 @@ import { Button, Input, Title } from "../styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../store/user/thunks";
-import { selectToken } from "../store/user/selectors";
+import { signUp } from "../store/auth/thunks";
+import { selectToken } from "../store/auth/selectors";
 
 export const SignUp = () => {
   const [firstName, setFirstName] = useState("");

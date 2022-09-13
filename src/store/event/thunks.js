@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { setAllEvents, setEventDetail, setAddEvent } from "./slice";
-import { selectToken } from "../user/selectors";
+import { selectToken } from "../auth/selectors";
 import { showMessageWithTimeout } from "../appState/thunks";
 
 // get all events

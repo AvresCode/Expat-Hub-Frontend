@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../store/user/selectors";
-import { logOut } from "../store/user/slice";
+import { selectToken } from "../store/auth/selectors";
+import { logOut } from "../store/auth/slice";
 import { Link } from "react-router-dom";
 import { Button } from "../styled";
 export const Navigation = () => {
