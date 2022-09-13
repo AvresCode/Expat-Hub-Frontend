@@ -1,4 +1,8 @@
-import { AllCategoriesContainer, OneCategoryContainer } from "../styled";
+import {
+  AllCategoriesContainer,
+  OneCategoryContainer,
+  Button,
+} from "../styled";
 
 import { ImageCatContainer } from "../styled/Image";
 
@@ -11,9 +15,10 @@ export const AllCategories = () => {
           {" "}
           <ImageCatContainer src="/food.jpg" alt="" />
         </div>
-        <div>Join events for Foodies!</div>
-      </OneCategoryContainer>
-
+        <div>
+          <Button>Join events for Foodies!</Button>
+        </div>
+      </OneCategoryContainer>{" "}
       <OneCategoryContainer>
         {" "}
         <div>
@@ -22,7 +27,6 @@ export const AllCategories = () => {
         </div>
         <div>Play games and socialize!</div>
       </OneCategoryContainer>
-
       <OneCategoryContainer>
         {" "}
         <div>
@@ -31,7 +35,6 @@ export const AllCategories = () => {
         </div>
         <div>Discover new places!</div>
       </OneCategoryContainer>
-
       <OneCategoryContainer>
         {" "}
         <div>

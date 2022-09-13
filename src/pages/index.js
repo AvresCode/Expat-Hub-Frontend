@@ -4,3 +4,4 @@ export * from "./Homepage";
 export * from "./AddEventPage";
 export * from "./EventDetailsPage";
 export * from "./EditEventPage";
+export * from "./CategoryDetailsPage";
