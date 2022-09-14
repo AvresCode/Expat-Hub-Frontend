@@ -1,5 +1,5 @@
 import { fetchAllEvents } from "../store/event/thunks";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { selectAllEvents } from "../store/event/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { EventCard } from "./EventCard";
@@ -22,6 +22,15 @@ export const AllEventsComponent = () => {
         <p> Loading ...</p>
       </div>
     );
+
+  const eventToAttendeesList = (event) => {
+    return event.going.map((user) => ({
+      userId: user.id,
+      status: user.attendees.status,
+    }));
+  };
+
+
   const filteredPastEvents = [...allEvents].filter(
     (event) => new Date(event.date) > new Date()
   );
@@ -60,10 +69,12 @@ export const AllEventsComponent = () => {
                 going={going}
                 showDetails={false}
                 showLink={true}
+                 attendees={eventToAttendeesList(event)}
               />
             </div>
           );
         })}
     </AllEventsContainer>
+
   );
 };
