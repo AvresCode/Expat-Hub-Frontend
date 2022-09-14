@@ -1,6 +1,5 @@
 import "./styles.css";
-import { EventContainer } from "../styled/Container";
-import { Button } from "../styled/Button";
+import { EventCardContainer, Button } from "../styled";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { selectToken, selectUser } from "../store/user/selectors";
@@ -19,6 +18,7 @@ export const EventCard = ({
   showDetails,
   showLink,
   attendees,
+
 }) => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -47,20 +47,19 @@ export const EventCard = ({
 
   console.log("USERREPOSNE", userResponse());
   return (
-    <EventContainer>
-      <div key={id}>
+    <EventCardContainer key={id}>
+      {" "}
+      <img
+        src={imageUrl}
+        alt=""
+        style={{
+          maxWidth: "100%",
+          borderRadius: "1vw",
+        }}
+      />
+      <div>
         {" "}
-        <img
-          src={imageUrl}
-          alt=""
-          style={{
-            maxWidth: "100%",
-            borderRadius: "1vw",
-          }}
-        />{" "}
-        <div>
-          {" "}
-          <h3>{title}</h3>
+        <h3>{title}</h3>
           <p>
             {" "}
             On {moment(date).format("dddd D MMM YYYY")} in {city}
@@ -96,8 +95,10 @@ export const EventCard = ({
               <Button> View details</Button>
             </Link>
           )}
+
         </div>
+    
       </div>
-    </EventContainer>
+    </EventCardContainer>
   );
 };

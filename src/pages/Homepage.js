@@ -1,5 +1,5 @@
 import { AllEventsComponent } from "../components/AllEventsComponent";
-import { HomeContainer } from "../styled/Container";
+import { HomeContainer } from "../styled";
 import { HomeSidebar } from "../components/HomeSidebar";
 
 export const Homepage = () => {
