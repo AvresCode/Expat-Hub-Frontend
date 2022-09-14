@@ -180,7 +180,7 @@ export const newImageThunk =
 export const editStatusThunk =
   (eventId, status) => async (dispatch, getState) => {
     try {
-      console.log("EditStatus");
+      console.log("EditStatus", status);
       const token = selectToken(getState());
       const patchResponse = await axios.patch(
         `${apiUrl}/events/${eventId}`,
@@ -190,6 +190,7 @@ export const editStatusThunk =
       console.log("edit status thunk", patchResponse);
       const response = await axios.get(`${apiUrl}/events`);
       dispatch(setAllEvents(response.data));
+      // dispatch(setEventDetail(response.data));
     } catch (e) {
       console.log(e.message);
     }

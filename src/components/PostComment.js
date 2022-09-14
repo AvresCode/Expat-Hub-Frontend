@@ -33,12 +33,13 @@ export const PostComment = ({ imageUrl, firstName }) => {
           <div> {firstName}</div>
         </PhotoNameContainer>
         <form style={{ display: "flex" }} onSubmit={submitForm}>
-          <input
+          <textarea
             placeholder="Write your comment..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             style={{ width: "30vw", height: "6vh", borderRadius: "1VW" }}
           />
+
           <Button type="submit"> Post</Button>
         </form>{" "}
       </CommentContainer>

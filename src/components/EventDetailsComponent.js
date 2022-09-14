@@ -39,6 +39,18 @@ export const EventDetailsComponent = () => {
 
   if (!oneEvent) return <p> Loading ...</p>;
 
+  // const eventToAttendeesList = (event) => {
+  //   return event.going.map((user) => ({
+  //     userId: user.id,
+  //     status: user.attendees.status,
+  //   }));
+  // };
+
+  const eventToAttendeesList = oneEvent.going?.map((user) => ({
+    userId: user.id,
+    status: user.attendees.status,
+  }));
+
   return (
     <EventDetailsContainer>
       <EventDetailsLeftContainer>
@@ -54,6 +66,7 @@ export const EventDetailsComponent = () => {
             comments={oneEvent.comments}
             showDetails={true}
             showLink={false}
+            attendees={eventToAttendeesList}
           />
         )}
         {token && user?.isAmbassador && oneEvent.userId === user.id && (
@@ -89,7 +102,7 @@ export const EventDetailsComponent = () => {
         <AttendeesMainContainer>
           {" "}
           {oneEvent &&
-            oneEvent.going.map((person) => {
+            oneEvent.going?.map((person) => {
               return (
                 <AttendeesContainer key={person.id}>
                   <div>
@@ -116,7 +129,7 @@ export const EventDetailsComponent = () => {
           <AllPhotosContainer>
             {" "}
             {oneEvent &&
-              oneEvent.images.map((image) => {
+              oneEvent.images?.map((image) => {
                 return (
                   <ImageCard
                     key={image.id}
@@ -149,7 +162,7 @@ export const EventDetailsComponent = () => {
           )}
         </div>
         {oneEvent &&
-          oneEvent.comments.map((comment) => {
+          oneEvent.comments?.map((comment) => {
             return (
               <CommentCard
                 key={comment.id}

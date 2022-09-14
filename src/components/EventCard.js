@@ -28,10 +28,10 @@ export const EventCard = ({
 
   const updateStatusIfLoggedIn = (status) => {
     if (token) {
+      console.log("here status", status);
       dispatch(editStatusThunk(id, status));
     } else {
       console.log("Please sign in");
-      return <p> Please sign in </p>;
     }
   };
 
@@ -39,7 +39,7 @@ export const EventCard = ({
     if (!profile) {
       return null;
     }
-    const response = attendees.find(
+    const response = attendees?.find(
       (attendee) => attendee.userId === profile.id
     );
     if (!response) {
@@ -50,6 +50,9 @@ export const EventCard = ({
   };
 
   console.log("USERREPOSNE", userResponse());
+
+  const eventParticipants = going && going.filter((e) => e.attendees.status);
+  console.log("participants", eventParticipants);
 
   return (
     <EventCardContainer key={id}>
@@ -67,13 +70,13 @@ export const EventCard = ({
         <h3>{title}</h3>
         <p>
           {" "}
-          On {moment(date).format("dddd D MMM YYYY")} in {city}
+          On {moment(date).format("dddd, D MMM YYYY, h:mm a")} in {city}
         </p>
         <div>{showDetails && <p>{description}</p>}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
-          <div> {going && going.length} attendees! </div>{" "}
-          <div> {spots - going.length} spots left!</div>
+          <div> {going && eventParticipants.length} attendees! </div>{" "}
+          <div> {spots - eventParticipants.length} spots left!</div>
         </div>
         {userResponse() === null ? (
           <div style={{ display: "flex" }}>
@@ -115,7 +118,7 @@ export const EventCard = ({
           </div>
         ) : (
           <div>
-            <p>not going!</p>
+            <p>You've declined.</p>
             <Button onClick={() => updateStatusIfLoggedIn(true)}>
               {" "}
               Change status{" "}
@@ -131,19 +134,6 @@ export const EventCard = ({
           )}
         </div>
       </div>
-      {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {" "}
-        <Button> Accept</Button>
-        <Button> Decline</Button>
-      </div>
-      <div>
-        {" "}
-        {showLink && (
-          <Link to={`/events/${id}`}>
-            <Button> View details</Button>
-          </Link>
-        )}
-      </div> */}
       <div>
         {showDetails && (
           <div>
