@@ -23,7 +23,7 @@ export const Navigation = () => {
         <span />
       </Hamburger>
       <Menu open={open}>
-        <MenuLink to="/empty2">Empty 2</MenuLink>
+        <MenuLink to="/users">Members</MenuLink>
         {token ? (
           <Button onClick={() => dispatch(logOut())}>Logout</Button>
         ) : (
