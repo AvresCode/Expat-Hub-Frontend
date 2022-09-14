@@ -40,39 +40,50 @@ export const AllEventsComponent = () => {
   };
 
   return (
-    <AllEventsContainer>
+    <div style={{ width: "85vw" }}>
       <Input
         type="text"
         placeholder="Search for event.."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{ width: "70vw" }}
-      />{" "}
-      {sortedEventDate
-        .filter((event) =>
-          event.title.toLowerCase().includes(search.toLowerCase())
-        )
-        .map((event) => {
-          const { id, imageUrl, title, city, date, description, spots, going } =
-            event;
-          return (
-            <div key={id}>
-              <EventCard
-                id={id}
-                imageUrl={imageUrl}
-                title={title}
-                city={city}
-                date={date}
-                description={description}
-                spots={spots}
-                going={going}
-                showDetails={false}
-                showLink={true}
-                attendees={eventToAttendeesList(event)}
-              />
-            </div>
-          );
-        })}
-    </AllEventsContainer>
+      />
+      <AllEventsContainer>
+        {" "}
+        {sortedEventDate
+          .filter((event) =>
+            event.title.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((event) => {
+            const {
+              id,
+              imageUrl,
+              title,
+              city,
+              date,
+              description,
+              spots,
+              going,
+            } = event;
+            return (
+              <div key={id}>
+                <EventCard
+                  id={id}
+                  imageUrl={imageUrl}
+                  title={title}
+                  city={city}
+                  date={date}
+                  description={description}
+                  spots={spots}
+                  going={going}
+                  showDetails={false}
+                  showLink={true}
+                  attendees={eventToAttendeesList(event)}
+                />
+              </div>
+            );
+          })}
+      </AllEventsContainer>
+    </div>
   );
 };

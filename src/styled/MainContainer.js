@@ -17,6 +17,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
+  background-color: #f2e4cd;
   justify-content: center;
   align-items: center;
   border: 0.1vw #ebe9f0 solid;

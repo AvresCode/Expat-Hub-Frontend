@@ -6,6 +6,7 @@ import { selectToken, selectUser } from "../store/auth/selectors";
 import { editStatusThunk } from "../store/event/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
 export const EventCard = ({
   id,
@@ -25,6 +26,7 @@ export const EventCard = ({
   const profile = useSelector(selectUser);
 
   const [message, setMessage] = useState("");
+  //const [show, setShow] = useState(false);
 
   const updateStatusIfLoggedIn = (status) => {
     if (token) {
@@ -81,12 +83,12 @@ export const EventCard = ({
         {userResponse() === null ? (
           <div style={{ display: "flex" }}>
             {" "}
-            {/* only show the buttons if user hasn't responded yet */}
             <Button
               onClick={() => {
                 token
                   ? updateStatusIfLoggedIn(true)
-                  : setMessage("You need to login to respond");
+                  : setMessage("Please login to respond");
+                // : setShow(true);
               }}
             >
               {" "}
@@ -96,17 +98,42 @@ export const EventCard = ({
               onClick={() => {
                 token
                   ? updateStatusIfLoggedIn(false)
-                  : setMessage("You need to login to");
+                  : setMessage("Please login to respond");
+                //: setShow(true);
               }}
             >
               {" "}
               Decline
             </Button>
             {message && (
-              <div>
-                <h1>{message}</h1>
+              <div
+                style={{
+                  marginLeft: "1vw",
+                  backgroundColor: " #f2e4cd ",
+                  padding: "1vw",
+                  borderRadius: "3vw",
+                }}
+              >
+                <p>{message}</p>
+                <Button onClick={() => setMessage("")}>close</Button>
               </div>
             )}
+            {/* <Modal show={show} onHide={setShow(false)}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Woohoo, you're reading this text in a modal!
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={setShow(false)}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={setShow(false)}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal> */}
           </div>
         ) : userResponse() ? (
           <div>
