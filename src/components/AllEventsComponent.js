@@ -31,6 +31,21 @@ export const AllEventsComponent = () => {
     (a, b) => new Date(a.date) - new Date(b.date)
   );
 
+  const eventToAttendeesList = (event) => {
+    return event.going.map((user) => ({
+      userId: user.id,
+      status: user.attendees.status,
+    }));
+  };
+  const filteredPastEvents = [...allEvents].filter(
+    (event) => new Date(event.date) > new Date()
+  );
+  // console.log("filtered event", filteredPastEvents);
+
+  const sortedEventDate = filteredPastEvents.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
   return (
     <AllEventsContainer>
       <Input
@@ -60,6 +75,7 @@ export const AllEventsComponent = () => {
                 going={going}
                 showDetails={false}
                 showLink={true}
+                attendees={eventToAttendeesList(event)}
               />
             </div>
           );
