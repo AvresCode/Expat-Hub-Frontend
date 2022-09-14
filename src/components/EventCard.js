@@ -67,17 +67,14 @@ export const EventCard = ({
         <h3>{title}</h3>
         <p>
           {" "}
-          <p>
-            {" "}
-            On {moment(date).format("dddd D MMM YYYY")} in {city}
-          </p>
-          <div>{showDetails && <p>{description}</p>}</div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {" "}
-            <div> {going && going.length} attendees! </div>{" "}
-            <div> {spots - going.length} spots left!</div>
-          </div>
+          On {moment(date).format("dddd D MMM YYYY")} in {city}
         </p>
+        <div>{showDetails && <p>{description}</p>}</div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {" "}
+          <div> {going && going.length} attendees! </div>{" "}
+          <div> {spots - going.length} spots left!</div>
+        </div>
         {userResponse() === null ? (
           <div style={{ display: "flex" }}>
             {" "}

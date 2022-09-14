@@ -22,6 +22,7 @@ export const AllEventsComponent = () => {
         <p> Loading ...</p>
       </div>
     );
+
   const filteredPastEvents = [...allEvents].filter(
     (event) => new Date(event.date) > new Date()
   );
