@@ -1,4 +1,4 @@
-import { Button } from "../styled";
+import { Button, UserCardContainer } from "../styled";
 import { Link } from "react-router-dom";
 
 export const UserCard = ({
@@ -7,15 +7,25 @@ export const UserCard = ({
   firstName,
   lastName,
   city,
-
+  nationality,
   showDetails,
   showLink,
 }) => {
   return (
-    <div key={id}>
+    <UserCardContainer key={id}>
       {" "}
-      <img src={imageUrl} alt="" />
-      <div></div>
+      <img
+        src={imageUrl}
+        alt=""
+        style={{
+          width: "10vw",
+          borderRadius: "1vw",
+        }}
+      />
+      <div>
+        {" "}
+        {firstName} {lastName}
+      </div>
       <div>
         {" "}
         {showLink && (
@@ -24,7 +34,15 @@ export const UserCard = ({
           </Link>
         )}
       </div>
-      <div>{showDetails && <div></div>}</div>
-    </div>
+      <div>
+        {" "}
+        {showLink && (
+          <Link to={``}>
+            <Button> Message</Button>
+          </Link>
+        )}
+      </div>
+      <div>{showDetails && <div>{nationality}</div>}</div>
+    </UserCardContainer>
   );
 };

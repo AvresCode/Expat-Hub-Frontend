@@ -172,3 +172,8 @@ export const AllPhotosContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
+export const UserCardContainer = styled.div`
+  display: flex;
+  width: 70vw;
+`;
