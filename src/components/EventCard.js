@@ -2,9 +2,10 @@ import "./styles.css";
 import { EventCardContainer, Button } from "../styled";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { selectToken, selectUser } from "../store/user/selectors";
+import { selectToken, selectUser } from "../store/auth/selectors";
 import { editStatusThunk } from "../store/event/thunks";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 export const EventCard = ({
   id,
@@ -22,6 +23,9 @@ export const EventCard = ({
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const profile = useSelector(selectUser);
+
+  const [message, setMessage] = useState("");
+
   const updateStatusIfLoggedIn = (status) => {
     if (token) {
       dispatch(editStatusThunk(id, status));
@@ -30,6 +34,7 @@ export const EventCard = ({
       return <p> Please sign in </p>;
     }
   };
+
   const userResponse = () => {
     if (!profile) {
       return null;
@@ -45,6 +50,7 @@ export const EventCard = ({
   };
 
   console.log("USERREPOSNE", userResponse());
+
   return (
     <EventCardContainer key={id}>
       {" "}
@@ -61,7 +67,6 @@ export const EventCard = ({
         <h3>{title}</h3>
         <p>
           {" "}
-          <h3>{title}</h3>
           <p>
             {" "}
             On {moment(date).format("dddd D MMM YYYY")} in {city}
@@ -72,23 +77,53 @@ export const EventCard = ({
             <div> {going && going.length} attendees! </div>{" "}
             <div> {spots - going.length} spots left!</div>
           </div>
-        </div>
+        </p>
         {userResponse() === null ? (
           <div style={{ display: "flex" }}>
             {" "}
-            <Button onClick={() => updateStatusIfLoggedIn(true)}>
+            {/* only show the buttons if user hasn't responded yet */}
+            <Button
+              onClick={() => {
+                token
+                  ? updateStatusIfLoggedIn(true)
+                  : setMessage("You need to login to respond");
+              }}
+            >
               {" "}
               Accept
             </Button>
-            <Button onClick={() => updateStatusIfLoggedIn(false)}>
+            <Button
+              onClick={() => {
+                token
+                  ? updateStatusIfLoggedIn(false)
+                  : setMessage("You need to login to");
+              }}
+            >
               {" "}
               Decline
             </Button>
+            {message && (
+              <div>
+                <h1>{message}</h1>
+              </div>
+            )}
           </div>
         ) : userResponse() ? (
-          <p>going!</p>
+          <div>
+            <p>You're attending!</p>{" "}
+            <Button onClick={() => updateStatusIfLoggedIn(false)}>
+              {" "}
+              Change status{" "}
+            </Button>
+          </div>
         ) : (
-          <p>not going!</p>
+          <div>
+            <p>not going!</p>
+            <Button onClick={() => updateStatusIfLoggedIn(true)}>
+              {" "}
+              Change status{" "}
+            </Button>
+          </div>
         )}
         <div>
           {" "}
@@ -99,7 +134,7 @@ export const EventCard = ({
           )}
         </div>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      {/* <div style={{ display: "flex", flexWrap: "wrap" }}>
         {" "}
         <Button> Accept</Button>
         <Button> Decline</Button>
@@ -111,7 +146,7 @@ export const EventCard = ({
             <Button> View details</Button>
           </Link>
         )}
-      </div>
+      </div> */}
       <div>
         {showDetails && (
           <div>

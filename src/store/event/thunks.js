@@ -1,13 +1,9 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
-<<<<<<< HEAD
+
 import { setAllEvents, setEventDetail, setAddEvent } from "./slice";
 import { selectToken } from "../auth/selectors";
 import { showMessageWithTimeout } from "../appState/thunks";
-=======
-import { setAllEvents, setEventDetail } from "./slice";
-import { selectToken } from "../user/selectors";
->>>>>>> attendees-update
 
 // get all events
 export const fetchAllEvents = async (dispatch, getState) => {
@@ -32,7 +28,6 @@ export const fetchOneEvent = (id) => async (dispatch, getState) => {
   }
 };
 
-<<<<<<< HEAD
 //Add a new event by user who is logged in and isAmbassador: true.
 
 export const newEventThunk =
@@ -175,7 +170,11 @@ export const newImageThunk =
       const response = await axios.get(`${apiUrl}/events/${eventId}`);
 
       dispatch(setEventDetail(response.data));
-=======
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
 //Edit attendee status
 
 export const editStatusThunk =
@@ -191,7 +190,6 @@ export const editStatusThunk =
       console.log("edit status thunk", patchResponse);
       const response = await axios.get(`${apiUrl}/events`);
       dispatch(setAllEvents(response.data));
->>>>>>> attendees-update
     } catch (e) {
       console.log(e.message);
     }

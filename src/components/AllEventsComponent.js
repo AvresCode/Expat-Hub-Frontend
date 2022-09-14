@@ -37,14 +37,6 @@ export const AllEventsComponent = () => {
       status: user.attendees.status,
     }));
   };
-  const filteredPastEvents = [...allEvents].filter(
-    (event) => new Date(event.date) > new Date()
-  );
-  // console.log("filtered event", filteredPastEvents);
-
-  const sortedEventDate = filteredPastEvents.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
 
   return (
     <AllEventsContainer>
