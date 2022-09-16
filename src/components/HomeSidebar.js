@@ -20,8 +20,8 @@ export const HomeSidebar = () => {
         </div>
       )}
 
-      <div> Search event/ category</div>
-      <div>Search event/ city </div>
+      {/* <div> Search event/ category</div>
+      <div>Search event/ city </div> */}
     </SidebarContainer>
   );
 };

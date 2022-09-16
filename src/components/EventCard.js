@@ -1,12 +1,18 @@
 import "./styles.css";
-import { EventCardContainer, Button } from "../styled";
+import {
+  EventCardContainer,
+  Button,
+  MessageBoxContainer,
+  ClosingButton,
+} from "../styled";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { selectToken, selectUser } from "../store/auth/selectors";
 import { editStatusThunk } from "../store/event/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
+//import Modal from "react-bootstrap/Modal";
+import { IoCloseCircle } from "react-icons/io5";
 
 export const EventCard = ({
   id,
@@ -14,6 +20,7 @@ export const EventCard = ({
   title,
   date,
   city,
+
   description,
   spots,
   going,
@@ -87,8 +94,8 @@ export const EventCard = ({
               onClick={() => {
                 token
                   ? updateStatusIfLoggedIn(true)
-                  : setMessage("Please login to respond");
-                // : setShow(true);
+                  : setMessage("Please login to respond!");
+                // setShow(true);
               }}
             >
               {" "}
@@ -98,25 +105,20 @@ export const EventCard = ({
               onClick={() => {
                 token
                   ? updateStatusIfLoggedIn(false)
-                  : setMessage("Please login to respond");
-                //: setShow(true);
+                  : setMessage("Please login to respond!");
+                //setShow(true);
               }}
             >
               {" "}
               Decline
             </Button>
             {message && (
-              <div
-                style={{
-                  marginLeft: "1vw",
-                  backgroundColor: " #f2e4cd ",
-                  padding: "1vw",
-                  borderRadius: "3vw",
-                }}
-              >
+              <MessageBoxContainer>
                 <p>{message}</p>
-                <Button onClick={() => setMessage("")}>close</Button>
-              </div>
+                <ClosingButton onClick={() => setMessage("")}>
+                  <IoCloseCircle />
+                </ClosingButton>
+              </MessageBoxContainer>
             )}
             {/* <Modal show={show} onHide={setShow(false)}>
               <Modal.Header closeButton>
@@ -161,14 +163,14 @@ export const EventCard = ({
           )}
         </div>
       </div>
-      <div>
+      {/* <div>
         {showDetails && (
           <div>
             {" "}
             <p>{description} </p>{" "}
           </div>
         )}
-      </div>
+      </div> */}
     </EventCardContainer>
   );
 };

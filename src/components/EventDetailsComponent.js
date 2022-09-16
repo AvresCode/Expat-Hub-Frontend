@@ -13,7 +13,6 @@ import { ImageCard } from "./ImageCard";
 import { PostImage } from "./PostImage";
 import {
   Button,
-  Input,
   EventDetailsContainer,
   EventDetailsLeftContainer,
   EventDetailsRightContainer,
@@ -56,6 +55,7 @@ export const EventDetailsComponent = () => {
       <EventDetailsLeftContainer>
         {oneEvent && (
           <EventCard
+            id={id}
             imageUrl={oneEvent.imageUrl}
             title={oneEvent.title}
             city={oneEvent.city}

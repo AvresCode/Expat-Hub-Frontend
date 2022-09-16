@@ -188,9 +188,11 @@ export const editStatusThunk =
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log("edit status thunk", patchResponse);
-      const response = await axios.get(`${apiUrl}/events`);
-      dispatch(setAllEvents(response.data));
-      // dispatch(setEventDetail(response.data));
+      const allEventsResponse = await axios.get(`${apiUrl}/events`);
+      dispatch(setAllEvents(allEventsResponse.data));
+      const oneEventResponse = await axios.get(`${apiUrl}/events/${eventId}`);
+
+      dispatch(setEventDetail(oneEventResponse.data));
     } catch (e) {
       console.log(e.message);
     }
