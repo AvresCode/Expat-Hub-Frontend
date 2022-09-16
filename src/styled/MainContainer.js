@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const EventCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  max-width: 270px;
   justify-content: center;
   align-items: center;
   border: 0.1vw #34495e solid;
@@ -11,6 +12,9 @@ export const EventCardContainer = styled.div`
   background-color: #fcf9f5;
   padding: 1vh 1vw;
   margin: 2vh 2vw;
+  @media (max-width: 750px) {
+    max-width: 70vw;
+  }
 `;
 
 export const HomeContainer = styled.div`
@@ -28,7 +32,7 @@ export const HomeContainer = styled.div`
 export const AllEventsContainer = styled.div`
   display: flex;
   flex: 40%;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   @media (max-width: 750px) {
@@ -47,6 +51,7 @@ export const EventDetailsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   margin: 3vh 5vw;
   border: 0.1vw #ebe9f0 solid;
   border-radius: 3vw;
@@ -177,4 +182,14 @@ export const AllPhotosContainer = styled.div`
 export const UserCardContainer = styled.div`
   display: flex;
   width: 70vw;
+`;
+
+export const MessageBoxContainer = styled.div`
+  background-color: #fdebd0;
+  border: 0.1vw #34495e solid;
+  padding: 0.5vw;
+  border-radius: 1em;
+  position: absolute;
+  width: 250px;
+  text-align: center;
 `;
