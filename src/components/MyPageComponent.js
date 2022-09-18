@@ -27,17 +27,37 @@ export const MyPageComponent = () => {
       </div>
     );
 
-  const eventCreatedByUser = [...allEvents]
+  const eventsCreatedByUser = [...allEvents]
     .filter((event) => event.userId === user.id)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  console.log("eventCreated", eventCreatedByUser);
+  // console.log("eventsCreated", eventsCreatedByUser);
+
+  const eventsUserGoes = [...allEvents].filter((event) =>
+    event.going.find(
+      (e) => e.attendees.userId === user.id && e.attendees.status === true
+    )
+  );
+
+  // console.log("eventsUserGoes", eventsUserGoes);
+
+  const upcomingEvents = eventsUserGoes
+    .filter((event) => new Date(event.date) > new Date())
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // console.log("upcomingEvents", upcomingEvents);
+
+  const pastEvents = eventsUserGoes
+    .filter((event) => new Date(event.date) < new Date())
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  console.log("pastEvents", pastEvents);
 
   return (
     <MyPageComponentContainer>
       <CreatedEventsContainer>
         <h3>Events you created </h3>
-        {eventCreatedByUser.map((event) => {
+        {eventsCreatedByUser.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
             <div key={id}>
@@ -73,7 +93,7 @@ export const MyPageComponent = () => {
                   </div>
                 </div>
               ) : (
-                <Button style={{ cursor: "default" }}> Closed!</Button>
+                <h4> Closed!</h4>
               )}
             </div>
           );
@@ -81,6 +101,22 @@ export const MyPageComponent = () => {
       </CreatedEventsContainer>
       <UpcomingEventsContainer>
         <h3> Your upcoming events</h3>
+        {upcomingEvents.map((event) => {
+          const { id, imageUrl, title, date, city } = event;
+          return (
+            <div key={id}>
+              <MyPageEventCard
+                imageUrl={imageUrl}
+                title={title}
+                city={city}
+                date={date}
+              />
+              <Link to={`/events/${id}`}>
+                <Button> View details</Button>
+              </Link>
+            </div>
+          );
+        })}
       </UpcomingEventsContainer>
       <PastEventsContainer>
         <h3>Your past events</h3>
