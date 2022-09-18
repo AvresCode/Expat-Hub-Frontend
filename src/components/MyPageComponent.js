@@ -55,6 +55,28 @@ export const MyPageComponent = () => {
 
   return (
     <MyPageComponentContainer>
+      <div>
+        {" "}
+        <div>
+          {" "}
+          {user?.isAmbassador && (
+            <div>
+              {" "}
+              <Link to="/events/addEvent">
+                {" "}
+                <Button> Create an event!</Button>
+              </Link>
+            </div>
+          )}
+        </div>
+        <div>
+          {" "}
+          <Link to="/me/editProfile">
+            {" "}
+            <Button> Edit profile!</Button>
+          </Link>
+        </div>
+      </div>
       <CreatedEventsContainer>
         <h3>Events you created </h3>
         {eventsCreatedByUser.map((event) => {

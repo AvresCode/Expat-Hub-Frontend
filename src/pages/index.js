@@ -6,3 +6,4 @@ export * from "./EventDetailsPage";
 export * from "./EditEventPage";
 export * from "./AllUsersPage";
 export * from "./MyPage";
+export * from "./EditProfilePage";
