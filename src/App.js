@@ -12,6 +12,7 @@ import {
   AddEventPage,
   EditEventPage,
   AllUsersPage,
+  MyPage,
 } from "./pages";
 import Chat from "./pages/Chat";
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/users" element={<AllUsersPage />} />
+        <Route path="/MyPage" element={<MyPage />} />
       </Routes>
     </div>
   );
