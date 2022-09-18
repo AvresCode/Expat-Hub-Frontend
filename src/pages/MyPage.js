@@ -1,3 +1,10 @@
+import { MyPageComponent } from "../components";
+
 export const MyPage = () => {
-  return <div> My page</div>;
+  return (
+    <div>
+      {" "}
+      <MyPageComponent />
+    </div>
+  );
 };

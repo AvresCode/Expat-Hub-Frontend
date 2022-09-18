@@ -193,3 +193,40 @@ export const MessageBoxContainer = styled.div`
   width: 250px;
   text-align: center;
 `;
+
+export const MyPageComponentContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2vh 3vw;
+  gap: 1rem;
+`;
+
+export const CreatedEventsContainer = styled.div`
+  display: flex;
+  flex: 40%;
+  background-color: blue;
+  @media (max-width: 750px) {
+    flex: 75%;
+  }
+`;
+export const UpcomingEventsContainer = styled.div`
+  display: flex;
+  flex: 40%;
+  background-color: green;
+  @media (max-width: 750px) {
+    flex: 75%;
+  }
+`;
+export const PastEventsContainer = styled.div`
+  display: flex;
+  flex: 40%;
+  background-color: yellow;
+  @media (max-width: 750px) {
+    flex: 75%;
+  }
+`;
+
+export const EditProfileContainer = styled.div`
+  display: flex;
+  flex: 40%;
+`;
