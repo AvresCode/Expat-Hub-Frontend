@@ -67,6 +67,9 @@ export const MyPageComponent = () => {
                 city={city}
                 date={date}
               />
+              <Link to={`/events/${id}`}>
+                <Button> View details</Button>
+              </Link>
               {new Date(event.date) > new Date() ? (
                 <div
                   style={{
@@ -120,6 +123,22 @@ export const MyPageComponent = () => {
       </UpcomingEventsContainer>
       <PastEventsContainer>
         <h3>Your past events</h3>
+        {pastEvents.map((event) => {
+          const { id, imageUrl, title, date, city } = event;
+          return (
+            <div key={id}>
+              <MyPageEventCard
+                imageUrl={imageUrl}
+                title={title}
+                city={city}
+                date={date}
+              />
+              <Link to={`/events/${id}`}>
+                <Button> View details</Button>
+              </Link>
+            </div>
+          );
+        })}
       </PastEventsContainer>
       <EditProfileContainer>Edit your profile</EditProfileContainer>
     </MyPageComponentContainer>
