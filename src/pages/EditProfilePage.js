@@ -2,18 +2,22 @@ import styled from "styled-components";
 import { Button, Input, Title } from "../styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../store/auth/selectors";
+import { editProfileThunk } from "../store/auth/thunks";
 
 export const EditProfilePage = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const profile = useSelector(selectUser);
+
+  const [firstName, setFirstName] = useState(profile?.firstName);
+  const [lastName, setLastName] = useState(profile?.lastName);
+  const [email, setEmail] = useState(profile?.email);
   const [password, setPassword] = useState("");
-  const [city, setCity] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [gender, setGender] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [education, setEducation] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [city, setCity] = useState(profile?.city);
+  const [birthDate, setBirthDate] = useState(profile?.birthDate);
+  const [gender, setGender] = useState(profile?.gender);
+  const [nationality, setNationality] = useState(profile?.nationality);
+  const [education, setEducation] = useState(profile?.education);
+  const [imageUrl, setImageUrl] = useState(profile?.imageUrl);
 
   const dispatch = useDispatch();
 
@@ -51,6 +55,20 @@ export const EditProfilePage = () => {
       nationality,
       education,
       imageUrl
+    );
+    dispatch(
+      editProfileThunk(
+        firstName,
+        lastName,
+        email,
+        password,
+        city,
+        birthDate,
+        gender,
+        nationality,
+        education,
+        imageUrl
+      )
     );
 
     setFirstName("");
@@ -174,7 +192,7 @@ export const EditProfilePage = () => {
             </div>
           </div>
           <br />
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </Container>
     </div>

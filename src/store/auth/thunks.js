@@ -134,3 +134,51 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
+
+//Edit profile
+
+export const editProfileThunk =
+  (
+    firstName,
+    lastName,
+    email,
+    password,
+    city,
+    birthDate,
+    gender,
+    nationality,
+    education,
+    imageUrl
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      console.log("EditProfile");
+      const token = selectToken(getState());
+
+      const editResponse = await axios.patch(
+        `${apiUrl}/auth/me/editProfile`,
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+          city,
+          birthDate,
+          gender,
+          nationality,
+          education,
+          imageUrl,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("edit profile thunk", editResponse);
+
+      const response = await axios.get(`${apiUrl}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(tokenStillValid({ user: response.data }));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
