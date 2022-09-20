@@ -58,10 +58,10 @@ export const EventCard = ({
     }
   };
 
-  console.log("USERREPOSNE", userResponse());
+  //  console.log("USERREPOSNE", userResponse());
 
   const eventParticipants = going && going.filter((e) => e.attendees.status);
-  console.log("participants", eventParticipants);
+  // console.log("participants", eventParticipants);
 
   return (
     <EventCardContainer key={id}>

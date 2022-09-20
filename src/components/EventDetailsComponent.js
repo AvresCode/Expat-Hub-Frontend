@@ -69,7 +69,7 @@ export const EventDetailsComponent = () => {
             attendees={eventToAttendeesList}
           />
         )}
-        {token && user?.isAmbassador && oneEvent.userId === user.id && (
+        {/* {token && user?.isAmbassador && oneEvent.userId === user.id && (
           <div
             style={{
               display: "flex",
@@ -94,7 +94,7 @@ export const EventDetailsComponent = () => {
               </Button>
             </div>
           </div>
-        )}{" "}
+        )}{" "} */}
       </EventDetailsLeftContainer>
       <EventDetailsRightContainer>
         {" "}

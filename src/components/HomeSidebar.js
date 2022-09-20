@@ -10,7 +10,7 @@ export const HomeSidebar = () => {
   const user = useSelector(selectUser);
   return (
     <SidebarContainer>
-      {token && user?.isAmbassador && (
+      {/* {token && user?.isAmbassador && (
         <div>
           {" "}
           <Link to="/events/addEvent">
@@ -18,10 +18,7 @@ export const HomeSidebar = () => {
             <Button> Create an event!</Button>
           </Link>
         </div>
-      )}
-
-      {/* <div> Search event/ category</div>
-      <div>Search event/ city </div> */}
+      )} */}
     </SidebarContainer>
   );
 };
