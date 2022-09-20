@@ -207,7 +207,6 @@ export const CreatedEventsContainer = styled.div`
   fex-wrap: wrap;
   flex: 40%;
   border-radius: 1em;
-  background-color: blue;
   @media (max-width: 750px) {
     flex: 75%;
   }
@@ -218,7 +217,6 @@ export const UpcomingEventsContainer = styled.div`
   fex-wrap: wrap;
   flex: 40%;
   border-radius: 1em;
-  background-color: green;
   @media (max-width: 750px) {
     flex: 75%;
   }
@@ -230,7 +228,6 @@ export const PastEventsContainer = styled.div`
   flex: 40%;
   max-width: 700px;
   border-radius: 1em;
-  background-color: yellow;
   @media (max-width: 750px) {
     flex: 75%;
   }
@@ -244,20 +241,26 @@ export const EditProfileContainer = styled.div`
 export const TopLinksContainer = styled.div`
   display: flex;
   flex: 70%;
-  border-radius: 1em;
-  background-color: yellow;
+  // border: 0.1vw #34495e solid;
+  // box-shadow: #ece0d2 2.4px 2.4px 8px;
+  // border-radius: 3vw;
+  // background-color: #fcf9f5;
+  // border-radius: 3vw;
   justify-content: space-around;
 `;
 
 export const ProfileEventCardContainer = styled.div`
   display: flex;
-  background-color: red;
   border-radius: 1em;
 `;
 
 export const ProfileEventContainer = styled.div`
   display: flex;
-  background-color: orange;
+  border: 0.1vw #34495e solid;
+  box-shadow: #ece0d2 2.4px 2.4px 8px;
+  border-radius: 3vw;
+  background-color: #fcf9f5;
+  min-height: 200px;
   margin: 1vh 1vw;
   padding: 1vh 1vw;
   border-radius: 1em;
@@ -266,7 +269,6 @@ export const ProfileEventContainer = styled.div`
 export const EventLinkContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #55b8da;
   align-items: center;
   justify-content: center;
 `;

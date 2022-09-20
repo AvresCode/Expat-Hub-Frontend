@@ -4,16 +4,26 @@ import { ProfileEventCardContainer } from "../styled";
 export const MyPageEventCard = ({ id, imageUrl, title, date, city }) => {
   return (
     <ProfileEventCardContainer key={id}>
-      <img
-        src={imageUrl}
-        alt=""
+      <div
         style={{
-          maxWidth: "50%",
-          maxHeight: "20vh",
-          borderRadius: "1vw",
-          marginRight: "1vw",
+          height: "12em",
+          width: "80%",
+          overflow: "hidden",
+          marginRight: "2vw",
         }}
-      />
+      >
+        {" "}
+        <img
+          src={imageUrl}
+          alt=""
+          style={{
+            width: "100%",
+            minHeight: "80%",
+            borderRadius: "3vw",
+            objectFit: "cover",
+          }}
+        />
+      </div>
       <div>
         {" "}
         <h3>{title}</h3>

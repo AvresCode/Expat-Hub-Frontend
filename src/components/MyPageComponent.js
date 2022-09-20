@@ -65,7 +65,10 @@ export const MyPageComponent = () => {
             {" "}
             <Link to="/events/addEvent">
               {" "}
-              <Button> Create an event!</Button>
+              <Button style={{ width: "25vw", height: "7vh" }}>
+                {" "}
+                Create an event!
+              </Button>
             </Link>
           </div>
         )}
@@ -73,12 +76,15 @@ export const MyPageComponent = () => {
           {" "}
           <Link to="/me/editProfile">
             {" "}
-            <Button> Edit profile!</Button>
+            <Button style={{ width: "25vw", height: "7vh" }}>
+              {" "}
+              Edit profile!
+            </Button>
           </Link>
         </div>
       </TopLinksContainer>
       <CreatedEventsContainer>
-        <h3 style={{ textAlign: "center" }}>Events you created </h3>
+        <h2 style={{ textAlign: "center" }}>Events you created </h2>
 
         {eventsCreatedByUser.map((event) => {
           const { id, imageUrl, title, date, city } = event;
@@ -129,7 +135,7 @@ export const MyPageComponent = () => {
         })}
       </CreatedEventsContainer>
       <UpcomingEventsContainer>
-        <h3 style={{ textAlign: "center" }}> Your upcoming events</h3>
+        <h2 style={{ textAlign: "center" }}> Your upcoming events</h2>
         {upcomingEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
@@ -150,7 +156,7 @@ export const MyPageComponent = () => {
         })}
       </UpcomingEventsContainer>
       <PastEventsContainer>
-        <h3 style={{ textAlign: "center" }}>Your past events</h3>
+        <h2 style={{ textAlign: "center" }}>Your past events</h2>
         {pastEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
