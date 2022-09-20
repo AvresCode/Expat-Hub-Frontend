@@ -172,12 +172,16 @@ export const editProfileThunk =
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log("edit profile thunk", editResponse);
+      // dispatch(editProfile(editResponse.data.user));
 
       const response = await axios.get(`${apiUrl}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       dispatch(tokenStillValid({ user: response.data }));
+      dispatch(
+        showMessageWithTimeout("success", false, "Profile edited!", 3000)
+      );
     } catch (e) {
       console.log(e.message);
     }

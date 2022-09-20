@@ -22,6 +22,11 @@ export const authSlice = createSlice({
     tokenStillValid: (state, action) => {
       state.profile = action.payload.user;
     },
+    // editProfile: (state, action) => {
+    //   console.log("editProfile action", action.payload);
+
+    //   state.profile = { ...state.profile, ...action.payload };
+    // },
   },
 });
 

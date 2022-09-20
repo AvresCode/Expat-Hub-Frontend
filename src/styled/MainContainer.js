@@ -203,6 +203,8 @@ export const MyPageComponentContainer = styled.div`
 
 export const CreatedEventsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  fex-wrap: wrap;
   flex: 40%;
   background-color: blue;
   @media (max-width: 750px) {
@@ -211,6 +213,8 @@ export const CreatedEventsContainer = styled.div`
 `;
 export const UpcomingEventsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  fex-wrap: wrap;
   flex: 40%;
   background-color: green;
   @media (max-width: 750px) {
@@ -219,6 +223,8 @@ export const UpcomingEventsContainer = styled.div`
 `;
 export const PastEventsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  fex-wrap: wrap;
   flex: 40%;
   background-color: yellow;
   @media (max-width: 750px) {
@@ -229,4 +235,31 @@ export const PastEventsContainer = styled.div`
 export const EditProfileContainer = styled.div`
   display: flex;
   flex: 40%;
+`;
+
+export const TopLinksContainer = styled.div`
+  display: flex;
+  flex: 70%;
+  background-color: yellow;
+  justify-content: space-around;
+`;
+
+export const ProfileEventCardContainer = styled.div`
+  display: flex;
+  background-color: red;
+`;
+
+export const ProfileEventContainer = styled.div`
+  display: flex;
+  background-color: orange;
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+`;
+
+export const EventLinkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #55b8da;
+  align-items: center;
+  justify-content: center;
 `;

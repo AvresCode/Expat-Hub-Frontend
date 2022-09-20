@@ -5,6 +5,9 @@ import {
   PastEventsContainer,
   EditProfileContainer,
   Button,
+  TopLinksContainer,
+  ProfileEventContainer,
+  EventLinkContainer,
 } from "../styled";
 import { useSelector } from "react-redux";
 import { selectAllEvents } from "../store/event/selectors";
@@ -55,20 +58,17 @@ export const MyPageComponent = () => {
 
   return (
     <MyPageComponentContainer>
-      <div>
+      <TopLinksContainer>
         {" "}
-        <div>
-          {" "}
-          {user?.isAmbassador && (
-            <div>
+        {user?.isAmbassador && (
+          <div>
+            {" "}
+            <Link to="/events/addEvent">
               {" "}
-              <Link to="/events/addEvent">
-                {" "}
-                <Button> Create an event!</Button>
-              </Link>
-            </div>
-          )}
-        </div>
+              <Button> Create an event!</Button>
+            </Link>
+          </div>
+        )}
         <div>
           {" "}
           <Link to="/me/editProfile">
@@ -76,51 +76,55 @@ export const MyPageComponent = () => {
             <Button> Edit profile!</Button>
           </Link>
         </div>
-      </div>
+      </TopLinksContainer>
       <CreatedEventsContainer>
         <h3>Events you created </h3>
+
         {eventsCreatedByUser.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
-            <div key={id}>
+            <ProfileEventContainer key={id}>
               <MyPageEventCard
                 imageUrl={imageUrl}
                 title={title}
                 city={city}
                 date={date}
               />
-              <Link to={`/events/${id}`}>
-                <Button> View details</Button>
-              </Link>
-              {new Date(event.date) > new Date() ? (
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {" "}
-                  <div>
+              <EventLinkContainer>
+                {new Date(event.date) > new Date() ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     {" "}
-                    <Link to={`/events/editEvent/${id}`}>
+                    <div>
                       {" "}
-                      <Button> Edit event</Button>{" "}
-                    </Link>
-                  </div>
-                  <div>
-                    {" "}
-                    <Button onClick={() => dispatch(deleteOneEvent(id))}>
+                      <Link to={`/events/editEvent/${id}`}>
+                        {" "}
+                        <Button> Edit event</Button>{" "}
+                      </Link>
+                    </div>
+                    <div>
                       {" "}
-                      Delete event
-                    </Button>
+                      <Button onClick={() => dispatch(deleteOneEvent(id))}>
+                        {" "}
+                        Delete event
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <h4> Closed!</h4>
-              )}
-            </div>
+                ) : (
+                  <h4> Closed!</h4>
+                )}
+
+                <Link to={`/events/${id}`}>
+                  <Button> View details</Button>
+                </Link>
+              </EventLinkContainer>
+            </ProfileEventContainer>
           );
         })}
       </CreatedEventsContainer>
@@ -129,17 +133,19 @@ export const MyPageComponent = () => {
         {upcomingEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
-            <div key={id}>
+            <ProfileEventContainer key={id}>
               <MyPageEventCard
                 imageUrl={imageUrl}
                 title={title}
                 city={city}
                 date={date}
               />
-              <Link to={`/events/${id}`}>
-                <Button> View details</Button>
-              </Link>
-            </div>
+              <EventLinkContainer>
+                <Link to={`/events/${id}`}>
+                  <Button> View details</Button>
+                </Link>
+              </EventLinkContainer>
+            </ProfileEventContainer>
           );
         })}
       </UpcomingEventsContainer>
@@ -148,17 +154,19 @@ export const MyPageComponent = () => {
         {pastEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
-            <div key={id}>
+            <ProfileEventContainer key={id}>
               <MyPageEventCard
                 imageUrl={imageUrl}
                 title={title}
                 city={city}
                 date={date}
               />
-              <Link to={`/events/${id}`}>
-                <Button> View details</Button>
-              </Link>
-            </div>
+              <EventLinkContainer>
+                <Link to={`/events/${id}`}>
+                  <Button> View details</Button>
+                </Link>
+              </EventLinkContainer>
+            </ProfileEventContainer>
           );
         })}
       </PastEventsContainer>

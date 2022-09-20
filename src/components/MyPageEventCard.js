@@ -1,13 +1,14 @@
 import moment from "moment";
+import { ProfileEventCardContainer } from "../styled";
 
 export const MyPageEventCard = ({ id, imageUrl, title, date, city }) => {
   return (
-    <div key={id}>
+    <ProfileEventCardContainer key={id}>
       <img
         src={imageUrl}
         alt=""
         style={{
-          maxWidth: "100%",
+          maxHeight: "20vh",
           borderRadius: "1vw",
         }}
       />
@@ -19,6 +20,6 @@ export const MyPageEventCard = ({ id, imageUrl, title, date, city }) => {
           On {moment(date).format("dddd, D MMM YYYY, h:mm a")} in {city}
         </p>{" "}
       </div>
-    </div>
+    </ProfileEventCardContainer>
   );
 };
