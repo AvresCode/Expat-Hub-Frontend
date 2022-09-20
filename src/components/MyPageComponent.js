@@ -78,7 +78,7 @@ export const MyPageComponent = () => {
         </div>
       </TopLinksContainer>
       <CreatedEventsContainer>
-        <h3>Events you created </h3>
+        <h3 style={{ textAlign: "center" }}>Events you created </h3>
 
         {eventsCreatedByUser.map((event) => {
           const { id, imageUrl, title, date, city } = event;
@@ -129,7 +129,7 @@ export const MyPageComponent = () => {
         })}
       </CreatedEventsContainer>
       <UpcomingEventsContainer>
-        <h3> Your upcoming events</h3>
+        <h3 style={{ textAlign: "center" }}> Your upcoming events</h3>
         {upcomingEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
@@ -150,7 +150,7 @@ export const MyPageComponent = () => {
         })}
       </UpcomingEventsContainer>
       <PastEventsContainer>
-        <h3>Your past events</h3>
+        <h3 style={{ textAlign: "center" }}>Your past events</h3>
         {pastEvents.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
@@ -170,7 +170,6 @@ export const MyPageComponent = () => {
           );
         })}
       </PastEventsContainer>
-      <EditProfileContainer>Edit your profile</EditProfileContainer>
     </MyPageComponentContainer>
   );
 };

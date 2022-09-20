@@ -8,8 +8,10 @@ export const MyPageEventCard = ({ id, imageUrl, title, date, city }) => {
         src={imageUrl}
         alt=""
         style={{
+          maxWidth: "50%",
           maxHeight: "20vh",
           borderRadius: "1vw",
+          marginRight: "1vw",
         }}
       />
       <div>
