@@ -12,3 +12,13 @@ export const fetchAllUsers = async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+//get one user by id
+export const fetchOneUser = (id) => async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${apiUrl}/users/${id}`);
+    console.log("one user thunk response", response);
+  } catch (e) {
+    console.log(e.message);
+  }
+};

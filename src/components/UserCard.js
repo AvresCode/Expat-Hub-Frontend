@@ -32,11 +32,16 @@ export const UserCard = ({
       </div>
       <div>
         {" "}
-        {showLink && (
+        <Link to={`/users/${id}`}>
+          <Button> View details</Button>
+        </Link>
+        {/* {showLink && (
           <Link to={`/users/${id}`}>
             <Button> View details</Button>
           </Link>
-        )}
+
+
+        )} */}
       </div>
       <div>
         {" "}
