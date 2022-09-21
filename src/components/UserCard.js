@@ -2,6 +2,7 @@ import { Button, UserCardContainer } from "../styled";
 import { Link } from "react-router-dom";
 import { selectToken } from "../store/auth/selectors";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 export const UserCard = ({
   id,
@@ -10,6 +11,8 @@ export const UserCard = ({
   lastName,
   city,
   nationality,
+  education,
+  birthDate,
   showDetails,
   showLink,
 }) => {
@@ -32,26 +35,28 @@ export const UserCard = ({
       </div>
       <div>
         {" "}
-        <Link to={`/users/${id}`}>
-          <Button> View details</Button>
-        </Link>
-        {/* {showLink && (
+        {showLink && (
           <Link to={`/users/${id}`}>
             <Button> View details</Button>
           </Link>
-
-
-        )} */}
+        )}
+      </div>
+      <div>
+        {showDetails && (
+          <div>
+            Nationality: {nationality} Lives in : {city} Education: {education}{" "}
+            Birthdate: {moment(birthDate).format(" MMM YYYY")}
+          </div>
+        )}
       </div>
       <div>
         {" "}
-        {token && showLink && (
+        {token && (
           <Link to={`/chat`}>
             <Button> Message</Button>
           </Link>
         )}
       </div>
-      <div>{showDetails && <div>{nationality}</div>}</div>
     </UserCardContainer>
   );
 };
