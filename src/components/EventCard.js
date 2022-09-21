@@ -138,7 +138,7 @@ export const EventCard = ({
             </Modal> */}
           </div>
         ) : userResponse() ? (
-          <div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <p>You're attending!</p>{" "}
             <Button onClick={() => updateStatusIfLoggedIn(false)}>
               {" "}
@@ -146,7 +146,7 @@ export const EventCard = ({
             </Button>
           </div>
         ) : (
-          <div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <p>You've declined.</p>
             <Button onClick={() => updateStatusIfLoggedIn(true)}>
               {" "}

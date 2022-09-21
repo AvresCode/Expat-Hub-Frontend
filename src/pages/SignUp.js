@@ -103,6 +103,7 @@ export const SignUp = () => {
             <Input
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -113,6 +114,7 @@ export const SignUp = () => {
             <Input
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -120,7 +122,11 @@ export const SignUp = () => {
           </div>
           <div>
             {" "}
-            <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
           <div>
             <label>Password:</label>
@@ -131,6 +137,7 @@ export const SignUp = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -138,7 +145,11 @@ export const SignUp = () => {
           </div>
           <div>
             {" "}
-            <Input value={city} onChange={(e) => setCity(e.target.value)} />
+            <Input
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
           </div>
           <div>
             <label>Date of birth:</label>
@@ -150,6 +161,7 @@ export const SignUp = () => {
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
+                required
               />
             </div>
             <div>
