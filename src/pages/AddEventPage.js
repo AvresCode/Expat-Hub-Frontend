@@ -3,6 +3,7 @@ import { Button, Input, Title, Select } from "../styled";
 import { useState } from "react";
 import { newEventThunk } from "../store/event/thunks";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const AddEventPage = () => {
   const [title, setTitle] = useState("");
@@ -13,7 +14,9 @@ export const AddEventPage = () => {
   const [spots, setSpots] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +43,8 @@ export const AddEventPage = () => {
     setSpots("");
     setCategoryId("");
     setImageUrl("");
+
+    navigate("/MyPage");
   };
   return (
     <div style={{ textAlign: "center" }}>

@@ -37,7 +37,7 @@ export const MyPageComponent = () => {
   // console.log("eventsCreated", eventsCreatedByUser);
 
   const eventsUserGoes = [...allEvents].filter((event) =>
-    event.going.find(
+    event.going?.find(
       (e) => e.attendees.userId === user.id && e.attendees.status === true
     )
   );
