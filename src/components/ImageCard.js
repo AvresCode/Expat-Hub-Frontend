@@ -13,14 +13,15 @@ export const ImageCard = ({ id, imageUrl, user }) => {
             src={imageUrl}
             alt=""
             style={{
-              maxWidth: "100%",
-
-              borderRadius: "3vw",
+              width: "80px",
+              height: "80px",
+              objectFit: "cover",
+              borderRadius: "1vw",
             }}
           />
         </Zoom>
       </div>
-      <div>
+      <div style={{ fontSize: "1rem" }}>
         Posted by {user.firstName} {user.lastName}
       </div>
     </ImageNameContainer>

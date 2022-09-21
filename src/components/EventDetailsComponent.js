@@ -122,45 +122,19 @@ export const EventDetailsComponent = () => {
             })}
         </AttendeesMainContainer>
       </EventDetailsRightContainer>
-      <ImageSectionContainer>
-        <div>
-          {" "}
-          <h3> Photos</h3>
-          <AllPhotosContainer>
-            {" "}
-            {oneEvent &&
-              oneEvent.images?.map((image) => {
-                return (
-                  <ImageCard
-                    key={image.id}
-                    id={image.id}
-                    imageUrl={image.imageUrl}
-                    user={image.user}
-                  />
-                );
-              })}{" "}
-          </AllPhotosContainer>
-        </div>
-        {token && (
-          <div>
-            {" "}
-            <Button onClick={() => setShowForm(true)}>Post photo </Button>
-            {showForm && <PostImage />}
-          </div>
-        )}
-      </ImageSectionContainer>
+
       <CommentSectionContainer>
         <div>
           <h3> Comments</h3>
-          {token && (
-            <div>
-              <PostComment
-                imageUrl={user?.imageUrl}
-                firstName={user?.firstName}
-              />
-            </div>
-          )}
         </div>
+        {token && (
+          <div>
+            <PostComment
+              imageUrl={user?.imageUrl}
+              firstName={user?.firstName}
+            />
+          </div>
+        )}
         {oneEvent &&
           oneEvent.comments?.map((comment) => {
             return (
@@ -172,6 +146,33 @@ export const EventDetailsComponent = () => {
             );
           })}{" "}
       </CommentSectionContainer>
+      <ImageSectionContainer>
+        {" "}
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <h3> Photos</h3>
+        </div>{" "}
+        <AllPhotosContainer>
+          {" "}
+          {oneEvent &&
+            oneEvent.images?.map((image) => {
+              return (
+                <ImageCard
+                  key={image.id}
+                  id={image.id}
+                  imageUrl={image.imageUrl}
+                  user={image.user}
+                />
+              );
+            })}{" "}
+        </AllPhotosContainer>
+        {token && (
+          <div>
+            {" "}
+            <Button onClick={() => setShowForm(true)}>Post a photo </Button>
+            {showForm && <PostImage />}
+          </div>
+        )}
+      </ImageSectionContainer>
     </EventDetailsContainer>
   );
 };

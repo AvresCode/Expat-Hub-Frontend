@@ -25,7 +25,7 @@ export const PostComment = ({ imageUrl, firstName }) => {
               src={imageUrl}
               alt=""
               style={{
-                width: "60%",
+                width: "100%",
                 borderRadius: "5vw",
               }}
             />
@@ -37,7 +37,7 @@ export const PostComment = ({ imageUrl, firstName }) => {
             placeholder="Write your comment..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            style={{ width: "30vw", height: "6vh", borderRadius: "1VW" }}
+            style={{ width: "200px", height: "6vh", borderRadius: "1vw" }}
           />
 
           <Button type="submit"> Post</Button>

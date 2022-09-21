@@ -14,7 +14,7 @@ export const CommentCard = ({ id, text, user }) => {
             src={user.imageUrl}
             alt=""
             style={{
-              width: "60%",
+              width: "100%",
               borderRadius: "5vw",
             }}
           />
