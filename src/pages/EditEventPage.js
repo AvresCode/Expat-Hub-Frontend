@@ -6,10 +6,12 @@ import { selectEventDetails } from "../store/event/selectors";
 import styled from "styled-components";
 import { Button, Input, Title, Select } from "../styled";
 import { editEventThunk } from "../store/event/thunks";
+import { useNavigate } from "react-router-dom";
 
 export const EditEventPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchOneEvent(id));
   }, [dispatch, id]);
@@ -52,6 +54,8 @@ export const EditEventPage = () => {
         categoryId
       )
     );
+
+    navigate("/");
   };
 
   return (

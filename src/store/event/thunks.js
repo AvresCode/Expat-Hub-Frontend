@@ -117,6 +117,10 @@ export const editEventThunk =
 
       const response = await axios.get(`${apiUrl}/events/${eventId}`);
       dispatch(setEventDetail(response.data));
+
+      const allEventsResponse = await axios.get(`${apiUrl}/events`);
+      dispatch(setAllEvents(allEventsResponse.data));
+
       dispatch(
         showMessageWithTimeout("success", false, "Edited successfully!", 4000)
       );
