@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectAllUsers } from "../store/user/selectors";
 import { UserCard } from "./UserCard";
+import { AllUsersPageContainer } from "../styled";
 
 export const AllUsersComponent = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const AllUsersComponent = () => {
     );
 
   return (
-    <div>
+    <AllUsersPageContainer>
       <h2> Our members</h2>
       <div>
         {" "}
@@ -51,6 +52,6 @@ export const AllUsersComponent = () => {
           );
         })}
       </div>
-    </div>
+    </AllUsersPageContainer>
   );
 };

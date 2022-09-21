@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EventCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 270px;
+  max-width: 280px;
   justify-content: center;
   align-items: center;
   border: 0.1vw #34495e solid;
@@ -13,7 +13,7 @@ export const EventCardContainer = styled.div`
   padding: 1vh 1vw;
   margin: 2vh 2vw;
   @media (max-width: 750px) {
-    max-width: 70vw;
+    max-width: 75vw;
   }
 `;
 
@@ -26,7 +26,7 @@ export const HomeContainer = styled.div`
   align-items: center;
   border: 0.1vw #ebe9f0 solid;
   border-radius: 3vw;
-  margin: 1vh 3vw;
+  margin: 3vh 5vw;
 `;
 
 export const AllEventsContainer = styled.div`
@@ -196,6 +196,18 @@ export const AllPhotosContainer = styled.div`
 export const UserCardContainer = styled.div`
   display: flex;
   width: 70vw;
+  align-items: center;
+  margin: 2vh 1vw;
+  padding: 1vh 1vw;
+  border-radius: 2vw;
+  background-color: #fcf9f5;
+`;
+export const AllUsersPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 3vh 5vw;
 `;
 
 export const MessageBoxContainer = styled.div`
