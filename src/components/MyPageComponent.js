@@ -38,22 +38,24 @@ export const MyPageComponent = () => {
       </div>
     );
 
-  const eventsCreatedByUser = [...allEvents]
-    .filter((event) => event.userId === user.id)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  // const eventsCreatedByUser = [...allEvents]
+  //   .filter((event) => event.userId === user.id)
+  //   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // console.log("eventsCreated", eventsCreatedByUser);
+  const eventsCreatedByUser = [...user.events].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
+  console.log("eventsCreated", eventsCreatedByUser);
 
   // const eventsUserGoes = [...allEvents].filter((event) =>
   //   event.going?.find(
   //     (e) => e.attendees.userId === user.id && e.attendees.status === true
   //   )
   // );
-  const eventsUserGoes = user.going.filter((e) => e.attendees.status);
+  const eventsUserGoes = user.going?.filter((e) => e.attendees.status);
 
   console.log("eventsUserGoes", eventsUserGoes);
-  //const eventParticipants = going && going.filter((e) => e.attendees.status);
-  // console.log("eventsUserGoes", eventsUserGoes);
 
   const upcomingEvents = eventsUserGoes
     .filter((event) => new Date(event.date) > new Date())
@@ -97,7 +99,7 @@ export const MyPageComponent = () => {
       <CreatedEventsContainer>
         <h2 style={{ textAlign: "center" }}>Events you created </h2>
 
-        {eventsCreatedByUser.map((event) => {
+        {eventsCreatedByUser?.map((event) => {
           const { id, imageUrl, title, date, city } = event;
           return (
             <ProfileEventContainer key={id}>
