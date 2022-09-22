@@ -37,7 +37,6 @@ export const EventDetailsComponent = () => {
   const oneEvent = useSelector(selectEventDetails);
 
   if (!oneEvent) return <p> Loading ...</p>;
-  console.log("date", oneEvent.date.slice(0, 10));
 
   // const eventToAttendeesList = (event) => {
   //   return event.going.map((user) => ({

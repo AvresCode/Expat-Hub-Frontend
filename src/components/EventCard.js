@@ -20,7 +20,6 @@ export const EventCard = ({
   title,
   date,
   city,
-
   description,
   spots,
   going,
@@ -84,76 +83,69 @@ export const EventCard = ({
         <div>{showDetails && <p>{description}</p>}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
-          <div> {going && eventParticipants?.length} attendees! </div>{" "}
-          <div> {spots - eventParticipants?.length} spots left!</div>
+          {moment(date).isAfter() ? (
+            <div>
+              <div> {going && eventParticipants?.length} attendees! </div>
+              <div> {spots - eventParticipants?.length} spots left!</div>
+            </div>
+          ) : (
+            <div> {going && eventParticipants?.length} people attended! </div>
+          )}
+          {/* <div> {going && eventParticipants?.length} attendees! </div>{" "}
+          <div> {spots - eventParticipants?.length} spots left!</div> */}
         </div>
-        {userResponse() === null ? (
-          <div style={{ display: "flex" }}>
-            {" "}
-            <Button
-              onClick={() => {
-                token
-                  ? updateStatusIfLoggedIn(true)
-                  : setMessage("Please login to respond!");
-                // setShow(true);
-              }}
-            >
+        {moment(date).isAfter() &&
+          (userResponse() === null ? (
+            <div style={{ display: "flex" }}>
               {" "}
-              Accept
-            </Button>
-            <Button
-              onClick={() => {
-                token
-                  ? updateStatusIfLoggedIn(false)
-                  : setMessage("Please login to respond!");
-                //setShow(true);
-              }}
-            >
-              {" "}
-              Decline
-            </Button>
-            {message && (
-              <MessageBoxContainer>
-                <p>{message}</p>
-                <ClosingButton onClick={() => setMessage("")}>
-                  <IoCloseCircle />
-                </ClosingButton>
-              </MessageBoxContainer>
-            )}
-            {/* <Modal show={show} onHide={setShow(false)}>
-              <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                Woohoo, you're reading this text in a modal!
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={setShow(false)}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={setShow(false)}>
-                  Save Changes
-                </Button>
-              </Modal.Footer>
-            </Modal> */}
-          </div>
-        ) : userResponse() ? (
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <p>You're attending!</p>{" "}
-            <Button onClick={() => updateStatusIfLoggedIn(false)}>
-              {" "}
-              Change status{" "}
-            </Button>
-          </div>
-        ) : (
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <p>You've declined.</p>
-            <Button onClick={() => updateStatusIfLoggedIn(true)}>
-              {" "}
-              Change status{" "}
-            </Button>
-          </div>
-        )}
+              <Button
+                onClick={() => {
+                  token
+                    ? updateStatusIfLoggedIn(true)
+                    : setMessage("Please login to respond!");
+                  // setShow(true);
+                }}
+              >
+                {" "}
+                Accept
+              </Button>
+              <Button
+                onClick={() => {
+                  token
+                    ? updateStatusIfLoggedIn(false)
+                    : setMessage("Please login to respond!");
+                  //setShow(true);
+                }}
+              >
+                {" "}
+                Decline
+              </Button>
+              {message && (
+                <MessageBoxContainer>
+                  <p>{message}</p>
+                  <ClosingButton onClick={() => setMessage("")}>
+                    <IoCloseCircle />
+                  </ClosingButton>
+                </MessageBoxContainer>
+              )}
+            </div>
+          ) : moment(date).isAfter() && userResponse() ? (
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p>You're attending!</p>{" "}
+              <Button onClick={() => updateStatusIfLoggedIn(false)}>
+                {" "}
+                Change status{" "}
+              </Button>
+            </div>
+          ) : (
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p>You've declined.</p>
+              <Button onClick={() => updateStatusIfLoggedIn(true)}>
+                {" "}
+                Change status{" "}
+              </Button>
+            </div>
+          ))}
         <div>
           {" "}
           {showLink && (
@@ -163,14 +155,6 @@ export const EventCard = ({
           )}
         </div>
       </div>
-      {/* <div>
-        {showDetails && (
-          <div>
-            {" "}
-            <p>{description} </p>{" "}
-          </div>
-        )}
-      </div> */}
     </EventCardContainer>
   );
 };
