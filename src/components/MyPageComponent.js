@@ -30,18 +30,29 @@ export const MyPageComponent = () => {
       </div>
     );
 
+  if (!user)
+    return (
+      <div>
+        {" "}
+        <p> Loading ...</p>
+      </div>
+    );
+
   const eventsCreatedByUser = [...allEvents]
     .filter((event) => event.userId === user.id)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // console.log("eventsCreated", eventsCreatedByUser);
 
-  const eventsUserGoes = [...allEvents].filter((event) =>
-    event.going?.find(
-      (e) => e.attendees.userId === user.id && e.attendees.status === true
-    )
-  );
+  // const eventsUserGoes = [...allEvents].filter((event) =>
+  //   event.going?.find(
+  //     (e) => e.attendees.userId === user.id && e.attendees.status === true
+  //   )
+  // );
+  const eventsUserGoes = user.going.filter((e) => e.attendees.status);
 
+  console.log("eventsUserGoes", eventsUserGoes);
+  //const eventParticipants = going && going.filter((e) => e.attendees.status);
   // console.log("eventsUserGoes", eventsUserGoes);
 
   const upcomingEvents = eventsUserGoes
