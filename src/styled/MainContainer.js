@@ -216,7 +216,6 @@ export const AllUsersPageContainer = styled.div`
 export const OneUserPageContainer = styled.div`
   display: flex;
   justify-content: center;
-  background-color: yellow;
   align-items: center;
   margin: 7vh 5vw;
 `;

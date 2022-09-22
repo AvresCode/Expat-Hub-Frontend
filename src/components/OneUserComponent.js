@@ -45,7 +45,7 @@ export const OneUserComponent = () => {
             Meet {oneUser.firstName} in the following events:
           </h3>
           <div>
-            // {/* <UserAllEventsContainer> */}
+            {/* <UserAllEventsContainer> */}
             {oneUser?.going.map((event) => {
               const { id, imageUrl, title, city, date } = event;
               if (new Date(event.date) > new Date()) {
@@ -67,7 +67,7 @@ export const OneUserComponent = () => {
                 );
               }
             })}
-            //
+
             {/* </UserAllEventsContainer> */}
           </div>
         </div>
