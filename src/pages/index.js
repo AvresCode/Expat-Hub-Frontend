@@ -7,3 +7,4 @@ export * from "./EditEventPage";
 export * from "./AllUsersPage";
 export * from "./MyPage";
 export * from "./EditProfilePage";
+export * from "./OneUserPage";

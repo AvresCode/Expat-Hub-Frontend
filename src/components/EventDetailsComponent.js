@@ -106,14 +106,16 @@ export const EventDetailsComponent = () => {
               return (
                 <AttendeesContainer key={person.id}>
                   <div>
-                    <img
-                      src={person.imageUrl}
-                      alt=""
-                      style={{
-                        maxWidth: "100%",
-                        borderRadius: "1vw",
-                      }}
-                    />
+                    <Link to={`/users/${person.id}`}>
+                      <img
+                        src={person.imageUrl}
+                        alt=""
+                        style={{
+                          maxWidth: "100%",
+                          borderRadius: "1vw",
+                        }}
+                      />
+                    </Link>
                   </div>{" "}
                   {person.firstName} {person.lastName}
                   <div></div>

@@ -26,6 +26,7 @@ export const EditEventPage = () => {
   const [spots, setSpots] = useState(oneEvent?.spots);
   const [categoryId, setCategoryId] = useState(oneEvent?.categoryId);
   const [imageUrl, setImageUrl] = useState(oneEvent?.imageUrl);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

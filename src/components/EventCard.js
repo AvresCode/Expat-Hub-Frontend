@@ -84,8 +84,8 @@ export const EventCard = ({
         <div>{showDetails && <p>{description}</p>}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
-          <div> {going && eventParticipants.length} attendees! </div>{" "}
-          <div> {spots - eventParticipants.length} spots left!</div>
+          <div> {going && eventParticipants?.length} attendees! </div>{" "}
+          <div> {spots - eventParticipants?.length} spots left!</div>
         </div>
         {userResponse() === null ? (
           <div style={{ display: "flex" }}>
