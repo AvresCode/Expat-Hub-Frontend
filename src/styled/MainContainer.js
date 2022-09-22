@@ -10,7 +10,7 @@ export const EventCardContainer = styled.div`
   box-shadow: #ece0d2 2.4px 2.4px 8px;
   border-radius: 3vw;
   background-color: #fcf9f5;
-  padding: 1vh 1vw;
+  padding: 1vh 1vw 2vh 1vw;
   margin: 2vh 2vw;
   @media (max-width: 750px) {
     max-width: 75vw;

@@ -37,7 +37,6 @@ export const EventDetailsComponent = () => {
   const oneEvent = useSelector(selectEventDetails);
 
   if (!oneEvent) return <p> Loading ...</p>;
-  console.log("date", oneEvent.date.slice(0, 10));
 
   // const eventToAttendeesList = (event) => {
   //   return event.going.map((user) => ({
@@ -70,32 +69,6 @@ export const EventDetailsComponent = () => {
             attendees={eventToAttendeesList}
           />
         )}
-        {/* {token && user?.isAmbassador && oneEvent.userId === user.id && (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {" "}
-            <div>
-              {" "}
-              <Link to={`/events/editEvent/${id}`}>
-                {" "}
-                <Button> Edit event</Button>{" "}
-              </Link>
-            </div>
-            <div>
-              {" "}
-              <Button onClick={() => dispatch(deleteOneEvent(id))}>
-                {" "}
-                Delete event
-              </Button>
-            </div>
-          </div>
-        )}{" "} */}
       </EventDetailsLeftContainer>
       <EventDetailsRightContainer>
         {" "}
@@ -103,26 +76,29 @@ export const EventDetailsComponent = () => {
         <AttendeesMainContainer>
           {" "}
           {oneEvent &&
-            oneEvent.going?.map((person) => {
-              return (
-                <AttendeesContainer key={person.id}>
-                  <div>
-                    <Link to={`/users/${person.id}`}>
-                      <img
-                        src={person.imageUrl}
-                        alt=""
-                        style={{
-                          maxWidth: "100%",
-                          borderRadius: "1vw",
-                        }}
-                      />
-                    </Link>
-                  </div>{" "}
-                  {person.firstName} {person.lastName}
-                  <div></div>
-                </AttendeesContainer>
-              );
-            })}
+            // oneEvent.going?.map((person) => {
+            oneEvent.going
+              ?.filter((e) => e.attendees.status)
+              .map((person) => {
+                return (
+                  <AttendeesContainer key={person.id}>
+                    <div>
+                      <Link to={`/users/${person.id}`}>
+                        <img
+                          src={person.imageUrl}
+                          alt=""
+                          style={{
+                            maxWidth: "100%",
+                            borderRadius: "1vw",
+                          }}
+                        />
+                      </Link>
+                    </div>{" "}
+                    {person.firstName} {person.lastName}
+                    <div></div>
+                  </AttendeesContainer>
+                );
+              })}
         </AttendeesMainContainer>
       </EventDetailsRightContainer>
 
