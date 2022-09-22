@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { selectAllEvents } from "../store/event/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { EventCard } from "./EventCard";
-import { AllEventsContainer, Input } from "../styled";
+import { AllEventsContainer, Input, Button } from "../styled";
+import moment from "moment";
 
 export const AllEventsComponent = () => {
   const [search, setSearch] = useState("");
+  const [searchDate, setSearchDate] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllEvents);
@@ -48,11 +50,31 @@ export const AllEventsComponent = () => {
         onChange={(e) => setSearch(e.target.value)}
         style={{ width: "70vw" }}
       />
+      <div>
+        {" "}
+        <h3>Pick a date: </h3>
+        <div>
+          {" "}
+          <form>
+            <Input
+              style={{ width: "15vw" }}
+              type="date"
+              value={searchDate}
+              onChange={(e) => setSearchDate(e.target.value)}
+            />
+          </form>
+        </div>
+      </div>
       <AllEventsContainer>
         {" "}
         {sortedEventDate
           .filter((event) =>
             event.title.toLowerCase().includes(search.toLowerCase())
+          )
+          .filter((event) =>
+            searchDate
+              ? moment(searchDate).isSame(moment(event.date), "day")
+              : true
           )
           .map((event) => {
             const {

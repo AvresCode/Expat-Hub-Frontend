@@ -342,7 +342,7 @@ export const FooterContainer = styled.div`
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  height: 30vh;
+  height: 40vh;
   font-size: 1.2rem;
   justify-content: space-around;
   align-items: center;
