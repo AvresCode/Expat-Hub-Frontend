@@ -337,3 +337,19 @@ export const EventLinkContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const FooterContainer = styled.div`
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  font-size: 1.2rem;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #faf5ee;
+  /* position: absolute; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
