@@ -201,6 +201,9 @@ export const UserCardContainer = styled.div`
   padding: 1vh 1vw;
   border-radius: 2vw;
   background-color: #fcf9f5;
+  @media (max-width: 750px) {
+    width: 80vw;
+  }
 `;
 export const AllUsersPageContainer = styled.div`
   display: flex;
@@ -208,6 +211,42 @@ export const AllUsersPageContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin: 3vh 5vw;
+`;
+
+export const OneUserPageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: yellow;
+  align-items: center;
+  margin: 7vh 5vw;
+`;
+
+export const UserDetailsContainer = styled.div`
+  display: flex;
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
+`;
+export const UserEventContainer = styled.div`
+  display: flex;
+  width: 40vw;
+  // justify-content: center;
+  // align-items: center;
+  border: 0.1vw #34495e solid;
+  border-radius: 3vw;
+  background-color: #fcf9f5;
+  padding: 1vh 1vw;
+  margin: 2vh 2vw;
+  @media (max-width: 750px) {
+    width: 80vw;
+  }
+`;
+export const UserAllEventsContainer = styled.div`
+   display: flex;
+  flex-direction: column";
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MessageBoxContainer = styled.div`
