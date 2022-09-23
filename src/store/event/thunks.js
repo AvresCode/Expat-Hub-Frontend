@@ -4,6 +4,7 @@ import { apiUrl } from "../../config/constants";
 import { setAllEvents, setEventDetail, setAddEvent } from "./slice";
 import { selectToken } from "../auth/selectors";
 import { showMessageWithTimeout } from "../appState/thunks";
+import { tokenStillValid } from "../auth/slice";
 
 // get all events
 export const fetchAllEvents = async (dispatch, getState) => {
@@ -55,6 +56,13 @@ export const newEventThunk =
       );
       console.log("addEvent thunk response", response);
       dispatch(setAddEvent(response.data.newEvent));
+
+      const meResponse = await axios.get(`${apiUrl}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(tokenStillValid({ user: meResponse.data }));
+
       dispatch(showMessageWithTimeout("success", false, "Event added!", 4000));
     } catch (e) {
       console.log(e.message);
@@ -72,6 +80,13 @@ export const deleteOneEvent = (id) => async (dispatch, getState) => {
 
     const response = await axios.get(`${apiUrl}/events`);
     dispatch(setAllEvents(response.data));
+
+    const meResponse = await axios.get(`${apiUrl}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    dispatch(tokenStillValid({ user: meResponse.data }));
+
     dispatch(
       showMessageWithTimeout("success", false, "Deleted successfully!", 4000)
     );
@@ -120,6 +135,12 @@ export const editEventThunk =
 
       const allEventsResponse = await axios.get(`${apiUrl}/events`);
       dispatch(setAllEvents(allEventsResponse.data));
+
+      const meResponse = await axios.get(`${apiUrl}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(tokenStillValid({ user: meResponse.data }));
 
       dispatch(
         showMessageWithTimeout("success", false, "Edited successfully!", 4000)

@@ -56,7 +56,7 @@ export const EditEventPage = () => {
       )
     );
 
-    navigate("/");
+    navigate("/MyPage");
   };
 
   return (
