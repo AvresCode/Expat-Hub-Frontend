@@ -81,6 +81,12 @@ export const deleteOneEvent = (id) => async (dispatch, getState) => {
     const response = await axios.get(`${apiUrl}/events`);
     dispatch(setAllEvents(response.data));
 
+    const meResponse = await axios.get(`${apiUrl}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    dispatch(tokenStillValid({ user: meResponse.data }));
+
     dispatch(
       showMessageWithTimeout("success", false, "Deleted successfully!", 4000)
     );
@@ -129,6 +135,12 @@ export const editEventThunk =
 
       const allEventsResponse = await axios.get(`${apiUrl}/events`);
       dispatch(setAllEvents(allEventsResponse.data));
+
+      const meResponse = await axios.get(`${apiUrl}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(tokenStillValid({ user: meResponse.data }));
 
       dispatch(
         showMessageWithTimeout("success", false, "Edited successfully!", 4000)
