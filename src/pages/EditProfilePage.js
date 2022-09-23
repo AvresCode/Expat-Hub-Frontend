@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../store/auth/selectors";
 import { editProfileThunk } from "../store/auth/thunks";
+import { useNavigate } from "react-router-dom";
 
 export const EditProfilePage = () => {
+  const navigate = useNavigate();
   const profile = useSelector(selectUser);
 
   const [firstName, setFirstName] = useState(profile?.firstName);
@@ -81,6 +83,8 @@ export const EditProfilePage = () => {
     setNationality("");
     setEducation("");
     setImageUrl("");
+
+    navigate("/MyPage");
   };
 
   return (
