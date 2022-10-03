@@ -42,9 +42,9 @@ export const MyPageComponent = () => {
   //   .filter((event) => event.userId === user.id)
   //   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const eventsCreatedByUser = [...user.events].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+  const eventsCreatedByUser =
+    user.events &&
+    [...user.events].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   console.log("eventsCreated", eventsCreatedByUser);
 
