@@ -28,8 +28,12 @@ Javascript, React, Redux, NodeJS, Express, Sequelize, PostgreSQL, Cloudinary and
 
 ## Some screenshots:
 <img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat2.JPG"></img>
-<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat9.JPG"></img>
+<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat9.JPG"></img></br>
 <img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat1.JPG"></img>
+<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat3.JPG"></img>
+<img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat6.JPG"></img>
+<img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat4.JPG"></img>
+<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat5.JPG"></img>
 
 ## Try it out!
 
