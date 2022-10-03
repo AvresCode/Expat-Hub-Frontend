@@ -26,6 +26,8 @@ A user when logged in can see a message button on each member profile and send m
 
 Javascript, React, Redux, NodeJS, Express, Sequelize, PostgreSQL, Cloudinary and Styled components </br></br>
 
+## Some screenshots:
+<img width="800px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat9.JPG"></img>
 
 ## Try it out!
 
