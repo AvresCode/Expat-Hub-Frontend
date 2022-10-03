@@ -27,11 +27,11 @@ A user when logged in can see a message button on each member profile and send m
 Javascript, React, Redux, NodeJS, Express, Sequelize, PostgreSQL, Cloudinary and Styled components </br></br>
 
 ## Some screenshots:
-<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat2.JPG"></img>
-<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat9.JPG"></img></br>
+<img width="350px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat2.JPG"></img>
+<img width="350px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat9.JPG"></img></br></br>
 <img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat1.JPG"></img>
-<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat3.JPG"></img>
-<img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat6.JPG"></img>
+<img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat3.JPG"></img></br></br>
+<img width="900px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat6.JPG"></img></br></br>
 <img width="600px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat4.JPG"></img>
 <img width="300px" src="https://github.com/AvresCode/Expat-Hub-Frontend/blob/master/public/screenshots/expat5.JPG"></img>
 
