@@ -27,7 +27,13 @@ A user when logged in can see a message button on each member profile and send m
 Javascript, React, Redux, NodeJS, Express, Sequelize, PostgreSQL, Cloudinary and Styled components </br></br>
 
 
+## Try it out!
 
+[Backend Repo](https://github.com/AvresCode/Expat-Hub-Backend)</br>
+
+To see all features log in with following email and password: </br>
+* email: neda@neda.com
+* password: neda
 
 
 
