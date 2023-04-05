@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FilteredEvents } from './FilteredEvents';
+import { FilterEvents } from './FilteredEvents';
 import { Input } from '../styled';
 import { fetchAllEvents } from '../store/event/thunks';
 import { selectAllEvents } from '../store/event/selectors';
@@ -24,19 +24,17 @@ export const AllEventsComponent = () => {
         placeholder="Search for event.."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        style={{ width: '70vw' }}
       />
       <div>
         {' '}
         <h2>Pick a date: </h2>
         <Input
-          style={{ width: '15vw' }}
           type="date"
           value={searchDate}
           onChange={(e) => setSearchDate(e.target.value)}
         />
       </div>
-      <FilteredEvents
+      <FilterEvents
         events={allEvents}
         search={search}
         searchDate={searchDate}

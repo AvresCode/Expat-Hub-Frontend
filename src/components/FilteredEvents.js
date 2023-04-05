@@ -1,27 +1,16 @@
 import moment from 'moment';
 import { EventCard } from './EventCard';
 import { AllEventsContainer } from '../styled';
+import { filteredPastEvents, sortedEventByDate } from '../helper';
 
-export const FilteredEvents = ({ events, search, searchDate }) => {
-  const filteredPastEvents = events.filter((event) =>
-    moment(event.date).isAfter()
-  );
+export const FilterEvents = ({ events, search, searchDate }) => {
+  const filteredAndSortedEvents = sortedEventByDate(filteredPastEvents(events));
 
-  const sortedEventDate = filteredPastEvents.sort((a, b) =>
-    moment(a.date).diff(b.date)
-  );
-
-  const eventData = sortedEventDate
+  const eventData = filteredAndSortedEvents
     .filter((event) => event.title.toLowerCase().includes(search.toLowerCase()))
     .filter((event) =>
       searchDate ? moment(searchDate).isSame(moment(event.date), 'day') : true
     );
-
-  // const eventData = sortedEventDate.filter(
-  //   (event) =>
-  //     event.title.toLowerCase().includes(search.toLowerCase()) &&
-  //     (searchDate ? moment(searchDate).isSame(moment(event.date), 'day') : true)
-  // );
 
   const eventToAttendeesList = (event) => {
     return event.going.map((user) => ({
