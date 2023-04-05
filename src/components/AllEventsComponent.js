@@ -1,10 +1,9 @@
-import { fetchAllEvents } from '../store/event/thunks';
 import { useEffect, useState } from 'react';
-import { selectAllEvents } from '../store/event/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { EventCard } from './EventCard';
-import { AllEventsContainer, Input } from '../styled';
-import moment from 'moment';
+import { FilteredEvents } from './FilteredEvents';
+import { Input } from '../styled';
+import { fetchAllEvents } from '../store/event/thunks';
+import { selectAllEvents } from '../store/event/selectors';
 
 export const AllEventsComponent = () => {
   const [search, setSearch] = useState('');
@@ -17,27 +16,6 @@ export const AllEventsComponent = () => {
   const allEvents = useSelector(selectAllEvents);
 
   if (!allEvents) return <div>Loading ...</div>;
-
-  const filteredPastEvents = [...allEvents].filter((event) =>
-    moment(event.date).isAfter()
-  );
-
-  const sortedEventDate = filteredPastEvents.sort((a, b) =>
-    moment(a.date).diff(b.date)
-  );
-
-  const eventData = sortedEventDate
-    .filter((event) => event.title.toLowerCase().includes(search.toLowerCase()))
-    .filter((event) =>
-      searchDate ? moment(searchDate).isSame(moment(event.date), 'day') : true
-    );
-
-  const eventToAttendeesList = (event) => {
-    return event.going.map((user) => ({
-      userId: user.id,
-      status: user.attendees.status,
-    }));
-  };
 
   return (
     <div style={{ width: '85vw' }}>
@@ -58,30 +36,11 @@ export const AllEventsComponent = () => {
           onChange={(e) => setSearchDate(e.target.value)}
         />
       </div>
-      <AllEventsContainer>
-        {' '}
-        {eventData.map((event) => {
-          const { id, imageUrl, title, city, date, description, spots, going } =
-            event;
-          return (
-            <div key={id}>
-              <EventCard
-                id={id}
-                imageUrl={imageUrl}
-                title={title}
-                city={city}
-                date={date}
-                description={description}
-                spots={spots}
-                going={going}
-                showDetails={false}
-                showLink={true}
-                attendees={eventToAttendeesList(event)}
-              />
-            </div>
-          );
-        })}
-      </AllEventsContainer>
+      <FilteredEvents
+        events={allEvents}
+        search={search}
+        searchDate={searchDate}
+      />
     </div>
   );
 };
