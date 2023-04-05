@@ -1,18 +1,18 @@
-import "./styles.css";
+import './styles.css';
 import {
   EventCardContainer,
   Button,
   MessageBoxContainer,
   ClosingButton,
-} from "../styled";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import { selectToken, selectUser } from "../store/auth/selectors";
-import { editStatusThunk } from "../store/event/thunks";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+} from '../styled';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { selectToken, selectUser } from '../store/auth/selectors';
+import { editStatusThunk } from '../store/event/thunks';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 //import Modal from "react-bootstrap/Modal";
-import { IoCloseCircle } from "react-icons/io5";
+import { IoCloseCircle } from 'react-icons/io5';
 
 export const EventCard = ({
   id,
@@ -31,15 +31,15 @@ export const EventCard = ({
   const token = useSelector(selectToken);
   const profile = useSelector(selectUser);
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   //const [show, setShow] = useState(false);
 
   const updateStatusIfLoggedIn = (status) => {
     if (token) {
-      console.log("here status", status);
+      console.log('here status', status);
       dispatch(editStatusThunk(id, status));
     } else {
-      console.log("Please sign in");
+      console.log('Please sign in');
     }
   };
 
@@ -64,25 +64,26 @@ export const EventCard = ({
 
   return (
     <EventCardContainer key={id}>
-      {" "}
+      {' '}
       <img
         src={imageUrl}
         alt=""
         style={{
-          maxWidth: "100%",
-          borderRadius: "1vw",
+          width: '300px',
+          borderRadius: '2vw',
+          height: '180px',
         }}
       />
-      <div>
-        {" "}
+      <div style={{ padding: '0.5em' }}>
+        {' '}
         <h3>{title}</h3>
         <p>
-          {" "}
-          On {moment(date).format("dddd, D MMM YYYY, h:mm a")} in {city}
+          {' '}
+          On {moment(date).format('dddd, D MMM YYYY, h:mm a')} in {city}
         </p>
         <div>{showDetails && <p>{description}</p>}</div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          {" "}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {' '}
           {moment(date).isAfter() ? (
             <div>
               <div> {going && eventParticipants?.length} attendees! </div>
@@ -96,58 +97,58 @@ export const EventCard = ({
         </div>
         {moment(date).isAfter() &&
           (userResponse() === null ? (
-            <div style={{ display: "flex" }}>
-              {" "}
+            <div style={{ display: 'flex' }}>
+              {' '}
               <Button
                 onClick={() => {
                   token
                     ? updateStatusIfLoggedIn(true)
-                    : setMessage("Please login to respond!");
+                    : setMessage('Please login to respond!');
                   // setShow(true);
                 }}
               >
-                {" "}
+                {' '}
                 Accept
               </Button>
               <Button
                 onClick={() => {
                   token
                     ? updateStatusIfLoggedIn(false)
-                    : setMessage("Please login to respond!");
+                    : setMessage('Please login to respond!');
                   //setShow(true);
                 }}
               >
-                {" "}
+                {' '}
                 Decline
               </Button>
               {message && (
                 <MessageBoxContainer>
                   <p>{message}</p>
-                  <ClosingButton onClick={() => setMessage("")}>
+                  <ClosingButton onClick={() => setMessage('')}>
                     <IoCloseCircle />
                   </ClosingButton>
                 </MessageBoxContainer>
               )}
             </div>
           ) : moment(date).isAfter() && userResponse() ? (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <p>You're attending!</p>{" "}
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <p>You're attending!</p>{' '}
               <Button onClick={() => updateStatusIfLoggedIn(false)}>
-                {" "}
-                Change status{" "}
+                {' '}
+                Change status{' '}
               </Button>
             </div>
           ) : (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <p>You've declined.</p>
               <Button onClick={() => updateStatusIfLoggedIn(true)}>
-                {" "}
-                Change status{" "}
+                {' '}
+                Change status{' '}
               </Button>
             </div>
           ))}
         <div>
-          {" "}
+          {' '}
           {showLink && (
             <Link to={`/events/${id}`}>
               <Button> View details</Button>

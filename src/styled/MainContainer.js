@@ -1,17 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const EventCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 280px;
+  width: 300px;
+  height: 480px;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   border: 0.1vw #34495e solid;
   box-shadow: #ece0d2 2.4px 2.4px 8px;
-  border-radius: 3vw;
+  border-radius: 2vw;
   background-color: #fcf9f5;
-  padding: 1vh 1vw 2vh 1vw;
-  margin: 2vh 2vw;
+  // padding: 1vh 1vw;
+  margin: 4vh 2vw;
   @media (max-width: 750px) {
     max-width: 75vw;
   }
