@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import { useMemo } from "react";
+import styled from 'styled-components';
+import { useMemo } from 'react';
 
 const ChatBox = ({ message }) => {
-  const colors = ["264653", "2a9d8f", "e9c46a", "f4a261", "e76f51", "D43D8A"];
+  const colors = ['264653', '2a9d8f', 'e9c46a', 'f4a261', 'e76f51', 'D43D8A'];
   const randomColor = useMemo(
     () => colors[Math.floor(Math.random() * colors.length)],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -18,10 +19,10 @@ const ChatBox = ({ message }) => {
     <MessageBox>
       <div
         style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "flex-start",
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
         }}
       >
         <img
@@ -30,11 +31,11 @@ const ChatBox = ({ message }) => {
           alt=""
         />
         <p>
-          {" "}
-          <span style={{ fontWeight: "bold" }}>says:</span> {text}{" "}
+          {' '}
+          <span style={{ fontWeight: 'bold' }}>says:</span> {text}{' '}
         </p>
       </div>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>{date}</div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>{date}</div>
     </MessageBox>
   );
 };

@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { fetchOneEvent, deleteOneEvent } from "../store/event/thunks";
-import { useParams } from "react-router-dom";
-import { selectEventDetails } from "../store/event/selectors";
-import { EventCard } from "./EventCard";
-import { selectToken } from "../store/auth/selectors";
-import { selectUser } from "../store/auth/selectors";
-import { Link } from "react-router-dom";
-import { CommentCard } from "./CommentCard";
-import { PostComment } from "./PostComment";
-import { ImageCard } from "./ImageCard";
-import { PostImage } from "./PostImage";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchOneEvent } from '../store/event/thunks';
+import { useParams } from 'react-router-dom';
+import { selectEventDetails } from '../store/event/selectors';
+import { EventCard } from './EventCard';
+import { selectToken } from '../store/auth/selectors';
+import { selectUser } from '../store/auth/selectors';
+import { Link } from 'react-router-dom';
+import { CommentCard } from './CommentCard';
+import { PostComment } from './PostComment';
+import { ImageCard } from './ImageCard';
+import { PostImage } from './PostImage';
 import {
   Button,
   EventDetailsContainer,
@@ -21,7 +21,7 @@ import {
   AttendeesMainContainer,
   ImageSectionContainer,
   AllPhotosContainer,
-} from "../styled";
+} from '../styled';
 
 export const EventDetailsComponent = () => {
   const token = useSelector(selectToken);
@@ -71,10 +71,10 @@ export const EventDetailsComponent = () => {
         )}
       </EventDetailsLeftContainer>
       <EventDetailsRightContainer>
-        {" "}
+        {' '}
         <h3> Attendees:</h3>
         <AttendeesMainContainer>
-          {" "}
+          {' '}
           {oneEvent &&
             // oneEvent.going?.map((person) => {
             oneEvent.going
@@ -88,12 +88,12 @@ export const EventDetailsComponent = () => {
                           src={person.imageUrl}
                           alt=""
                           style={{
-                            maxWidth: "100%",
-                            borderRadius: "1vw",
+                            maxWidth: '100%',
+                            borderRadius: '1vw',
                           }}
                         />
                       </Link>
-                    </div>{" "}
+                    </div>{' '}
                     {person.firstName} {person.lastName}
                     <div></div>
                   </AttendeesContainer>
@@ -123,15 +123,15 @@ export const EventDetailsComponent = () => {
                 user={comment.user}
               />
             );
-          })}{" "}
+          })}{' '}
       </CommentSectionContainer>
       <ImageSectionContainer>
-        {" "}
-        <div style={{ width: "100%", textAlign: "center" }}>
+        {' '}
+        <div style={{ width: '100%', textAlign: 'center' }}>
           <h3> Photos</h3>
-        </div>{" "}
+        </div>{' '}
         <AllPhotosContainer>
-          {" "}
+          {' '}
           {oneEvent &&
             oneEvent.images?.map((image) => {
               return (
@@ -142,11 +142,11 @@ export const EventDetailsComponent = () => {
                   user={image.user}
                 />
               );
-            })}{" "}
+            })}{' '}
         </AllPhotosContainer>
         {token && (
           <div>
-            {" "}
+            {' '}
             <Button onClick={() => setShowForm(true)}>Post a photo </Button>
             {showForm && <PostImage />}
           </div>
