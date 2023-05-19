@@ -18,7 +18,7 @@ export const AllEventsComponent = () => {
   if (!allEvents) return <div>Loading ...</div>;
 
   return (
-    <div style={{ width: '85vw' }}>
+    <div>
       <Input
         type="text"
         placeholder="Search for event.."

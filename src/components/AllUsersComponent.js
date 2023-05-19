@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectAllUsers } from '../store/user/selectors';
 import { UserCard } from './UserCard';
-import { AllUsersPageContainer } from '../styled';
+import { AllUsersPageContainer, AllUsersContainer } from '../styled';
 
 export const AllUsersComponent = () => {
   const dispatch = useDispatch();
@@ -25,8 +25,7 @@ export const AllUsersComponent = () => {
   return (
     <AllUsersPageContainer>
       <h2> Our members</h2>
-      <div>
-        {' '}
+      <AllUsersContainer>
         {allUsers.map((user) => {
           const { id, imageUrl, firstName, lastName } = user;
           return (
@@ -41,7 +40,7 @@ export const AllUsersComponent = () => {
             </div>
           );
         })}
-      </div>
+      </AllUsersContainer>
     </AllUsersPageContainer>
   );
 };

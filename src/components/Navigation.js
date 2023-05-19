@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../store/auth/selectors";
-import { logOut } from "../store/auth/slice";
-import { Link } from "react-router-dom";
-import { Button } from "../styled";
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken } from '../store/auth/selectors';
+import { logOut } from '../store/auth/slice';
+import { Link } from 'react-router-dom';
+import { Button } from '../styled';
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
 
@@ -41,8 +41,9 @@ const MenuLink = styled(Link)`
   text-align: center;
   text-decoration: none;
   color: #34495e;
+  font-size: 1.2rem;
+  font-weight: 400;
   transition: all 0.3s ease-in;
-  font-size: 0.9rem;
   &:hover {
     color: #9cc094;
   }
@@ -98,7 +99,7 @@ const Menu = styled.div`
     overflow: hidden;
     flex-direction: column;
     width: 100%;
-    max-height: ${({ open }) => (open ? "300px" : "0")};
+    max-height: ${({ open }) => (open ? '300px' : '0')};
     transition: max-height 0.3s ease-in;
   }
 `;

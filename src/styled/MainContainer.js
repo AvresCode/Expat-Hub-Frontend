@@ -22,12 +22,11 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  background-color: #f2e4cd;
+  // background-color: #f2e4cd;
   justify-content: center;
   align-items: center;
-  border: 0.1vw #ebe9f0 solid;
-  border-radius: 3vw;
-  margin: 3vh 5vw;
+  padding: 2.5rem;
+  margin: 6rem auto;
 `;
 
 export const AllEventsContainer = styled.div`
@@ -36,6 +35,8 @@ export const AllEventsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-bottom: 3rem;
+  margin-bottom: 8rem;
   @media (max-width: 750px) {
     flex: 75%;
   }
@@ -210,8 +211,18 @@ export const AllUsersPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  margin: 3vh 5vw;
+  align-items: center;
+  padding: 2.5rem;
+  margin-bottom: 6rem;
+`;
+
+export const AllUsersContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+  margin-bottom: 8rem;
 `;
 
 export const OneUserPageContainer = styled.div`
@@ -342,14 +353,13 @@ export const FooterContainer = styled.div`
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  height: 40vh;
   font-size: 1.2rem;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   background: #faf5ee;
-  /* position: absolute; */
+  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 12rem;
 `;

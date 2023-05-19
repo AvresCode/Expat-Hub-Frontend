@@ -1,9 +1,9 @@
-import "./App.css";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getUserWithStoredToken } from "./store/auth/thunks";
-import { Routes, Route } from "react-router-dom";
-import { Navigation, MessageBox, FooterComponent } from "./components";
+import './App.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUserWithStoredToken } from './store/auth/thunks';
+import { Routes, Route } from 'react-router-dom';
+import { Navigation, MessageBox, FooterComponent } from './components';
 import {
   Homepage,
   Login,
@@ -15,8 +15,8 @@ import {
   MyPage,
   EditProfilePage,
   OneUserPage,
-} from "./pages";
-import Chat from "./pages/Chat";
+} from './pages';
+import Chat from './pages/Chat';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <Navigation />
       <MessageBox />
       <Routes>
@@ -43,7 +43,7 @@ function App() {
         <Route path="/me/editProfile" element={<EditProfilePage />} />
       </Routes>
       <FooterComponent />
-    </div>
+    </>
   );
 }
 
