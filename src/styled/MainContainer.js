@@ -26,7 +26,7 @@ export const HomeContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2.5rem;
-  margin: 6rem auto;
+  margin: 8rem auto;
 `;
 
 export const AllEventsContainer = styled.div`
@@ -54,9 +54,17 @@ export const EventDetailsContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 3vh 5vw;
+  padding: 3rem;
+  margin-bottom: 10rem;
   border: 0.1vw #ebe9f0 solid;
-  border-radius: 3vw;
+`;
+export const EvenDetailsPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  margin-bottom: 8rem;
 `;
 
 export const EventDetailsLeftContainer = styled.div`
@@ -350,7 +358,7 @@ export const EventLinkContainer = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  padding: 0 2rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;

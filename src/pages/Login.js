@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { Button, Input, Title, LinkWord } from "../styled";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { login } from "../store/auth/thunks";
-import { selectToken } from "../store/auth/selectors";
+import styled from 'styled-components';
+import { Button, Input, Title, LinkWord } from '../styled';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../store/auth/thunks';
+import { selectToken } from '../store/auth/selectors';
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (token !== null) {
-      navigate("/");
+      navigate('/');
     }
   }, [token, navigate]);
 
@@ -28,7 +28,7 @@ export const Login = () => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: 'center' }}>
       <Container>
         <Title>Login</Title>
         <form onSubmit={submitForm}>
@@ -47,10 +47,10 @@ export const Login = () => {
           <Button type="submit">Login</Button>
         </form>
         <SubText>
-          Don't have an account yet? Click{" "}
+          Don't have an account yet? Click{' '}
           <Link to="/signup" style={LinkWord}>
             here
-          </Link>{" "}
+          </Link>{' '}
           to sign up
         </SubText>
       </Container>
@@ -59,9 +59,10 @@ export const Login = () => {
 };
 
 const Container = styled.div`
-  display: "flex";
-  flex-direction: "column";
-  margin: 15%;
+  display: 'flex';
+  flex-direction: 'column';
+  margin: 4rem auto;
+  max-width: 800px;
 `;
 
 const SubText = styled.p`

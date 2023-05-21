@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { EventCard } from './EventCard';
-import { AllEventsContainer } from '../styled';
+import { AllEventsContainer, EventCardContainer } from '../styled';
 import { filteredPastEvents, sortedEventByDate } from '../helper';
 
 export const FilterEvents = ({ events, search, searchDate }) => {
@@ -27,12 +27,14 @@ export const FilterEvents = ({ events, search, searchDate }) => {
           {eventData.map((event) => {
             return (
               <div key={event.id}>
-                <EventCard
-                  {...event}
-                  showDetails={false}
-                  showLink={true}
-                  attendees={eventToAttendeesList(event)}
-                />
+                <EventCardContainer>
+                  <EventCard
+                    {...event}
+                    showDetails={false}
+                    showLink={true}
+                    attendees={eventToAttendeesList(event)}
+                  />
+                </EventCardContainer>
               </div>
             );
           })}

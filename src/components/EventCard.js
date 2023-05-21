@@ -1,10 +1,5 @@
 import './styles.css';
-import {
-  EventCardContainer,
-  Button,
-  MessageBoxContainer,
-  ClosingButton,
-} from '../styled';
+import { Button, MessageBoxContainer, ClosingButton } from '../styled';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { selectToken, selectUser } from '../store/auth/selectors';
@@ -63,7 +58,7 @@ export const EventCard = ({
   // console.log("participants", eventParticipants);
 
   return (
-    <EventCardContainer key={id}>
+    <div key={id}>
       {' '}
       <img
         src={imageUrl}
@@ -156,6 +151,6 @@ export const EventCard = ({
           )}
         </div>
       </div>
-    </EventCardContainer>
+    </div>
   );
 };

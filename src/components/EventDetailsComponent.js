@@ -21,6 +21,7 @@ import {
   AttendeesMainContainer,
   ImageSectionContainer,
   AllPhotosContainer,
+  EvenDetailsPageContainer,
 } from '../styled';
 
 export const EventDetailsComponent = () => {
@@ -51,107 +52,119 @@ export const EventDetailsComponent = () => {
   }));
 
   return (
-    <EventDetailsContainer>
-      <EventDetailsLeftContainer>
-        {oneEvent && (
-          <EventCard
-            id={id}
-            imageUrl={oneEvent.imageUrl}
-            title={oneEvent.title}
-            city={oneEvent.city}
-            date={oneEvent.date}
-            description={oneEvent.description}
-            spots={oneEvent.spots}
-            going={oneEvent.going}
-            comments={oneEvent.comments}
-            showDetails={true}
-            showLink={false}
-            attendees={eventToAttendeesList}
-          />
-        )}
-      </EventDetailsLeftContainer>
-      <EventDetailsRightContainer>
-        {' '}
-        <h3> Attendees:</h3>
-        <AttendeesMainContainer>
-          {' '}
-          {oneEvent &&
-            // oneEvent.going?.map((person) => {
-            oneEvent.going
-              ?.filter((e) => e.attendees.status)
-              .map((person) => {
-                return (
-                  <AttendeesContainer key={person.id}>
-                    <div>
-                      <Link to={`/users/${person.id}`}>
-                        <img
-                          src={person.imageUrl}
-                          alt=""
-                          style={{
-                            maxWidth: '100%',
-                            borderRadius: '1vw',
-                          }}
-                        />
-                      </Link>
-                    </div>{' '}
-                    {person.firstName} {person.lastName}
-                    <div></div>
-                  </AttendeesContainer>
-                );
-              })}
-        </AttendeesMainContainer>
-      </EventDetailsRightContainer>
-
-      <CommentSectionContainer>
-        <div>
-          <h3> Comments</h3>
-        </div>
-        {token && (
-          <div>
-            <PostComment
-              imageUrl={user?.imageUrl}
-              firstName={user?.firstName}
-            />
-          </div>
-        )}
-        {oneEvent &&
-          oneEvent.comments?.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.id}
-                text={comment.text}
-                user={comment.user}
+    <EvenDetailsPageContainer>
+      <EventDetailsContainer>
+        <EventDetailsLeftContainer>
+          {oneEvent && (
+            <div
+              style={{
+                fontFamily: '"Open Sans",sans-serif',
+                lineHeight: '1.7',
+                backgroundColor: '#f9f6f2',
+                borderRadius: '2vw',
+                padding: '2rem',
+              }}
+            >
+              <EventCard
+                id={id}
+                imageUrl={oneEvent.imageUrl}
+                title={oneEvent.title}
+                city={oneEvent.city}
+                date={oneEvent.date}
+                description={oneEvent.description}
+                spots={oneEvent.spots}
+                going={oneEvent.going}
+                comments={oneEvent.comments}
+                showDetails={true}
+                showLink={false}
+                attendees={eventToAttendeesList}
               />
-            );
-          })}{' '}
-      </CommentSectionContainer>
-      <ImageSectionContainer>
-        {' '}
-        <div style={{ width: '100%', textAlign: 'center' }}>
-          <h3> Photos</h3>
-        </div>{' '}
-        <AllPhotosContainer>
+            </div>
+          )}
+        </EventDetailsLeftContainer>
+        <EventDetailsRightContainer>
           {' '}
+          <h3> Attendees:</h3>
+          <AttendeesMainContainer>
+            {' '}
+            {oneEvent &&
+              // oneEvent.going?.map((person) => {
+              oneEvent.going
+                ?.filter((e) => e.attendees.status)
+                .map((person) => {
+                  return (
+                    <AttendeesContainer key={person.id}>
+                      <div>
+                        <Link to={`/users/${person.id}`}>
+                          <img
+                            src={person.imageUrl}
+                            alt=""
+                            style={{
+                              maxWidth: '100%',
+                              borderRadius: '1vw',
+                            }}
+                          />
+                        </Link>
+                      </div>{' '}
+                      {person.firstName} {person.lastName}
+                      <div></div>
+                    </AttendeesContainer>
+                  );
+                })}
+          </AttendeesMainContainer>
+        </EventDetailsRightContainer>
+
+        <CommentSectionContainer>
+          <div>
+            <h3> Comments</h3>
+          </div>
+          {token && (
+            <div>
+              <PostComment
+                imageUrl={user?.imageUrl}
+                firstName={user?.firstName}
+              />
+            </div>
+          )}
           {oneEvent &&
-            oneEvent.images?.map((image) => {
+            oneEvent.comments?.map((comment) => {
               return (
-                <ImageCard
-                  key={image.id}
-                  id={image.id}
-                  imageUrl={image.imageUrl}
-                  user={image.user}
+                <CommentCard
+                  key={comment.id}
+                  text={comment.text}
+                  user={comment.user}
                 />
               );
             })}{' '}
-        </AllPhotosContainer>
-        {token && (
-          <div>
+        </CommentSectionContainer>
+        <ImageSectionContainer>
+          {' '}
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <h3> Photos</h3>
+          </div>{' '}
+          <AllPhotosContainer>
             {' '}
-            <Button onClick={() => setShowForm(true)}>Post a photo </Button>
-            {showForm && <PostImage />}
-          </div>
-        )}
-      </ImageSectionContainer>
-    </EventDetailsContainer>
+            {oneEvent &&
+              oneEvent.images?.map((image) => {
+                return (
+                  <ImageCard
+                    key={image.id}
+                    id={image.id}
+                    imageUrl={image.imageUrl}
+                    user={image.user}
+                  />
+                );
+              })}{' '}
+          </AllPhotosContainer>
+          {token && (
+            <div>
+              {' '}
+              <Button onClick={() => setShowForm(true)}>Post a photo </Button>
+              {showForm && <PostImage />}
+            </div>
+          )}
+        </ImageSectionContainer>
+      </EventDetailsContainer>
+    </EvenDetailsPageContainer>
   );
 };
