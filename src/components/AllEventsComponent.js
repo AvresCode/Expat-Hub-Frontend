@@ -18,15 +18,14 @@ export const AllEventsComponent = () => {
   if (!allEvents) return <div>Loading ...</div>;
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <Input
         type="text"
-        placeholder="Search for event.."
+        placeholder="Search event.."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
       <div>
-        {' '}
         <h2>Pick a date: </h2>
         <Input
           type="date"

@@ -36,6 +36,7 @@ export const AllEventsContainer = styled.div`
   align-items: center;
   padding-bottom: 3rem;
   margin-bottom: 8rem;
+  margin-top: 4rem;
   @media (max-width: 750px) {
     flex: 75%;
   }
@@ -82,7 +83,6 @@ export const EventDetailsRightContainer = styled.div`
   align-items: center;
   border-radius: 3vw;
   background-color: #fcf9f5;
-
   padding: 2vh 1vw;
   margin: 2vh 2vw;
   @media (max-width: 900px) {

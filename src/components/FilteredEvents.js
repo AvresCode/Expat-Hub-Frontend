@@ -23,7 +23,6 @@ export const FilterEvents = ({ events, search, searchDate }) => {
     <div>
       {eventData.length > 0 ? (
         <AllEventsContainer>
-          {' '}
           {eventData.map((event) => {
             return (
               <div key={event.id}>
