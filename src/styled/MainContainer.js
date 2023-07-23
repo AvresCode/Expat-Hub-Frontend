@@ -22,7 +22,6 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  // background-color: #f2e4cd;
   justify-content: center;
   align-items: center;
   padding: 2.5rem;
@@ -52,7 +51,6 @@ export const SidebarContainer = styled.div`
 export const EventDetailsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   padding: 3rem;
   margin-bottom: 10rem;
@@ -70,8 +68,7 @@ export const EvenDetailsPageContainer = styled.div`
 export const EventDetailsLeftContainer = styled.div`
   display: flex;
   flex: 50%;
-  justify-content: center;
-  align-items: center;
+  padding: 1rem;
   @media (max-width: 750px) {
     flex: 80%;
   }
@@ -79,18 +76,16 @@ export const EventDetailsLeftContainer = styled.div`
 
 export const EventDetailsRightContainer = styled.div`
   display: flex;
+  flex: 30%;
   flex-direction: column;
-  //width: 25vw;
-  //flex: 20%;
-  flex: 25%;
   justify-content: center;
   align-items: center;
-  border: 0.1vw #34495e solid;
   border-radius: 3vw;
   background-color: #fcf9f5;
+
   padding: 2vh 1vw;
   margin: 2vh 2vw;
-  @media (max-width: 750px) {
+  @media (max-width: 900px) {
     flex: 80%;
   }
 `;
@@ -98,8 +93,7 @@ export const EventDetailsRightContainer = styled.div`
 export const CommentSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40vw;
-  //flex: 40%;
+  width: 60vw;
   justify-content: center;
   align-items: center;
   border-radius: 2vw;
@@ -171,10 +165,7 @@ export const ImageSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   //flex: 40%;
-  width: 40vw;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border: 0.1vw #34495e solid;
+  width: 60vw;
   border-radius: 3vw;
   background-color: #fcf9f5;
   padding: 1vh 1vw;
@@ -361,7 +352,7 @@ export const FooterContainer = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
+  // font-size: 1rem;
   justify-content: space-around;
   align-items: center;
   // flex-wrap: wrap;
@@ -370,4 +361,10 @@ export const FooterContainer = styled.div`
   bottom: 0;
   width: 100%;
   height: 12rem;
+  padding-top: 6rem;
+`;
+
+export const SocialIconsContainer = styled.div`
+  display: flex;
+  gap: 0.7rem;
 `;

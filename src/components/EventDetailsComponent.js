@@ -83,10 +83,8 @@ export const EventDetailsComponent = () => {
           )}
         </EventDetailsLeftContainer>
         <EventDetailsRightContainer>
-          {' '}
-          <h3> Attendees:</h3>
+          <h3> Attendees</h3>
           <AttendeesMainContainer>
-            {' '}
             {oneEvent &&
               // oneEvent.going?.map((person) => {
               oneEvent.going
@@ -105,9 +103,8 @@ export const EventDetailsComponent = () => {
                             }}
                           />
                         </Link>
-                      </div>{' '}
+                      </div>
                       {person.firstName} {person.lastName}
-                      <div></div>
                     </AttendeesContainer>
                   );
                 })}
@@ -135,15 +132,13 @@ export const EventDetailsComponent = () => {
                   user={comment.user}
                 />
               );
-            })}{' '}
+            })}
         </CommentSectionContainer>
         <ImageSectionContainer>
-          {' '}
           <div style={{ width: '100%', textAlign: 'center' }}>
             <h3> Photos</h3>
-          </div>{' '}
+          </div>
           <AllPhotosContainer>
-            {' '}
             {oneEvent &&
               oneEvent.images?.map((image) => {
                 return (
@@ -154,11 +149,10 @@ export const EventDetailsComponent = () => {
                     user={image.user}
                   />
                 );
-              })}{' '}
+              })}
           </AllPhotosContainer>
           {token && (
             <div>
-              {' '}
               <Button onClick={() => setShowForm(true)}>Post a photo </Button>
               {showForm && <PostImage />}
             </div>
