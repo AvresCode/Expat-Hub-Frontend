@@ -36,12 +36,14 @@ export const Login = () => {
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="autofill-bg-fix"
           />
           <Input
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="autofill-bg-fix"
           />
           <br />
           <Button type="submit">Login</Button>

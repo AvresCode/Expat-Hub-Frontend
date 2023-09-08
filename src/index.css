@@ -8,3 +8,6 @@ body {
   font-family: 'EB Garamond', serif;
   background-color: #ede7db;
 }
+.autofill-bg-fix:-webkit-autofill {
+  background: #fff !important;
+}
