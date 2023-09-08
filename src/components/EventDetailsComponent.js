@@ -15,13 +15,15 @@ import {
   Button,
   EventDetailsContainer,
   EventDetailsLeftContainer,
-  EventDetailsRightContainer,
   CommentSectionContainer,
   AttendeesContainer,
-  AttendeesMainContainer,
-  ImageSectionContainer,
   AllPhotosContainer,
-  EvenDetailsPageContainer,
+  OneAttendee,
+  Heading,
+  EventDetailsTopContainer,
+  EventDetailsRightContainer,
+  ImageSectionContainer,
+  Image,
 } from '../styled';
 
 export const EventDetailsComponent = () => {
@@ -39,92 +41,60 @@ export const EventDetailsComponent = () => {
 
   if (!oneEvent) return <p> Loading ...</p>;
 
-  // const eventToAttendeesList = (event) => {
-  //   return event.going.map((user) => ({
-  //     userId: user.id,
-  //     status: user.attendees.status,
-  //   }));
-  // };
-
   const eventToAttendeesList = oneEvent.going?.map((user) => ({
     userId: user.id,
     status: user.attendees.status,
   }));
 
   return (
-    <EvenDetailsPageContainer>
-      <EventDetailsContainer>
+    <EventDetailsContainer>
+      <EventDetailsTopContainer>
         <EventDetailsLeftContainer>
           {oneEvent && (
-            <div
-              style={{
-                fontFamily: '"Open Sans",sans-serif',
-                lineHeight: '1.7',
-                backgroundColor: '#f9f6f2',
-                borderRadius: '2vw',
-                padding: '2rem',
-              }}
-            >
-              <EventCard
-                id={id}
-                imageUrl={oneEvent.imageUrl}
-                title={oneEvent.title}
-                city={oneEvent.city}
-                date={oneEvent.date}
-                description={oneEvent.description}
-                spots={oneEvent.spots}
-                going={oneEvent.going}
-                comments={oneEvent.comments}
-                showDetails={true}
-                showLink={false}
-                attendees={eventToAttendeesList}
-              />
-            </div>
+            <EventCard
+              id={id}
+              imageUrl={oneEvent.imageUrl}
+              title={oneEvent.title}
+              city={oneEvent.city}
+              date={oneEvent.date}
+              description={oneEvent.description}
+              spots={oneEvent.spots}
+              going={oneEvent.going}
+              comments={oneEvent.comments}
+              showDetails={true}
+              showLink={false}
+              attendees={eventToAttendeesList}
+            />
           )}
         </EventDetailsLeftContainer>
         <EventDetailsRightContainer>
-          <h3> Attendees</h3>
-          <AttendeesMainContainer>
+          <Heading> Attendees</Heading>
+          <AttendeesContainer>
             {oneEvent &&
               // oneEvent.going?.map((person) => {
               oneEvent.going
                 ?.filter((e) => e.attendees.status)
                 .map((person) => {
                   return (
-                    <AttendeesContainer key={person.id}>
-                      <div>
-                        <Link to={`/users/${person.id}`}>
-                          <img
-                            src={person.imageUrl}
-                            alt=""
-                            style={{
-                              maxWidth: '100%',
-                              borderRadius: '1vw',
-                            }}
-                          />
-                        </Link>
-                      </div>
+                    <OneAttendee key={person.id}>
+                      <Link to={`/users/${person.id}`}>
+                        <Image src={person.imageUrl} alt="" />
+                      </Link>
                       {person.firstName} {person.lastName}
-                    </AttendeesContainer>
+                    </OneAttendee>
                   );
                 })}
-          </AttendeesMainContainer>
+          </AttendeesContainer>
         </EventDetailsRightContainer>
-
-        <CommentSectionContainer>
-          <div>
-            <h3> Comments</h3>
-          </div>
-          {token && (
-            <div>
-              <PostComment
-                imageUrl={user?.imageUrl}
-                firstName={user?.firstName}
-              />
-            </div>
-          )}
-          {oneEvent &&
-            oneEvent.comments?.map((comment) => {
+      </EventDetailsTopContainer>
+      <CommentSectionContainer>
+        <Heading> Comments</Heading>
+        {token && (
+          <PostComment imageUrl={user?.imageUrl} firstName={user?.firstName} />
+        )}
+        {oneEvent &&
+          (oneEvent.comments.length > 0 ? (
+            oneEvent.comments.map((comment) => {
               return (
                 <CommentCard
                   key={comment.id}
@@ -132,15 +102,17 @@ export const EventDetailsComponent = () => {
                   user={comment.user}
                 />
               );
-            })}
-        </CommentSectionContainer>
-        <ImageSectionContainer>
-          <div style={{ width: '100%', textAlign: 'center' }}>
-            <h3> Photos</h3>
-          </div>
-          <AllPhotosContainer>
-            {oneEvent &&
-              oneEvent.images?.map((image) => {
+            })
+          ) : (
+            <Heading>No comments available for this event.</Heading>
+          ))}
+      </CommentSectionContainer>
+      <ImageSectionContainer>
+        <Heading> Photos</Heading>
+        <AllPhotosContainer>
+          {oneEvent &&
+            (oneEvent.images.length > 0 ? (
+              oneEvent.images.map((image) => {
                 return (
                   <ImageCard
                     key={image.id}
@@ -149,16 +121,18 @@ export const EventDetailsComponent = () => {
                     user={image.user}
                   />
                 );
-              })}
-          </AllPhotosContainer>
-          {token && (
-            <div>
-              <Button onClick={() => setShowForm(true)}>Post a photo </Button>
-              {showForm && <PostImage />}
-            </div>
-          )}
-        </ImageSectionContainer>
-      </EventDetailsContainer>
-    </EvenDetailsPageContainer>
+              })
+            ) : (
+              <Heading>No photos have been posted for this event.</Heading>
+            ))}
+        </AllPhotosContainer>
+        {token && (
+          <div>
+            <Button onClick={() => setShowForm(true)}>Post a photo </Button>
+            {showForm && <PostImage />}
+          </div>
+        )}
+      </ImageSectionContainer>
+    </EventDetailsContainer>
   );
 };

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { EventCard } from './EventCard';
-import { AllEventsContainer, EventCardContainer } from '../styled';
+import { AllEventsContainer, Button, EventCardContainer } from '../styled';
 import { filteredPastEvents, sortedEventByDate } from '../helper';
 
 export const FilterEvents = ({ events, search, searchDate }) => {
@@ -20,7 +20,7 @@ export const FilterEvents = ({ events, search, searchDate }) => {
   };
 
   return (
-    <div>
+    <>
       {eventData.length > 0 ? (
         <AllEventsContainer>
           {eventData.map((event) => {
@@ -39,8 +39,16 @@ export const FilterEvents = ({ events, search, searchDate }) => {
           })}
         </AllEventsContainer>
       ) : (
-        <h2> Oops... no event found! </h2>
+        <div style={{ textAlign: 'center' }}>
+          <h2>Oops... no event found!</h2>
+          <p>
+            <strong>Please try different keywords or filters.</strong>
+          </p>
+          <Button onClick={() => window.location.reload()}>
+            Go Back to All Events
+          </Button>
+        </div>
       )}
-    </div>
+    </>
   );
 };
