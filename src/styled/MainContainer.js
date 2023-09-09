@@ -113,14 +113,22 @@ export const CommentSectionContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   width: 80%;
+  min-height: 300px;
   padding: 1rem;
   margin: 8rem auto;
   border-radius: 1vw;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   // background-color: #5f7285;
   background-color: #c0ad83;
-  margin @media (max-width: 750px) {
+  background-image: url('/flower.svg');
+  background-size: 100px auto;
+  background-repeat: no-repeat;
+  // background-position: calc(100% - 20px) calc(100% - 20px);
+  background-position: right 20px bottom 20px; /* Position with space */
+
+  @media (max-width: 750px) {
     width: 90%;
+    background-size: 70px auto;
   }
 `;
 
@@ -166,6 +174,7 @@ export const ImageSectionContainer = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   width: 80%;
+  min-height: 300px;
   padding: 1rem;
   border-radius: 1vw;
   margin: 2rem auto;
