@@ -14,17 +14,24 @@ import { selectUser } from '../store/auth/selectors';
 import { MyPageEventCard } from './MyPageEventCard';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteOneEvent } from '../store/event/thunks';
+import { deleteOneEvent, fetchAllEvents } from '../store/event/thunks';
+import { useEffect } from 'react';
+import { getUserWithStoredToken } from '../store/auth/thunks';
 
 export const MyPageComponent = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllEvents);
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
+
   const user = useSelector(selectUser);
   const allEvents = useSelector(selectAllEvents);
 
   if (!allEvents)
     return (
       <div>
-        {' '}
         <p> Loading ...</p>
       </div>
     );
@@ -32,7 +39,6 @@ export const MyPageComponent = () => {
   if (!user)
     return (
       <div>
-        {' '}
         <p> Loading ...</p>
       </div>
     );
@@ -71,25 +77,18 @@ export const MyPageComponent = () => {
   return (
     <MyPageComponentContainer>
       <TopLinksContainer>
-        {' '}
         {user?.isAmbassador && (
           <div>
-            {' '}
             <Link to="/events/addEvent">
-              {' '}
               <Button style={{ width: '25vw', height: '7vh' }}>
-                {' '}
                 Create an event!
               </Button>
             </Link>
           </div>
         )}
         <div>
-          {' '}
           <Link to="/me/editProfile">
-            {' '}
             <Button style={{ width: '25vw', height: '7vh' }}>
-              {' '}
               Edit profile!
             </Button>
           </Link>
@@ -118,18 +117,13 @@ export const MyPageComponent = () => {
                       alignItems: 'center',
                     }}
                   >
-                    {' '}
                     <div>
-                      {' '}
                       <Link to={`/events/editEvent/${id}`}>
-                        {' '}
                         <Button> Edit event</Button>{' '}
                       </Link>
                     </div>
                     <div>
-                      {' '}
                       <Button onClick={() => dispatch(deleteOneEvent(id))}>
-                        {' '}
                         Delete event
                       </Button>
                     </div>
