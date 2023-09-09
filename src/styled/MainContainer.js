@@ -319,10 +319,10 @@ export const PastEventsContainer = styled.div`
   }
 `;
 
-export const EditProfileContainer = styled.div`
-  display: flex;
-  flex: 40%;
-`;
+// export const EditProfileContainer = styled.div`
+//   display: flex;
+//   flex: 40%;
+// `;
 
 export const TopLinksContainer = styled.div`
   display: flex;
@@ -397,4 +397,25 @@ export const SubscriptionContainer = styled.div`
   @media (max-width: 750px) {
     width: 85%;
   }
+`;
+export const EditProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #c0ad83;
+`;
+export const EditFieldsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
+`;
+
+export const EditField = styled.div`
+  flex: 1;
 `;

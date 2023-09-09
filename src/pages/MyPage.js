@@ -1,10 +1,10 @@
-import { MyPageComponent } from "../components";
+import { MyPageComponent } from '../components';
+import { MainContainer } from '../styled';
 
 export const MyPage = () => {
   return (
-    <div>
-      {" "}
+    <MainContainer>
       <MyPageComponent />
-    </div>
+    </MainContainer>
   );
 };
