@@ -7,8 +7,8 @@ import styled from 'styled-components';
 // `;
 
 export const Image = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 1vw;
 `;

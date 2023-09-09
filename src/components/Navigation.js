@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../store/auth/selectors';
 import { logOut } from '../store/auth/slice';
 import { Link } from 'react-router-dom';
-import { Button } from '../styled';
+import { NavButton } from '../styled';
+
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
 
@@ -26,7 +27,7 @@ export const Navigation = () => {
         <MenuLink to="/users">Members</MenuLink>
         {token && <MenuLink to="/MyPage">My Page</MenuLink>}
         {token ? (
-          <Button onClick={() => dispatch(logOut())}>Logout</Button>
+          <StyledDiv onClick={() => dispatch(logOut())}>Logout</StyledDiv>
         ) : (
           <MenuLink to="/login">Login</MenuLink>
         )}
@@ -83,7 +84,7 @@ const Hamburger = styled.div`
   span {
     height: 2px;
     width: 25px;
-    background-color: #34495e;
+    background-color: white;
     margin-bottom: 4px;
     border-radius: 5px;
   }
@@ -103,5 +104,19 @@ const Menu = styled.div`
     width: 100%;
     max-height: ${({ open }) => (open ? '300px' : '0')};
     transition: max-height 0.3s ease-in;
+  }
+`;
+
+const StyledDiv = styled.div`
+  padding: 1rem 2rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease-in;
+  &:hover {
+    color: #9cc094;
   }
 `;

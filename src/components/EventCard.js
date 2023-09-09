@@ -59,7 +59,6 @@ export const EventCard = ({
 
   return (
     <div key={id}>
-      {' '}
       <img
         src={imageUrl}
         alt=""
@@ -70,15 +69,12 @@ export const EventCard = ({
         }}
       />
       <div style={{ padding: '0.5em' }}>
-        {' '}
         <h3>{title}</h3>
         <p>
-          {' '}
           On {moment(date).format('dddd, D MMM YYYY, h:mm a')} in {city}
         </p>
         <div>{showDetails && <p>{description}</p>}</div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {' '}
           {moment(date).isAfter() ? (
             <div>
               <div> {going && eventParticipants?.length} attendees! </div>
@@ -93,7 +89,6 @@ export const EventCard = ({
         {moment(date).isAfter() &&
           (userResponse() === null ? (
             <div style={{ display: 'flex' }}>
-              {' '}
               <Button
                 onClick={() => {
                   token
@@ -102,7 +97,6 @@ export const EventCard = ({
                   // setShow(true);
                 }}
               >
-                {' '}
                 Accept
               </Button>
               <Button
@@ -113,7 +107,6 @@ export const EventCard = ({
                   //setShow(true);
                 }}
               >
-                {' '}
                 Decline
               </Button>
               {message && (
@@ -127,23 +120,20 @@ export const EventCard = ({
             </div>
           ) : moment(date).isAfter() && userResponse() ? (
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <p>You're attending!</p>{' '}
+              <p>You're attending!</p>
               <Button onClick={() => updateStatusIfLoggedIn(false)}>
-                {' '}
-                Change status{' '}
+                Change status
               </Button>
             </div>
           ) : (
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <p>You've declined.</p>
               <Button onClick={() => updateStatusIfLoggedIn(true)}>
-                {' '}
-                Change status{' '}
+                Change status
               </Button>
             </div>
           ))}
         <div>
-          {' '}
           {showLink && (
             <Link to={`/events/${id}`}>
               <Button> View details</Button>

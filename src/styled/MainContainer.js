@@ -19,10 +19,10 @@ export const AllEventsContainer = styled.div`
   width: 70%;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
+  padding: 2rem;
   margin: 4rem auto;
   @media (max-width: 750px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 
@@ -39,8 +39,8 @@ export const MainContainer = styled.div`
 export const SearchContainer = styled.div`
   background-color: #c0ad83;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 2.5rem;
   width: 60%;
@@ -48,7 +48,7 @@ export const SearchContainer = styled.div`
   border-radius: 1vw;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   @media (max-width: 750px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 
@@ -65,15 +65,15 @@ export const EventDetailsTopContainer = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 2rem;
-  justify-content: space-between;
+  justify-content: center;
 `;
 export const EventDetailsLeftContainer = styled.div`
   display: flex;
   flex: 50%;
   padding: 1rem;
   font-family: 'Open Sans', sans-serif;
-  background-color: #f9f6f2;
   border-radius: 2vw;
+  background: #fcf9f5;
   @media (max-width: 750px) {
     flex: 80%;
   }
@@ -85,6 +85,7 @@ export const EventDetailsRightContainer = styled.div`
   flex-wrap: wrap;
   flex: 40%;
   border-radius: 2vw;
+  padding: 0.5rem;
   background-color: #fcf9f5;
   @media (max-width: 750px) {
     flex: 80%;
@@ -93,6 +94,7 @@ export const EventDetailsRightContainer = styled.div`
 export const AttendeesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
 `;
 export const Heading = styled.h2`
@@ -104,8 +106,6 @@ export const OneAttendee = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 10vw;
-  margin: 3vh 1vw;
 `;
 
 export const CommentSectionContainer = styled.div`
@@ -181,24 +181,25 @@ export const ImageSectionContainer = styled.div`
   //  background-color: #5f7285;
   background-color: #c0ad83;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  margin @media (max-width: 750px) {
-    flex: 90%;
+  @media (max-width: 750px) {
+    width: 90%;
   }
 `;
 
 export const ImageNameContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 150px;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  font-size: 1.5vw;
+  align-items: center;
   padding: 1vh 1vw;
 `;
 
 export const AllPhotosContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const UserCardContainer = styled.div`
