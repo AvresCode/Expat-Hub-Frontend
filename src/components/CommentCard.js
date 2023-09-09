@@ -2,26 +2,23 @@ import {
   CommentContainer,
   PhotoNameContainer,
   CommentTextContainer,
-} from "../styled";
+} from '../styled';
 
 export const CommentCard = ({ id, text, user }) => {
   return (
     <CommentContainer key={id}>
       <PhotoNameContainer>
-        {" "}
-        <div>
-          <img
-            src={user.imageUrl}
-            alt=""
-            style={{
-              width: "100%",
-              borderRadius: "5vw",
-            }}
-          />
-        </div>
-        <div>{user.firstName}</div>
+        <img
+          src={user.imageUrl}
+          alt=""
+          style={{
+            width: '100%',
+            borderRadius: '5vw',
+          }}
+        />
+        <p>{user.firstName}</p>
       </PhotoNameContainer>
-      <CommentTextContainer>{text}</CommentTextContainer>
+      <p>{text}</p>
     </CommentContainer>
   );
 };

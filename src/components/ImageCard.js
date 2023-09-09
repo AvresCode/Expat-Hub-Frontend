@@ -10,7 +10,7 @@ export const ImageCard = ({ id, imageUrl, user }) => {
           <Image src={imageUrl} alt="" />
         </Zoom>
       </div>
-      <div style={{ fontSize: '1rem' }}>
+      <div>
         Posted by {user.firstName} {user.lastName}
       </div>
     </ImageNameContainer>

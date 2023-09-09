@@ -31,7 +31,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
   margin: 8rem auto;
   min-height: 100vh;
 `;
@@ -56,7 +55,7 @@ export const EventDetailsContainer = styled.div`
   width: 70%;
   padding: 1rem;
   @media (max-width: 750px) {
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -67,8 +66,10 @@ export const EventDetailsTopContainer = styled.div`
   margin-bottom: 2rem;
   justify-content: center;
 `;
+
 export const EventDetailsLeftContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex: 50%;
   padding: 1rem;
   font-family: 'Open Sans', sans-serif;
@@ -85,22 +86,20 @@ export const EventDetailsRightContainer = styled.div`
   flex-wrap: wrap;
   flex: 40%;
   border-radius: 2vw;
+  background: #fcf9f5;
   padding: 0.5rem;
-  background-color: #fcf9f5;
   @media (max-width: 750px) {
     flex: 80%;
   }
 `;
+
 export const AttendeesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
 `;
-export const Heading = styled.h2`
-  width: 100%;
-  text-align: center;
-`;
+
 export const OneAttendee = styled.div`
   display: flex;
   flex-direction: column;
@@ -112,10 +111,12 @@ export const CommentSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 80%;
+  width: 85%;
   min-height: 300px;
   padding: 1rem;
+  padding-bottom: 4rem;
   margin: 8rem auto;
+  padding-bottom: 10rem;
   border-radius: 1vw;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   // background-color: #5f7285;
@@ -124,56 +125,56 @@ export const CommentSectionContainer = styled.div`
   background-size: 100px auto;
   background-repeat: no-repeat;
   // background-position: calc(100% - 20px) calc(100% - 20px);
-  background-position: right 20px bottom 20px; /* Position with space */
-
+  background-position: right 10px bottom 10px; /* Position with space */
   @media (max-width: 750px) {
-    width: 90%;
+    width: 95%;
     background-size: 70px auto;
   }
 `;
 
 export const CommentContainer = styled.div`
+  // background: #ede7db;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  width: 40vw;
-  height: 8vh;
+  align-items: flex-start;
+  background: #ede7db;
   color: #34495e;
   border-radius: 1vw;
-  padding: 1vh 1vw;
-  margin: 2vh 2vw;
-  @media (max-width: 750px) {
-    width: 70vw;
-  }
+  margin: 2vh auto;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  width: 95%;
+  border-radius: 1vw;
 `;
 export const PhotoNameContainer = styled.div`
   display: flex;
   width: 60px;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 0.5rem;
   font-size: 1rem;
   margin-right: 1rem;
-  color: white;
 `;
-export const CommentTextContainer = styled.div`
-  width: 40vw;
-  height: 5vh;
-  background-color: #fcf9f5;
-  color: #34495e;
-  border-radius: 1vw;
-  padding: 1vh 1vw;
-  //margin: 2vh 2vw;
-  @media (max-width: 750px) {
-    width: 60vw;
-  }
-`;
+
+// export const CommentTextContainer = styled.div`
+//   width: 40vw;
+//   height: 5vh;
+//   background-color: #fcf9f5;
+//   color: #34495e;
+//   border-radius: 1vw;
+//   padding: 1vh 1vw;
+//   //margin: 2vh 2vw;
+//   @media (max-width: 750px) {
+//     width: 60vw;
+//   }
+// `;
 
 export const ImageSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 80%;
+  width: 85%;
   min-height: 300px;
   padding: 1rem;
   border-radius: 1vw;
@@ -182,7 +183,7 @@ export const ImageSectionContainer = styled.div`
   background-color: #c0ad83;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   @media (max-width: 750px) {
-    width: 90%;
+    width: 95%;
   }
 `;
 
@@ -245,6 +246,7 @@ export const UserDetailsContainer = styled.div`
     flex-direction: column;
   }
 `;
+
 export const UserEventContainer = styled.div`
   display: flex;
   width: 40vw;
@@ -259,6 +261,7 @@ export const UserEventContainer = styled.div`
     width: 80vw;
   }
 `;
+
 export const UserAllEventsContainer = styled.div`
    display: flex;
   flex-direction: column";
@@ -379,4 +382,19 @@ export const SocialIconsContainer = styled.div`
   padding: 0.5rem;
   border-radius: 2vw;
   margin: 1rem;
+`;
+export const SubscriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ede7db;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  width: 75%;
+  border-radius: 1vw;
+  margin: auto;
+  @media (max-width: 750px) {
+    width: 85%;
+  }
 `;

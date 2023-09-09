@@ -24,9 +24,13 @@ import {
   EventDetailsRightContainer,
   ImageSectionContainer,
   Image,
+  SubscriptionContainer,
+  CustomText,
 } from '../styled';
+import { useNavigate } from 'react-router-dom';
 
 export const EventDetailsComponent = () => {
+  const navigate = useNavigate();
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
   const { id } = useParams();
@@ -104,8 +108,16 @@ export const EventDetailsComponent = () => {
               );
             })
           ) : (
-            <Heading>No comments available for this event.</Heading>
+            <CustomText>No comments available for this event.</CustomText>
           ))}
+        {!token && (
+          <SubscriptionContainer>
+            <p>Join the community to comment</p>
+            <Link to="/signup">
+              <Button onClick={() => navigate}> Sign Up</Button>
+            </Link>
+          </SubscriptionContainer>
+        )}
       </CommentSectionContainer>
       <ImageSectionContainer>
         <Heading> Photos</Heading>
@@ -123,14 +135,21 @@ export const EventDetailsComponent = () => {
                 );
               })
             ) : (
-              <Heading>No photos have been posted for this event.</Heading>
+              <CustomText>
+                No photos have been posted for this event.
+              </CustomText>
             ))}
         </AllPhotosContainer>
         {token && (
-          <div>
-            <Button onClick={() => setShowForm(true)}>Post a photo </Button>
+          <>
+            <Button
+              style={{ width: '10rem', margin: 'auto' }}
+              onClick={() => setShowForm(true)}
+            >
+              Post a photo
+            </Button>
             {showForm && <PostImage />}
-          </div>
+          </>
         )}
       </ImageSectionContainer>
     </EventDetailsContainer>
