@@ -419,3 +419,11 @@ export const EditFieldsContainer = styled.div`
 export const EditField = styled.div`
   flex: 1;
 `;
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+`;

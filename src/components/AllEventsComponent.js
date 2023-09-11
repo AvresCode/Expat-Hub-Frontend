@@ -4,7 +4,7 @@ import { FilterEvents } from './FilteredEvents';
 import { Input, SearchContainer, SearchDateContainer } from '../styled';
 import { fetchAllEvents } from '../store/event/thunks';
 import { selectAllEvents } from '../store/event/selectors';
-
+import Spinner from './Spinner';
 export const AllEventsComponent = () => {
   const [search, setSearch] = useState('');
   const [searchDate, setSearchDate] = useState('');
@@ -15,7 +15,12 @@ export const AllEventsComponent = () => {
 
   const allEvents = useSelector(selectAllEvents);
 
-  if (!allEvents) return <div>Loading ...</div>;
+  if (!allEvents)
+    return (
+      <>
+        <Spinner />
+      </>
+    );
 
   return (
     <>

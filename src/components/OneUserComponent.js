@@ -1,17 +1,18 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchOneUser } from "../store/user/thunks";
-import { selectOneUser } from "../store/user/selectors";
-import { UserCard } from "./UserCard";
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOneUser } from '../store/user/thunks';
+import { selectOneUser } from '../store/user/selectors';
+import { UserCard } from './UserCard';
 import {
   OneUserPageContainer,
   Button,
   UserEventContainer,
   UserAllEventsContainer,
-} from "../styled";
-import { MyPageEventCard } from "./MyPageEventCard";
-import { Link } from "react-router-dom";
+} from '../styled';
+import { MyPageEventCard } from './MyPageEventCard';
+import { Link } from 'react-router-dom';
+import Spinner from './Spinner';
 
 export const OneUserComponent = () => {
   const { id } = useParams();
@@ -23,7 +24,12 @@ export const OneUserComponent = () => {
 
   const oneUser = useSelector(selectOneUser);
 
-  if (!oneUser) return <div> ...Loading</div>;
+  if (!oneUser)
+    return (
+      <>
+        <Spinner />
+      </>
+    );
 
   return (
     <OneUserPageContainer>
@@ -39,9 +45,9 @@ export const OneUserComponent = () => {
             education={oneUser.education}
             birthDate={oneUser.birthDate}
             showDetails={true}
-          />{" "}
-          <h3 style={{ textAlign: "center", margin: "8vh" }}>
-            {" "}
+          />{' '}
+          <h3 style={{ textAlign: 'center', margin: '8vh' }}>
+            {' '}
             Meet {oneUser.firstName} in the following events:
           </h3>
           <div>
@@ -59,8 +65,8 @@ export const OneUserComponent = () => {
                         city={city}
                         date={date}
                       />
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        {" "}
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {' '}
                         <Link to={`/events/${id}`}>
                           <Button> View details</Button>
                         </Link>

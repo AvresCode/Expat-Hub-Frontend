@@ -28,6 +28,7 @@ import {
   CustomText,
 } from '../styled';
 import { useNavigate } from 'react-router-dom';
+import Spinner from './Spinner';
 
 export const EventDetailsComponent = () => {
   const navigate = useNavigate();
@@ -43,7 +44,12 @@ export const EventDetailsComponent = () => {
 
   const oneEvent = useSelector(selectEventDetails);
 
-  if (!oneEvent) return <p> Loading ...</p>;
+  if (!oneEvent)
+    return (
+      <>
+        <Spinner />
+      </>
+    );
 
   const eventToAttendeesList = oneEvent.going?.map((user) => ({
     userId: user.id,

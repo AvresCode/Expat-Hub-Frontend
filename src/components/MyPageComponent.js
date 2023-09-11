@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { deleteOneEvent, fetchAllEvents } from '../store/event/thunks';
 import { useEffect } from 'react';
 import { getUserWithStoredToken } from '../store/auth/thunks';
+import Spinner from './Spinner';
 
 export const MyPageComponent = () => {
   const dispatch = useDispatch();
@@ -32,14 +33,18 @@ export const MyPageComponent = () => {
   if (!allEvents)
     return (
       <div>
-        <p> Loading ...</p>
+        <>
+          <Spinner />
+        </>
       </div>
     );
 
   if (!user)
     return (
       <div>
-        <p> Loading ...</p>
+        <>
+          <Spinner />
+        </>
       </div>
     );
 
