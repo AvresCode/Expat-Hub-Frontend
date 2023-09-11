@@ -18,6 +18,8 @@ import { deleteOneEvent, fetchAllEvents } from '../store/event/thunks';
 import { useEffect } from 'react';
 import { getUserWithStoredToken } from '../store/auth/thunks';
 import Spinner from './Spinner';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FiInfo } from 'react-icons/fi';
 
 export const MyPageComponent = () => {
   const dispatch = useDispatch();
@@ -124,13 +126,14 @@ export const MyPageComponent = () => {
                   >
                     <div>
                       <Link to={`/events/editEvent/${id}`}>
-                        <Button> Edit event</Button>{' '}
+                        <FaEdit style={{ color: 'black' }} />
                       </Link>
                     </div>
-                    <div>
-                      <Button onClick={() => dispatch(deleteOneEvent(id))}>
-                        Delete event
-                      </Button>
+                    <div
+                      onClick={() => dispatch(deleteOneEvent(id))}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <FaTrash style={{ color: '#bc3608' }} />
                     </div>
                   </div>
                 ) : (
@@ -138,7 +141,7 @@ export const MyPageComponent = () => {
                 )}
 
                 <Link to={`/events/${id}`}>
-                  <Button> View details</Button>
+                  <FiInfo size={20} />
                 </Link>
               </EventLinkContainer>
             </ProfileEventContainer>
@@ -159,7 +162,7 @@ export const MyPageComponent = () => {
               />
               <EventLinkContainer>
                 <Link to={`/events/${id}`}>
-                  <Button> View details</Button>
+                  <FiInfo size={20} />
                 </Link>
               </EventLinkContainer>
             </ProfileEventContainer>
@@ -180,7 +183,7 @@ export const MyPageComponent = () => {
               />
               <EventLinkContainer>
                 <Link to={`/events/${id}`}>
-                  <Button> View details</Button>
+                  <FiInfo size={20} />
                 </Link>
               </EventLinkContainer>
             </ProfileEventContainer>
