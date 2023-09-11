@@ -156,19 +156,6 @@ export const PhotoNameContainer = styled.div`
   margin-right: 1rem;
 `;
 
-// export const CommentTextContainer = styled.div`
-//   width: 40vw;
-//   height: 5vh;
-//   background-color: #fcf9f5;
-//   color: #34495e;
-//   border-radius: 1vw;
-//   padding: 1vh 1vw;
-//   //margin: 2vh 2vw;
-//   @media (max-width: 750px) {
-//     width: 60vw;
-//   }
-// `;
-
 export const ImageSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -203,24 +190,26 @@ export const AllPhotosContainer = styled.div`
 `;
 
 export const UserCardContainer = styled.div`
+  width: 100%;
   display: flex;
-  width: 70vw;
+  flex-wrap: wrap;
   align-items: center;
-  margin: 2vh 1vw;
-  padding: 1vh 1vw;
-  border-radius: 2vw;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
   background-color: #fcf9f5;
-  @media (max-width: 750px) {
-    width: 80vw;
-  }
 `;
 export const AllUsersPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
+  padding: 3rem;
   margin-bottom: 6rem;
+  background-color: #c0ad83;
+  @media (max-width: 750px) {
+    padding: 0.5rem;
+  }
 `;
 
 export const AllUsersContainer = styled.div`
@@ -228,8 +217,6 @@ export const AllUsersContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
-  margin-bottom: 8rem;
 `;
 
 export const OneUserPageContainer = styled.div`

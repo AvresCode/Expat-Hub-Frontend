@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectAllUsers } from '../store/user/selectors';
 import { UserCard } from './UserCard';
-import { AllUsersPageContainer, AllUsersContainer } from '../styled';
+import { AllUsersPageContainer, AllUsersContainer, Title } from '../styled';
+import Spinner from './Spinner';
 
 export const AllUsersComponent = () => {
   const dispatch = useDispatch();
@@ -16,28 +17,25 @@ export const AllUsersComponent = () => {
 
   if (!allUsers)
     return (
-      <div>
-        {' '}
-        <p> Loading ...</p>
-      </div>
+      <>
+        <Spinner />
+      </>
     );
 
   return (
     <AllUsersPageContainer>
-      <h2> Our members</h2>
+      <Title> Our members</Title>
       <AllUsersContainer>
         {allUsers.map((user) => {
           const { id, imageUrl, firstName, lastName } = user;
           return (
-            <div key={id}>
-              <UserCard
-                id={id}
-                imageUrl={imageUrl}
-                firstName={firstName}
-                lastName={lastName}
-                showLink={true}
-              />
-            </div>
+            <UserCard
+              id={id}
+              imageUrl={imageUrl}
+              firstName={firstName}
+              lastName={lastName}
+              showLink={true}
+            />
           );
         })}
       </AllUsersContainer>
