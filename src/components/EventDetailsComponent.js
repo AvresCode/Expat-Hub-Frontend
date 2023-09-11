@@ -118,7 +118,7 @@ export const EventDetailsComponent = () => {
           ))}
         {!token && (
           <SubscriptionContainer>
-            <p>Join the community to comment</p>
+            <p>Join the community to comment.</p>
             <Link to="/signup">
               <Button onClick={() => navigate}> Sign Up</Button>
             </Link>

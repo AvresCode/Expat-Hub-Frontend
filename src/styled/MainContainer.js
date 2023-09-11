@@ -6,8 +6,7 @@ export const EventCardContainer = styled.div`
   width: 300px;
   height: 480px;
   justify-content: center;
-  border: 0.1vw #34495e solid;
-  box-shadow: #ece0d2 2.4px 2.4px 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2.4px 2.4px 8px;
   border-radius: 2vw;
   background-color: #fcf9f5;
 `;
@@ -391,14 +390,15 @@ export const SubscriptionContainer = styled.div`
   background: #ede7db;
   font-size: 1.1rem;
   padding: 0.5rem;
-  width: 75%;
+  width: 95%;
   border-radius: 1vw;
   margin: auto;
   @media (max-width: 750px) {
     width: 85%;
   }
 `;
-export const EditProfileContainer = styled.div`
+
+export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -406,6 +406,7 @@ export const EditProfileContainer = styled.div`
   padding: 1rem;
   background-color: #c0ad83;
 `;
+
 export const EditFieldsContainer = styled.div`
   display: flex;
   justify-content: space-between;

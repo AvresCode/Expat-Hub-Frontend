@@ -1,8 +1,8 @@
 import {
+  AuthContainer,
   Button,
   EditField,
   EditFieldsContainer,
-  EditProfileContainer,
   Input,
   MainContainer,
   Title,
@@ -96,7 +96,7 @@ export const EditProfilePage = () => {
 
   return (
     <MainContainer>
-      <EditProfileContainer>
+      <AuthContainer>
         <Title>Edit Profile</Title>
         <form onSubmit={submitForm}>
           <EditFieldsContainer>
@@ -193,7 +193,7 @@ export const EditProfilePage = () => {
           </div>
           <Button type="submit">Submit</Button>
         </form>
-      </EditProfileContainer>
+      </AuthContainer>
     </MainContainer>
   );
 };
