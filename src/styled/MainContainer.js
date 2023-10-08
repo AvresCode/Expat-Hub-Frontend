@@ -268,74 +268,52 @@ export const MessageBoxContainer = styled.div`
 
 export const MyPageComponentContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  margin: 2vh 3vw;
+  flex-direction: column;
+  margin: 1rem;
   gap: 1rem;
 `;
-
-export const CreatedEventsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  fex-wrap: wrap;
-  flex: 40%;
-  border-radius: 1em;
-  @media (max-width: 750px) {
-    flex: 75%;
-  }
-`;
-export const UpcomingEventsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  fex-wrap: wrap;
-  flex: 40%;
-  border-radius: 1em;
-  @media (max-width: 750px) {
-    flex: 75%;
-  }
-`;
-export const PastEventsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  fex-wrap: wrap;
-  flex: 40%;
-  max-width: 700px;
-  border-radius: 1em;
-  @media (max-width: 750px) {
-    flex: 75%;
-  }
-`;
-
-// export const EditProfileContainer = styled.div`
-//   display: flex;
-//   flex: 40%;
-// `;
-
 export const TopLinksContainer = styled.div`
   display: flex;
   flex: 70%;
-  // border: 0.1vw #34495e solid;
-  // box-shadow: #ece0d2 2.4px 2.4px 8px;
-  // border-radius: 3vw;
-  // background-color: #fcf9f5;
-  // border-radius: 3vw;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  @media (max-width: 750px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+`;
+
+export const ProfileEventsContainer = styled.div`
+  display: flex;
+  flex-direction:column;
+   border-radius: 1em;
+   margin-bottom: 10rem;
+   
+  }
+`;
+
+export const ProfileAllEventsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-between;
+  justify-content: space-between;
+  border-radius: 1em;
+  gap: 1rem;
 `;
 
 export const ProfileEventCardContainer = styled.div`
+  // flex: 45%;
+  flex: 0 0 calc(45%);
   display: flex;
-  border-radius: 1em;
-`;
-
-export const ProfileEventContainer = styled.div`
-  display: flex;
-  border: 0.1vw #34495e solid;
-  box-shadow: #ece0d2 2.4px 2.4px 8px;
-  border-radius: 3vw;
+  box-shadow: rgba(0, 0, 0, 0.2) 2.4px 2.4px 8px;
+  border-radius: 1vw;
+  overflow: hidden;
+  min-width: 350px;
   background-color: #fcf9f5;
-  min-height: 200px;
-  margin: 1vh 1vw;
-  padding: 1vh 1vw;
-  border-radius: 1em;
+  @media (max-width: 750px) {
+    flex: 1;
+  }
 `;
 
 export const EventLinkContainer = styled.div`
@@ -414,4 +392,34 @@ export const SpinnerContainer = styled.div`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
+`;
+export const EventDetailsField = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+`;
+export const EventMoreDetails = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.2rem;
+`;
+export const EventTextContainer = styled.div`
+  flex: 1;
+  padding: 0.2rem;
+`;
+
+export const EventTextBottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.2rem;
+`;
+
+export const EventImageContainer = styled.div`
+  flex: 1;
+  overflow: hidden;
 `;

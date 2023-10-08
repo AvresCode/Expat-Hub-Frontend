@@ -18,7 +18,19 @@ export const Button = styled.button`
 
 export const ClosingButton = styled.button`
   background-color: #fdebd0;
+  color: white;
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
+`;
+
+export const ProfilePageButton = styled.button`
+  background-color: #34495e;
+  color: white;
+  width: 15rem;
+  height: 3rem;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-family: 'EB Garamond', serif;
+  border-radius: 3vw;
 `;

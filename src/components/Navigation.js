@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../store/auth/selectors';
 import { logOut } from '../store/auth/slice';
 import { Link } from 'react-router-dom';
-import { NavButton } from '../styled';
+import { useNavigate } from 'react-router-dom';
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const token = useSelector(selectToken);
 
   return (
@@ -27,7 +26,14 @@ export const Navigation = () => {
         <MenuLink to="/users">Members</MenuLink>
         {token && <MenuLink to="/MyPage">My Page</MenuLink>}
         {token ? (
-          <StyledDiv onClick={() => dispatch(logOut())}>Logout</StyledDiv>
+          <StyledDiv
+            onClick={() => {
+              dispatch(logOut());
+              navigate('/');
+            }}
+          >
+            Logout
+          </StyledDiv>
         ) : (
           <MenuLink to="/login">Login</MenuLink>
         )}

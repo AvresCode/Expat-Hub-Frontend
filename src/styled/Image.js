@@ -12,3 +12,10 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 1vw;
 `;
+export const EventImage = styled.img`
+  width: 100%;
+  // min-height: 80%;
+  height: 100%;
+  object-fit: cover;
+  // border-radius: 1vw;
+`;
