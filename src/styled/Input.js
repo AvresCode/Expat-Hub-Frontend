@@ -15,9 +15,9 @@ export const Input = styled.input`
 
 export const Form = styled.form`
   display: flex;
-  width: 85%;
-  margin-top: 1rem;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 90%;
+  // justify-content: space-between;
 `;
 
 export const Textarea = styled.textarea`

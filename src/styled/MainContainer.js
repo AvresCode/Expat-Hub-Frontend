@@ -423,3 +423,17 @@ export const EventImageContainer = styled.div`
   flex: 1;
   overflow: hidden;
 `;
+export const EventCreateContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 50%;
+  margin: 1rem auto;
+  background-color: #c0ad83;
+  @media (max-width: 750px) {
+    width: 95%;
+  }
+`;
