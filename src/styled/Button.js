@@ -16,6 +16,11 @@ export const Button = styled.button`
   }
 `;
 
+export const PostButton = styled(Button)`
+  width: 10rem;
+  margin: auto;
+`;
+
 export const ClosingButton = styled.button`
   background-color: #fdebd0;
   color: white;

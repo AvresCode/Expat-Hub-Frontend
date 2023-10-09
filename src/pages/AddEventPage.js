@@ -6,6 +6,7 @@ import {
   EventCreateContainer,
   Input,
   Form,
+  PostButton,
 } from '../styled';
 import { useState } from 'react';
 import { newEventThunk } from '../store/event/thunks';
@@ -60,7 +61,7 @@ export const AddEventPage = () => {
         <Form onSubmit={handleSubmit}>
           <div>
             <label>Category:</label>
-            <div style={{ width: '22rem', marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
               <Select
                 value={categoryId}
                 onChange={(e) => setCategoryId(parseInt(e.target.value))}
@@ -148,9 +149,7 @@ export const AddEventPage = () => {
               required
             />
           </div>
-          <Button type="submit" style={{ width: '10rem', margin: 'auto' }}>
-            Post
-          </Button>
+          <PostButton type="submit">Post</PostButton>
         </Form>
       </EventCreateContainer>
     </MainContainer>
