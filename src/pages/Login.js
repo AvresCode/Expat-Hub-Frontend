@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { Button, Input, Title, LinkWord } from '../styled';
+import {
+  Button,
+  Input,
+  Title,
+  LinkWord,
+  MainContainer,
+  AuthContainer,
+} from '../styled';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,22 +35,23 @@ export const Login = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <Container>
+    <MainContainer style={{ justifyContent: 'flex-start' }}>
+      <AuthContainer>
         <Title>Login</Title>
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} style={{ textAlign: 'center' }}>
           <Input
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="autofill-bg-fix"
           />
           <Input
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="autofill-bg-fix"
           />
-          <br />
           <Button type="submit">Login</Button>
         </form>
         <SubText>
@@ -53,17 +61,10 @@ export const Login = () => {
           </Link>{' '}
           to sign up
         </SubText>
-      </Container>
-    </div>
+      </AuthContainer>
+    </MainContainer>
   );
 };
-
-const Container = styled.div`
-  display: 'flex';
-  flex-direction: 'column';
-  margin: 4rem auto;
-  max-width: 800px;
-`;
 
 const SubText = styled.p`
   text-align: center;

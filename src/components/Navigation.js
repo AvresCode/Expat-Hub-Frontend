@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../store/auth/selectors';
 import { logOut } from '../store/auth/slice';
 import { Link } from 'react-router-dom';
-import { Button } from '../styled';
+import { useNavigate } from 'react-router-dom';
+
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const token = useSelector(selectToken);
 
   return (
@@ -26,7 +26,14 @@ export const Navigation = () => {
         <MenuLink to="/users">Members</MenuLink>
         {token && <MenuLink to="/MyPage">My Page</MenuLink>}
         {token ? (
-          <Button onClick={() => dispatch(logOut())}>Logout</Button>
+          <StyledDiv
+            onClick={() => {
+              dispatch(logOut());
+              navigate('/');
+            }}
+          >
+            Logout
+          </StyledDiv>
         ) : (
           <MenuLink to="/login">Login</MenuLink>
         )}
@@ -40,7 +47,7 @@ const MenuLink = styled(Link)`
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  color: #34495e;
+  color: white;
   font-size: 1.2rem;
   font-weight: 400;
   transition: all 0.3s ease-in;
@@ -55,7 +62,9 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #faf5ee;
+  // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  //background: #faf5ee;
+  background: #725f36;
   /* position: absolute; */
   top: 0;
   left: 0;
@@ -64,7 +73,7 @@ const Nav = styled.div`
 
 const Logo = styled.a`
   padding: 1rem 0;
-  color: #34495e;
+  color: white;
   text-decoration: none;
   font-weight: 800;
   font-size: 1.7rem;
@@ -81,7 +90,7 @@ const Hamburger = styled.div`
   span {
     height: 2px;
     width: 25px;
-    background-color: #34495e;
+    background-color: white;
     margin-bottom: 4px;
     border-radius: 5px;
   }
@@ -101,5 +110,19 @@ const Menu = styled.div`
     width: 100%;
     max-height: ${({ open }) => (open ? '300px' : '0')};
     transition: max-height 0.3s ease-in;
+  }
+`;
+
+const StyledDiv = styled.div`
+  padding: 1rem 2rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease-in;
+  &:hover {
+    color: #9cc094;
   }
 `;

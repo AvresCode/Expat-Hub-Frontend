@@ -1,12 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { fetchOneEvent } from "../store/event/thunks";
-import { selectEventDetails } from "../store/event/selectors";
-import styled from "styled-components";
-import { Button, Input, Title, Select } from "../styled";
-import { editEventThunk } from "../store/event/thunks";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchOneEvent } from '../store/event/thunks';
+import { selectEventDetails } from '../store/event/selectors';
+import {
+  Input,
+  Title,
+  Select,
+  MainContainer,
+  EventCreateContainer,
+  Form,
+  PostButton,
+} from '../styled';
+import { editEventThunk } from '../store/event/thunks';
+import { useNavigate } from 'react-router-dom';
 
 export const EditEventPage = () => {
   const { id } = useParams();
@@ -31,7 +38,7 @@ export const EditEventPage = () => {
     e.preventDefault();
 
     console.log(
-      "submit event:",
+      'submit event:',
       categoryId,
       title,
       description,
@@ -39,7 +46,7 @@ export const EditEventPage = () => {
       city,
       spots,
       address,
-      imageUrl
+      imageUrl,
     );
     //  const eventParameters = { title,  description, date, city, address, spots, imageUrl,categoryId, };
     dispatch(
@@ -52,29 +59,26 @@ export const EditEventPage = () => {
         address,
         spots,
         imageUrl,
-        categoryId
-      )
+        categoryId,
+      ),
     );
 
-    navigate("/MyPage");
+    navigate('/MyPage');
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <Container>
-        <Title>Edit Your Event: </Title>
-        <form onSubmit={handleSubmit}>
+    <MainContainer>
+      <EventCreateContainer>
+        <Title>Edit Your Event </Title>
+        <Form onSubmit={handleSubmit}>
           <div>
-            {" "}
             <label>Category:</label>
           </div>
-          <div>
-            {" "}
+          <div style={{ marginBottom: '1rem' }}>
             <Select
               defaultValue={oneEvent?.categoryId}
               onChange={(e) => setCategoryId(parseInt(e.target.value))}
             >
-              {" "}
               <option value="">Please choose an option</option>
               <option value="1">Leisure and entertainment</option>
               <option value="2">Food and drink</option>
@@ -83,8 +87,7 @@ export const EditEventPage = () => {
             </Select>
           </div>
           <div>
-            {" "}
-            <label>Title: </label>{" "}
+            <label>Title: </label>
           </div>
           <div>
             <Input
@@ -95,79 +98,62 @@ export const EditEventPage = () => {
           </div>
           <label>Description: </label>
           <div>
-            {" "}
             <Input
               defaultValue={oneEvent?.description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div>
-            {" "}
-            <label>Date: </label>{" "}
+            <label>Date: </label>
           </div>
           <div>
-            {" "}
             <Input
               type="datetime-local"
               defaultValue={oneEvent?.date}
               onChange={(e) => setDate(e.target.value)}
-            />{" "}
+            />
           </div>
           <div>
-            {" "}
-            <label>City: </label>{" "}
+            <label>City: </label>
           </div>
           <div>
-            {" "}
             <Input
               defaultValue={oneEvent?.city}
               onChange={(e) => setCity(e.target.value)}
             />
           </div>
           <div>
-            {" "}
-            <label>Number of spots: </label>{" "}
+            <label>Number of spots: </label>
           </div>
           <div>
-            {" "}
             <Input
               defaultValue={oneEvent?.spots}
               type="number"
               onChange={(e) => setSpots(parseInt(e.target.value))}
             />
-          </div>{" "}
-          <div>
-            {" "}
-            <label>Address: </label>{" "}
           </div>
           <div>
-            {" "}
+            <label>Address: </label>
+          </div>
+          <div>
             <Input
               defaultValue={oneEvent?.address}
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
           <div>
-            {" "}
-            <label>Add image URL: </label>{" "}
+            <label>Add image URL: </label>
           </div>
           <div>
-            {" "}
             <Input
               type="text"
               defaultValue={oneEvent?.imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
             />
           </div>
-          <Button type="submit">Post</Button>
-        </form>
-      </Container>
-    </div>
+          <PostButton type="submit">Post</PostButton>
+        </Form>
+      </EventCreateContainer>
+    </MainContainer>
   );
 };
-const Container = styled.div`
-  display: "flex";
-  flex-direction: "column";
-  margin: 15%;
-  color: #34495e;
-`;

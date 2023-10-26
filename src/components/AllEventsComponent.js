@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterEvents } from './FilteredEvents';
-import { Input } from '../styled';
+import { Input, SearchContainer, SearchDateContainer } from '../styled';
 import { fetchAllEvents } from '../store/event/thunks';
 import { selectAllEvents } from '../store/event/selectors';
-
+import Spinner from './Spinner';
 export const AllEventsComponent = () => {
   const [search, setSearch] = useState('');
   const [searchDate, setSearchDate] = useState('');
@@ -15,29 +15,35 @@ export const AllEventsComponent = () => {
 
   const allEvents = useSelector(selectAllEvents);
 
-  if (!allEvents) return <div>Loading ...</div>;
+  if (!allEvents)
+    return (
+      <>
+        <Spinner />
+      </>
+    );
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <Input
-        type="text"
-        placeholder="Search event.."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <div>
-        <h2>Pick a date: </h2>
+    <>
+      <SearchContainer>
+        <h1>Search Events</h1>
+        <Input
+          type="text"
+          placeholder="Search by event name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <Input
           type="date"
           value={searchDate}
+          placeholder="Pick a date"
           onChange={(e) => setSearchDate(e.target.value)}
         />
-      </div>
+      </SearchContainer>
       <FilterEvents
         events={allEvents}
         search={search}
         searchDate={searchDate}
       />
-    </div>
+    </>
   );
 };
